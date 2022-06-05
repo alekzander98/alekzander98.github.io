@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ES6 on Ankang</title><link>http://localhost:1313/tags/ES6/</link><description>Recent content in ES6 on Ankang</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 26 Apr 2021 22:53:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/ES6/index.xml" rel="self" type="application/rss+xml"/><item><title>new/call/bind/instanceof的实现与代理</title><link>http://localhost:1313/post/new-call-bind-instanceof%E7%9A%84%E5%AE%9E%E7%8E%B0%E4%B8%8E%E4%BB%A3%E7%90%86/</link><pubDate>Mon, 26 Apr 2021 22:53:00 +0000</pubDate><guid>http://localhost:1313/post/new-call-bind-instanceof%E7%9A%84%E5%AE%9E%E7%8E%B0%E4%B8%8E%E4%BB%A3%E7%90%86/</guid><description>&lt;h2 id="类">类&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ES6 on Ankang</title><link>https://ankang.icu/tags/ES6/</link><description>Recent content in ES6 on Ankang</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 26 Apr 2021 22:53:00 +0000</lastBuildDate><atom:link href="https://ankang.icu/tags/ES6/index.xml" rel="self" type="application/rss+xml"/><item><title>new/call/bind/instanceof的实现与代理</title><link>https://ankang.icu/post/new-call-bind-instanceof%E7%9A%84%E5%AE%9E%E7%8E%B0%E4%B8%8E%E4%BB%A3%E7%90%86/</link><pubDate>Mon, 26 Apr 2021 22:53:00 +0000</pubDate><guid>https://ankang.icu/post/new-call-bind-instanceof%E7%9A%84%E5%AE%9E%E7%8E%B0%E4%B8%8E%E4%BB%A3%E7%90%86/</guid><description>&lt;h2 id="类">类&lt;/h2>
 &lt;h5 id="重写new">重写new&lt;/h5>
-&lt;p>new内部过程：创建一个实例对象，this指向当前这个实例对象，会自动把函数执行，但是this内部指向变为实例对象，返回值没有或者是基本值，则返回实例对象；如果是引用值，以定义好的为主。&lt;/p></description></item><item><title>类/原型与原型链</title><link>http://localhost:1313/post/%E7%B1%BB-%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/</link><pubDate>Sun, 25 Apr 2021 09:03:29 +0000</pubDate><guid>http://localhost:1313/post/%E7%B1%BB-%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/</guid><description>&lt;h2 id="类">类&lt;/h2>
+&lt;p>new内部过程：创建一个实例对象，this指向当前这个实例对象，会自动把函数执行，但是this内部指向变为实例对象，返回值没有或者是基本值，则返回实例对象；如果是引用值，以定义好的为主。&lt;/p></description></item><item><title>类/原型与原型链</title><link>https://ankang.icu/post/%E7%B1%BB-%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/</link><pubDate>Sun, 25 Apr 2021 09:03:29 +0000</pubDate><guid>https://ankang.icu/post/%E7%B1%BB-%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/</guid><description>&lt;h2 id="类">类&lt;/h2>
 &lt;h5 id="构造函数和普通函数">构造函数和普通函数&lt;/h5>
 &lt;p>相同点：&lt;/p>
 &lt;p>定义的方式，都是通过function来定义&lt;/p>
@@ -9,7 +9,7 @@
 &lt;p>不同点：&lt;/p>
 &lt;p>构造函数执行通过&lt;code>new&lt;/code>来执行，在执行时浏览器会在当前上下文中&lt;strong>创建一个实例对象&lt;/strong>，并且会让函数中的&lt;strong>this指向&lt;/strong>到这个实例对象中，而普通函数中的this指向为window。&lt;/p>
 &lt;p>函数如过没有返回值或返回值为基本类型值，则返回&lt;code>undefined&lt;/code>或你指定的返回值;如果是构造函数，它没有返回值，则返回当前的&lt;strong>实例对象&lt;/strong>，如果有返回值，返回值是基本类型则也是返回当前对象，当返回的是引用类型，则返回你所指定的类型。&lt;/p>
-&lt;p>构造函数：箭头函数没有this，不能当构造函数，箭头函数没有prototype；ES6简写没有prototype；&lt;/p></description></item><item><title>节流/防抖与对象</title><link>http://localhost:1313/post/%E8%8A%82%E6%B5%81-%E9%98%B2%E6%8A%96%E4%B8%8E%E5%AF%B9%E8%B1%A1/</link><pubDate>Thu, 22 Apr 2021 22:29:28 +0000</pubDate><guid>http://localhost:1313/post/%E8%8A%82%E6%B5%81-%E9%98%B2%E6%8A%96%E4%B8%8E%E5%AF%B9%E8%B1%A1/</guid><description>&lt;h2 id="防抖与节流">防抖与节流&lt;/h2>
+&lt;p>构造函数：箭头函数没有this，不能当构造函数，箭头函数没有prototype；ES6简写没有prototype；&lt;/p></description></item><item><title>节流/防抖与对象</title><link>https://ankang.icu/post/%E8%8A%82%E6%B5%81-%E9%98%B2%E6%8A%96%E4%B8%8E%E5%AF%B9%E8%B1%A1/</link><pubDate>Thu, 22 Apr 2021 22:29:28 +0000</pubDate><guid>https://ankang.icu/post/%E8%8A%82%E6%B5%81-%E9%98%B2%E6%8A%96%E4%B8%8E%E5%AF%B9%E8%B1%A1/</guid><description>&lt;h2 id="防抖与节流">防抖与节流&lt;/h2>
 &lt;ul>
 &lt;li>
 &lt;p>函数防抖和函数节流都是防止某一时间频繁触发，但是这两者之间的原理却不一样。&lt;/p>
@@ -21,11 +21,11 @@
 &lt;h5 id="防抖">防抖&lt;/h5>
 &lt;p>在高频操作下，只识别一次触发（事件的开始时刻或者结束时刻），实现：一般设置一个阈值，在阈值内无论操作多少次，程序只执行一次。&lt;/p>
 &lt;h5 id="节流">节流&lt;/h5>
-&lt;p>高频操作下，按照规定好的时间为间隔触发一次，等待变化一会在执行程序，避免资源浪费。规定在一个单位时间内，只能触发一次函数。如果这个单位时间内触发多次函数，只有一次生效。&lt;/p></description></item><item><title>作用域与闭包</title><link>http://localhost:1313/post/%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85/</link><pubDate>Wed, 21 Apr 2021 19:43:44 +0000</pubDate><guid>http://localhost:1313/post/%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85/</guid><description>&lt;h2 id="作用域">作用域&lt;/h2>
+&lt;p>高频操作下，按照规定好的时间为间隔触发一次，等待变化一会在执行程序，避免资源浪费。规定在一个单位时间内，只能触发一次函数。如果这个单位时间内触发多次函数，只有一次生效。&lt;/p></description></item><item><title>作用域与闭包</title><link>https://ankang.icu/post/%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85/</link><pubDate>Wed, 21 Apr 2021 19:43:44 +0000</pubDate><guid>https://ankang.icu/post/%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85/</guid><description>&lt;h2 id="作用域">作用域&lt;/h2>
 &lt;p>全局作用域、函数作用域、块级作用域&lt;/p>
 &lt;p>作用域链会向上查找，找到全局window时中止==&amp;gt;not defined；函数被执行后其环境变量将从内存中删除，函数每次调用会创建一个新作用域。&lt;/p>
 &lt;p>如果子函数将被使用时，父级环境将保留，不会被释放。===闭包&lt;/p>
-&lt;p>块级作用域-ES6中添加的，使用let/const 定义的具有块级作用域，var没有块级作用域&lt;/p></description></item><item><title>Promise中的then方法理解</title><link>http://localhost:1313/post/Promise%E4%B8%AD%E7%9A%84then%E6%96%B9%E6%B3%95%E7%90%86%E8%A7%A3/</link><pubDate>Sat, 17 Apr 2021 08:06:01 +0000</pubDate><guid>http://localhost:1313/post/Promise%E4%B8%AD%E7%9A%84then%E6%96%B9%E6%B3%95%E7%90%86%E8%A7%A3/</guid><description>&lt;h2 id="event-loop">Event Loop:&lt;/h2>
+&lt;p>块级作用域-ES6中添加的，使用let/const 定义的具有块级作用域，var没有块级作用域&lt;/p></description></item><item><title>Promise中的then方法理解</title><link>https://ankang.icu/post/Promise%E4%B8%AD%E7%9A%84then%E6%96%B9%E6%B3%95%E7%90%86%E8%A7%A3/</link><pubDate>Sat, 17 Apr 2021 08:06:01 +0000</pubDate><guid>https://ankang.icu/post/Promise%E4%B8%AD%E7%9A%84then%E6%96%B9%E6%B3%95%E7%90%86%E8%A7%A3/</guid><description>&lt;h2 id="event-loop">Event Loop:&lt;/h2>
 &lt;p>同步任务、异步任务&lt;/p>
 &lt;h5 id="宏任务">宏任务：&lt;/h5>
 &lt;ul>
@@ -39,12 +39,12 @@
 &lt;h5 id="微任务">微任务：&lt;/h5>
 &lt;ul>
 &lt;li>Promise&lt;/li>
-&lt;/ul></description></item><item><title>Symbol/Set/Map与模块化开发</title><link>http://localhost:1313/post/Symbol-Set-Map%E4%B8%8E%E6%A8%A1%E5%9D%97%E5%8C%96%E5%BC%80%E5%8F%91/</link><pubDate>Fri, 02 Apr 2021 19:13:35 +0000</pubDate><guid>http://localhost:1313/post/Symbol-Set-Map%E4%B8%8E%E6%A8%A1%E5%9D%97%E5%8C%96%E5%BC%80%E5%8F%91/</guid><description>&lt;ul>
+&lt;/ul></description></item><item><title>Symbol/Set/Map与模块化开发</title><link>https://ankang.icu/post/Symbol-Set-Map%E4%B8%8E%E6%A8%A1%E5%9D%97%E5%8C%96%E5%BC%80%E5%8F%91/</link><pubDate>Fri, 02 Apr 2021 19:13:35 +0000</pubDate><guid>https://ankang.icu/post/Symbol-Set-Map%E4%B8%8E%E6%A8%A1%E5%9D%97%E5%8C%96%E5%BC%80%E5%8F%91/</guid><description>&lt;ul>
 &lt;li>字符串方法&lt;/li>
 &lt;li>Symbol&lt;/li>
 &lt;li>Set/Map&lt;/li>
 &lt;li>模块化开发&lt;/li>
-&lt;/ul></description></item><item><title>正则表达式与ES6</title><link>http://localhost:1313/post/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8EES6/</link><pubDate>Thu, 01 Apr 2021 23:06:42 +0000</pubDate><guid>http://localhost:1313/post/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8EES6/</guid><description>&lt;ol>
+&lt;/ul></description></item><item><title>正则表达式与ES6</title><link>https://ankang.icu/post/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8EES6/</link><pubDate>Thu, 01 Apr 2021 23:06:42 +0000</pubDate><guid>https://ankang.icu/post/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8EES6/</guid><description>&lt;ol>
 &lt;li>正则表达式&amp;ndash;断言、群组&lt;/li>
 &lt;li>ES6&amp;ndash;严格模式、箭头函数、解构赋值&lt;/li>
 &lt;/ol></description></item></channel></rss>

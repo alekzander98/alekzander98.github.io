@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>异步 on Ankang</title><link>http://localhost:1313/tags/%E5%BC%82%E6%AD%A5/</link><description>Recent content in 异步 on Ankang</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 17 Apr 2021 08:06:01 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/%E5%BC%82%E6%AD%A5/index.xml" rel="self" type="application/rss+xml"/><item><title>Promise中的then方法理解</title><link>http://localhost:1313/post/Promise%E4%B8%AD%E7%9A%84then%E6%96%B9%E6%B3%95%E7%90%86%E8%A7%A3/</link><pubDate>Sat, 17 Apr 2021 08:06:01 +0000</pubDate><guid>http://localhost:1313/post/Promise%E4%B8%AD%E7%9A%84then%E6%96%B9%E6%B3%95%E7%90%86%E8%A7%A3/</guid><description>&lt;h2 id="event-loop">Event Loop:&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>异步 on Ankang</title><link>https://ankang.icu/tags/%E5%BC%82%E6%AD%A5/</link><description>Recent content in 异步 on Ankang</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 17 Apr 2021 08:06:01 +0000</lastBuildDate><atom:link href="https://ankang.icu/tags/%E5%BC%82%E6%AD%A5/index.xml" rel="self" type="application/rss+xml"/><item><title>Promise中的then方法理解</title><link>https://ankang.icu/post/Promise%E4%B8%AD%E7%9A%84then%E6%96%B9%E6%B3%95%E7%90%86%E8%A7%A3/</link><pubDate>Sat, 17 Apr 2021 08:06:01 +0000</pubDate><guid>https://ankang.icu/post/Promise%E4%B8%AD%E7%9A%84then%E6%96%B9%E6%B3%95%E7%90%86%E8%A7%A3/</guid><description>&lt;h2 id="event-loop">Event Loop:&lt;/h2>
 &lt;p>同步任务、异步任务&lt;/p>
 &lt;h5 id="宏任务">宏任务：&lt;/h5>
 &lt;ul>
@@ -12,7 +12,7 @@
 &lt;h5 id="微任务">微任务：&lt;/h5>
 &lt;ul>
 &lt;li>Promise&lt;/li>
-&lt;/ul></description></item><item><title>CORS跨域/async-await/fetch</title><link>http://localhost:1313/post/CORS%E8%B7%A8%E5%9F%9F-async-await-fetch/</link><pubDate>Thu, 15 Apr 2021 09:58:12 +0000</pubDate><guid>http://localhost:1313/post/CORS%E8%B7%A8%E5%9F%9F-async-await-fetch/</guid><description>&lt;h2 id="cors跨域">CORS跨域：&lt;/h2>
+&lt;/ul></description></item><item><title>CORS跨域/async-await/fetch</title><link>https://ankang.icu/post/CORS%E8%B7%A8%E5%9F%9F-async-await-fetch/</link><pubDate>Thu, 15 Apr 2021 09:58:12 +0000</pubDate><guid>https://ankang.icu/post/CORS%E8%B7%A8%E5%9F%9F-async-await-fetch/</guid><description>&lt;h2 id="cors跨域">CORS跨域：&lt;/h2>
 &lt;ul>
 &lt;li>CORS跨域是后端响应头的配置&lt;/li>
 &lt;li>CORS跨域主要是服务端配置的&lt;/li>
