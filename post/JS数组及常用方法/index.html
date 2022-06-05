@@ -1,0 +1,445 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>JS数组及常用方法 - Ankang</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="Ankang"><meta name=description content=" 数组相关概念 数组常用方法及重构 "><meta name=keywords content="Hugo,theme,even"><meta name=generator content="Hugo 0.100.1 with theme even"><link rel=canonical href=http://localhost:1313/post/JS%E6%95%B0%E7%BB%84%E5%8F%8A%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
+<link href=/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="JS数组及常用方法"><meta property="og:description" content="
+数组相关概念
+数组常用方法及重构
+"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost:1313/post/JS%E6%95%B0%E7%BB%84%E5%8F%8A%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/"><meta property="article:section" content="post"><meta property="article:published_time" content="2021-03-22T22:29:25+00:00"><meta property="article:modified_time" content="2021-03-22T22:29:25+00:00"><meta itemprop=name content="JS数组及常用方法"><meta itemprop=description content="
+数组相关概念
+数组常用方法及重构
+"><meta itemprop=datePublished content="2021-03-22T22:29:25+00:00"><meta itemprop=dateModified content="2021-03-22T22:29:25+00:00"><meta itemprop=wordCount content="1756"><meta itemprop=keywords content="JavaScript,深复制/浅复制,"><meta name=twitter:card content="summary"><meta name=twitter:title content="JS数组及常用方法"><meta name=twitter:description content="
+数组相关概念
+数组常用方法及重构
+"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>Ankang</a></div><div class=mobile-navbar-icon><span></span>
+<span></span>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/about/><li class=mobile-menu-item>About</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>Ankang</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/about/>About</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>JS数组及常用方法</h1><div class=post-meta><span class=post-time>2021-03-22</span>
+<span class=more-meta>1756 words</span>
+<span class=more-meta>4 mins</span></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>Contents</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><ul><li><ul><li><a href=#递归>递归：</a></li><li><a href=#数组>数组：</a></li></ul></li></ul></li></ul></nav></div></div><div class=post-content><ol><li>数组相关概念</li><li>数组常用方法及重构</li></ol><h3 id=递归>递归：</h3><ul><li><h5 id=函数在没有完全执行结束时内部的所有变量都不会被销毁>函数在没有完全执行结束时，内部的所有变量都不会被销毁</h5></li><li><h5 id=递归会建立一个函数的副本在堆中建立一个相同的函数引用递归时调用这个新的函数引用>递归会建立一个函数的副本，在堆中建立一个相同的函数引用，递归时调用这个新的函数引用</h5></li><li><h5 id=堆栈上限溢出><em>堆栈上限溢出</em></h5></li><li><h5 id=广度遍历深度遍历>广度遍历/深度遍历：</h5><ul><li><h6 id=对象的广度遍历使用for-in>对象的广度遍历使用for in;</h6></li><li><h6 id=对象的深度遍历使用递归>对象的深度遍历使用递归；</h6></li></ul></li><li><h5 id=对象的深复制>对象的深复制：</h5></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>obj</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>a1</span><span class=o>:</span> <span class=mi>1</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>b1</span><span class=o>:</span> <span class=mi>2</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>c1</span><span class=o>:</span> <span class=mi>3</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>d1</span><span class=o>:</span> <span class=p>{</span><span class=nx>a2</span><span class=o>:</span> <span class=mi>4</span><span class=p>,</span><span class=nx>b2</span><span class=o>:</span> <span class=mi>5</span><span class=p>,</span><span class=nx>c2</span><span class=o>:</span> <span class=mi>6</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>         <span class=nx>e2</span><span class=o>:</span> <span class=p>{</span><span class=nx>a4</span><span class=o>:</span> <span class=mi>7</span><span class=p>,</span><span class=nx>b4</span><span class=o>:</span> <span class=mi>8</span><span class=p>,</span><span class=nx>c4</span><span class=o>:</span> <span class=mi>9</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>              <span class=nx>d5</span><span class=o>:</span> <span class=p>{}},</span>
+</span></span><span class=line><span class=cl>         <span class=nx>d2</span><span class=o>:</span> <span class=p>{</span><span class=nx>a3</span><span class=o>:</span> <span class=mi>10</span><span class=p>,</span><span class=nx>b3</span><span class=o>:</span> <span class=mi>11</span><span class=p>,</span><span class=nx>c3</span><span class=o>:</span> <span class=mi>12</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>              <span class=nx>f3</span><span class=o>:</span> <span class=p>{</span><span class=nx>a4</span><span class=o>:</span> <span class=mi>13</span><span class=p>,</span><span class=nx>b4</span><span class=o>:</span> <span class=mi>14</span><span class=p>,</span><span class=nx>c4</span><span class=o>:</span> <span class=mi>15</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                   <span class=nx>d5</span><span class=o>:</span> <span class=p>{}},</span>
+</span></span><span class=line><span class=cl>              <span class=nx>d3</span><span class=o>:</span> <span class=p>{</span><span class=nx>a4</span><span class=o>:</span> <span class=mi>16</span><span class=p>,</span><span class=nx>b4</span><span class=o>:</span> <span class=mi>17</span><span class=p>,</span><span class=nx>c4</span><span class=o>:</span> <span class=mi>18</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                   <span class=nx>d5</span><span class=o>:</span> <span class=p>{}},</span>
+</span></span><span class=line><span class=cl>             <span class=p>},</span>
+</span></span><span class=line><span class=cl>        <span class=p>},</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>fn1</span><span class=p>(</span><span class=nx>source</span><span class=p>,</span><span class=nx>target</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span><span class=p>(</span><span class=nx>target</span><span class=o>===</span><span class=kc>undefined</span><span class=p>)</span> <span class=nx>target</span><span class=o>=</span><span class=p>{};</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=kd>var</span> <span class=nx>prop</span> <span class=k>in</span> <span class=nx>source</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span><span class=p>(</span><span class=k>typeof</span> <span class=nx>source</span><span class=p>[</span><span class=nx>prop</span><span class=p>]</span><span class=o>===</span><span class=s2>&#34;object&#34;</span> <span class=o>&amp;&amp;</span> <span class=nx>source</span><span class=p>[</span><span class=nx>prop</span><span class=p>]</span><span class=o>!==</span><span class=kc>null</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>            <span class=nx>target</span><span class=p>[</span><span class=nx>prop</span><span class=p>]</span><span class=o>=</span><span class=p>{};</span>
+</span></span><span class=line><span class=cl>            <span class=nx>fn1</span><span class=p>(</span><span class=nx>source</span><span class=p>[</span><span class=nx>prop</span><span class=p>],</span><span class=nx>target</span><span class=p>[</span><span class=nx>prop</span><span class=p>])</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=k>else</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=nx>target</span><span class=p>[</span><span class=nx>prop</span><span class=p>]</span><span class=o>=</span><span class=nx>source</span><span class=p>[</span><span class=nx>prop</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>target</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>o</span><span class=o>=</span><span class=nx>fn1</span><span class=p>(</span><span class=nx>obj</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>obj</span><span class=p>.</span><span class=nx>d1</span><span class=p>.</span><span class=nx>d2</span><span class=p>.</span><span class=nx>d3</span><span class=p>.</span><span class=nx>c4</span><span class=o>=</span><span class=mi>100</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>o</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><h5 id=二叉树>二叉树：</h5></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>obj</span><span class=o>=</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>left</span><span class=o>:</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>value</span><span class=o>:</span><span class=mi>1</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>left</span><span class=o>:</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=nx>value</span><span class=o>:</span><span class=mi>3</span>
+</span></span><span class=line><span class=cl>        <span class=p>},</span>
+</span></span><span class=line><span class=cl>        <span class=nx>right</span><span class=o>:</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=nx>value</span><span class=o>:</span><span class=mi>4</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=nx>right</span><span class=o>:</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>value</span><span class=o>:</span><span class=mi>2</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>left</span><span class=o>:</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>        	<span class=nx>value</span><span class=o>:</span><span class=mi>5</span>
+</span></span><span class=line><span class=cl>        <span class=p>},</span>
+</span></span><span class=line><span class=cl>        <span class=nx>right</span><span class=o>:</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=nx>value</span><span class=o>:</span><span class=mi>6</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>	<span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>fn1</span><span class=p>(</span><span class=nx>o</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>o</span><span class=p>.</span><span class=nx>value</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span><span class=p>(</span><span class=nx>o</span><span class=p>.</span><span class=nx>left</span><span class=p>)</span> <span class=nx>fn1</span><span class=p>(</span><span class=nx>o</span><span class=p>.</span><span class=nx>left</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span><span class=p>(</span><span class=nx>o</span><span class=p>.</span><span class=nx>right</span><span class=p>)</span> <span class=nx>fn1</span><span class=p>(</span><span class=nx>o</span><span class=p>.</span><span class=nx>right</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>o</span><span class=p>.</span><span class=nx>value</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=nx>fn1</span><span class=p>(</span><span class=nx>obj</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><h5 id=深查找>深查找</h5></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>function</span> <span class=nx>fn3</span><span class=p>(</span><span class=nx>o</span><span class=p>,</span><span class=nx>value</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=kd>var</span> <span class=nx>prop</span> <span class=k>in</span> <span class=nx>o</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span><span class=p>(</span><span class=nx>o</span><span class=p>[</span><span class=nx>prop</span><span class=p>]</span><span class=o>===</span><span class=nx>value</span><span class=p>)</span> <span class=k>return</span> <span class=nx>prop</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span><span class=p>(</span><span class=k>typeof</span> <span class=nx>o</span><span class=p>[</span><span class=nx>prop</span><span class=p>]</span><span class=o>===</span><span class=s2>&#34;object&#34;</span> <span class=o>&amp;&amp;</span> <span class=nx>o</span><span class=p>[</span><span class=nx>prop</span><span class=p>]</span><span class=o>!==</span><span class=kc>null</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>            <span class=kd>var</span> <span class=nx>s</span><span class=o>=</span><span class=nx>fn3</span><span class=p>(</span><span class=nx>o</span><span class=p>[</span><span class=nx>prop</span><span class=p>],</span><span class=nx>value</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span><span class=p>(</span><span class=nx>s</span><span class=p>)</span> <span class=k>return</span> <span class=nx>s</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>prop</span><span class=o>=</span><span class=nx>fn3</span><span class=p>(</span><span class=nx>obj</span><span class=p>,</span><span class=mi>14</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>prop</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul><h3 id=数组>数组：</h3><ul><li><h5 id=数组是一个列表>数组是一个列表</h5></li><li><h5 id=起始为0>起始为0；</h5></li><li><h5 id=实际上是按照下标存储元素的方式将值存在列表中>实际上是按照下标存储元素的方式，将值存在列表中。</h5></li><li><h5 id=arr14><code>arr[1]===4</code></h5><ul><li><h6 id=1就是下标>1就是下标</h6></li><li><h6 id=arr1下标变量><code>arr[1]</code>下标变量</h6></li><li><h6 id=4就是元素>4就是元素</h6></li></ul></li><li><h5 id=数组创建>数组创建：</h5><ul><li><h6 id=字面量创建--var-arr123>字面量创建&ndash;<code>var arr=[1,2,3]</code></h6></li><li><h6 id=构造函数创建>构造函数创建</h6><ul><li><code>var arr=new Array(1,2,3)</code></li><li><code>var arr=Array(1,2,3)</code></li></ul></li><li><h6 id=对象创建--var-arrnew-object123>对象创建&ndash;<code>var arr=new Object([1,2,3])</code></h6></li></ul></li><li><h5 id=js中数组的元素可以类型不同>JS中数组的元素可以类型不同</h5></li><li><h5 id=因为空元素就是下标没有对应的值所以可以通过-下标-in-数组-这种方式判断>因为空元素就是下标没有对应的值，所以可以通过 下标 in 数组 这种方式判断。</h5></li><li><h5 id=如果构造函数中的参数数量大于1个则所有的参数都是这个数组的元素>如果构造函数中的参数数量大于1个，则所有的参数都是这个数组的元素。</h5></li><li><h5 id=如果构造函数的参数只有一个就是数组的长度>如果构造函数的参数只有一个，就是数组的长度</h5></li><li><h5 id=如果仅有一个参数并且是数值类型但并不是正整数就会报错>如果仅有一个参数，并且是数值类型，但并不是<em><strong>正整数</strong></em>，就会报错。</h5></li><li><h5 id=如果仅有一个参数但不是数值类型则会把这个参数放在数组的第0位>如果仅有一个参数，但不是数值类型，则会把这个参数放在数组的第0位。</h5></li></ul><h4 id=数组长度>数组长度</h4><ul><li><h5 id=元素个数包括空元素>元素个数（包括空元素）</h5></li><li><h5 id=arrlength是一个可读可写的属性><code>arr.length</code>是一个可读可写的属性</h5></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>arr</span><span class=o>=</span><span class=p>[</span><span class=mi>1</span><span class=p>,</span><span class=mi>2</span><span class=p>,</span><span class=mi>3</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=o>=</span><span class=mi>5</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=o>=</span><span class=mi>2</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>arr</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><h5 id=如果当前数组的长度小于设置的长度则增加新长度-原长度数量的空元素>如果当前数组的长度小于设置的长度，则增加(新长度-原长度)数量的空元素</h5></li><li><h5 id=如果新长度小于原长度则删除原长度-新长度数量的元素>如果新长度小于原长度，则删除(原长度-新长度)数量的元素</h5></li><li><h5 id=arrlength0清空数组><code>arr.length=0</code>清空数组</h5></li><li><h5 id=arrlength--删除尾部的最后一个元素><code>arr.length--</code>删除尾部的最后一个元素</h5></li><li><h5 id=length不能小于0或者是负数>length不能小于0或者是负数</h5></li><li><h5 id=必须是一个正整数--arrlengtha>必须是一个正整数&ndash;<code>arr.length="a"</code></h5></li><li><h5 id=push--尾部添加一个或者多个元素并且返回数组的新长度><code>push</code>&ndash;尾部添加一个或者多个元素,并且返回数组的新长度</h5></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>arr</span><span class=o>=</span><span class=p>[];</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>i</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>while</span><span class=p>(</span><span class=nx>arr</span><span class=p>.</span><span class=nx>push</span><span class=p>(</span><span class=nx>i</span><span class=o>++</span><span class=p>)</span><span class=o>&lt;</span><span class=mi>10</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>arr</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>function</span> <span class=nx>array_push</span><span class=p>(</span><span class=nx>arr</span><span class=o>:</span><span class=nb>Array</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span><span class=p>(</span><span class=nx>arr</span><span class=o>==</span><span class=kc>undefined</span> <span class=o>||</span> <span class=nx>arr</span><span class=p>.</span><span class=nx>constructor</span><span class=o>!==</span><span class=nb>Array</span><span class=p>)</span> <span class=k>throw</span> <span class=k>new</span> <span class=nb>Error</span><span class=p>(</span><span class=s2>&#34;错误参数&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//throw new Error() 抛出错误，中断后续代码的执行
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=nx>arguments</span><span class=p>.</span><span class=nx>length</span><span class=o>===</span><span class=mi>1</span><span class=p>)</span> <span class=k>return</span> <span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=kd>var</span> <span class=nx>i</span><span class=o>=</span><span class=mi>1</span><span class=p>;</span><span class=nx>i</span><span class=o>&lt;</span><span class=nx>arguments</span><span class=p>.</span><span class=nx>length</span><span class=p>;</span><span class=nx>i</span><span class=o>++</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=nx>arr</span><span class=p>[</span><span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=p>]</span><span class=o>=</span><span class=nx>arguments</span><span class=p>[</span><span class=nx>i</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//给数组尾部一旦添加元素，arr.length就会自动重设
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>return</span> <span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>arr</span><span class=o>=</span><span class=p>[];</span>
+</span></span><span class=line><span class=cl><span class=nx>array_push</span><span class=p>(</span><span class=nx>arr</span><span class=p>,</span><span class=mi>2</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><h5 id=pop--删除数组尾部的一个元素并且返回被删除的元素>pop&ndash;删除数组尾部的一个元素，并且返回被删除的元素</h5></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>function</span> <span class=nx>array_pop</span><span class=p>(</span><span class=nx>arr</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>item</span><span class=o>=</span><span class=nx>arr</span><span class=p>[</span><span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=o>-</span><span class=mi>1</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>    <span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=o>--</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>item</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>arr</span><span class=p>[</span><span class=mi>4</span><span class=p>,</span><span class=mi>3</span><span class=p>,</span><span class=mi>2</span><span class=p>,</span><span class=mi>1</span><span class=p>]</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>item</span><span class=o>=</span><span class=nx>array_pop</span><span class=p>(</span><span class=nx>arr</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>,</span><span class=nx>log</span><span class=p>(</span><span class=nx>arr</span><span class=p>,</span><span class=nx>item</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><h5 id=shift--删除数组头部的元素并且返回被删除的元素>shift&ndash;删除数组头部的元素，并且返回被删除的元素</h5></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>function</span> <span class=nx>array_shift</span><span class=p>(</span><span class=nx>arr</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span><span class=p>(</span><span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=o>===</span><span class=mi>0</span><span class=p>)</span> <span class=k>return</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>item</span><span class=o>=</span><span class=nx>arr</span><span class=p>[</span><span class=mi>0</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=kd>var</span> <span class=nx>i</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span><span class=nx>i</span><span class=o>&lt;</span><span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=o>-</span><span class=mi>1</span><span class=p>;</span><span class=nx>i</span><span class=o>++</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=nx>arr</span><span class=p>[</span><span class=nx>i</span><span class=p>]</span><span class=o>=</span><span class=nx>arr</span><span class=p>[</span><span class=nx>i</span><span class=o>+</span><span class=mi>1</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=o>--</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>item</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>arr</span><span class=o>=</span><span class=p>[</span><span class=mi>1</span><span class=p>,</span><span class=mi>2</span><span class=p>,</span><span class=mi>3</span><span class=p>,</span><span class=mi>4</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>item</span><span class=o>=</span><span class=nx>array_shift</span><span class=p>(</span><span class=nx>arr</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>item</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><h5 id=unshift--向数组的头部添加一个元素并返回数组的新长度>unshift&ndash;向数组的头部添加一个元素，并返回数组的新长度</h5></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>function</span> <span class=nx>array_unshift</span><span class=p>(</span><span class=nx>arr</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//控制参数代码
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=nx>arr</span><span class=o>==</span><span class=kc>undefined</span> <span class=o>||</span> <span class=nx>arr</span><span class=p>.</span><span class=nx>constructor</span><span class=o>!==</span><span class=nb>Array</span><span class=p>)</span> <span class=k>throw</span> <span class=k>new</span> <span class=nb>Error</span><span class=p>(</span><span class=s2>&#34;错误参数&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//throw new Error() 抛出错误，中断后续代码的执行
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=nx>arguments</span><span class=p>.</span><span class=nx>length</span><span class=o>===</span><span class=mi>1</span><span class=p>)</span> <span class=k>return</span> <span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>len</span><span class=o>=</span><span class=nx>arguments</span><span class=p>.</span><span class=nx>length</span><span class=o>-</span><span class=mi>1</span><span class=p>;</span><span class=c1>//当前添加参数数量
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=o>=</span><span class=nx>len</span><span class=o>=</span><span class=nx>len</span><span class=o>+</span><span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=p>;</span><span class=c1>//添加元素后数组的新长度
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>while</span><span class=p>(</span><span class=nx>len</span><span class=o>&gt;</span><span class=mi>0</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span><span class=p>(</span><span class=nx>len</span><span class=o>&gt;</span><span class=nx>arguments</span><span class=p>.</span><span class=nx>length</span><span class=o>-</span><span class=mi>1</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>            <span class=nx>arr</span><span class=p>[</span><span class=nx>len</span><span class=o>-</span><span class=mi>1</span><span class=p>]</span><span class=o>=</span><span class=nx>arr</span><span class=p>[</span><span class=nx>len</span><span class=o>-</span><span class=nx>arguments</span><span class=p>.</span><span class=nx>length</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span><span class=k>else</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=nx>arr</span><span class=p>[</span><span class=nx>len</span><span class=o>-</span><span class=mi>1</span><span class=p>]</span><span class=o>=</span><span class=nx>arguments</span><span class=p>[</span><span class=nx>len</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=nx>len</span><span class=o>--</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>arr</span><span class=o>=</span><span class=p>[</span><span class=mi>1</span><span class=p>,</span><span class=mi>2</span><span class=p>,</span><span class=mi>3</span><span class=p>,</span><span class=mi>4</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=nx>array_unshift</span><span class=p>(</span><span class=nx>arr</span><span class=p>,</span><span class=o>-</span><span class=mi>1</span><span class=p>,</span><span class=mi>0</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><h5 id=concat--合并数组可以将一个数组和另外一个数组合并成一个新数组原数组不变><code>concat</code>&ndash;合并数组，可以将一个数组和另外一个数组合并成一个新数组，原数组不变。</h5></li><li><h5 id=可以是用一个数组合并多个元素产生一个新数组>可以是用一个数组合并多个元素，产生一个新数组</h5></li><li><h5 id=如果不填写参数则复制原数组产生一个新数组>如果不填写参数，则复制原数组，产生一个新数组</h5></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>function</span> <span class=nx>array_concat</span><span class=p>(</span><span class=nx>arr</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span><span class=p>(</span><span class=nx>arr</span><span class=o>==</span><span class=kc>undefined</span> <span class=o>||</span> <span class=nx>arr</span><span class=p>.</span><span class=nx>constructor</span><span class=o>!==</span><span class=nb>Array</span><span class=p>)</span> <span class=k>throw</span> <span class=k>new</span> <span class=nb>Error</span><span class=p>(</span><span class=s2>&#34;不是数组&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>arr1</span><span class=o>=</span><span class=p>[];</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=kd>var</span> <span class=nx>i</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span><span class=nx>i</span><span class=o>&lt;</span><span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=p>;</span><span class=nx>i</span><span class=o>++</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=nx>arr1</span><span class=p>[</span><span class=nx>i</span><span class=p>]</span><span class=o>=</span><span class=nx>arr</span><span class=p>[</span><span class=nx>i</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span><span class=p>(</span><span class=nx>arguments</span><span class=p>.</span><span class=nx>length</span><span class=o>===</span><span class=mi>1</span><span class=p>)</span> <span class=k>return</span> <span class=nx>arr1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=kd>var</span> <span class=nx>j</span><span class=o>=</span><span class=mi>1</span><span class=p>;</span><span class=nx>j</span><span class=o>&lt;</span><span class=nx>arguments</span><span class=p>.</span><span class=nx>length</span><span class=p>;</span><span class=nx>j</span><span class=o>++</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span><span class=p>(</span><span class=nx>arguments</span><span class=p>[</span><span class=nx>j</span><span class=p>]</span> <span class=o>&amp;&amp;</span> <span class=nx>arguments</span><span class=p>[</span><span class=nx>j</span><span class=p>].</span><span class=nx>constructor</span><span class=o>===</span><span class=nb>Array</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>            <span class=k>for</span><span class=p>(</span><span class=kd>var</span> <span class=nx>k</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span><span class=nx>k</span><span class=o>&lt;</span><span class=nx>arguments</span><span class=p>[</span><span class=nx>j</span><span class=p>].</span><span class=nx>length</span><span class=p>;</span><span class=nx>k</span><span class=o>++</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>                <span class=nx>arr1</span><span class=p>[</span><span class=nx>arr1</span><span class=p>.</span><span class=nx>length</span><span class=p>]</span><span class=o>=</span><span class=nx>arguments</span><span class=p>[</span><span class=nx>j</span><span class=p>][</span><span class=nx>k</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span><span class=k>else</span>
+</span></span><span class=line><span class=cl>        <span class=nx>arr1</span><span class=p>[</span><span class=nx>arr1</span><span class=p>.</span><span class=nx>length</span><span class=p>]</span><span class=o>=</span><span class=nx>arguments</span><span class=p>[</span><span class=nx>j</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>arr1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>arr</span><span class=o>=</span><span class=p>[</span><span class=mi>1</span><span class=p>,</span><span class=mi>2</span><span class=p>,</span><span class=mi>3</span><span class=p>,</span><span class=mi>4</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>arr1</span><span class=o>=</span><span class=nx>array_concat</span><span class=p>(</span><span class=nx>arr</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>arr</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span><span class=o>=</span><span class=mi>100</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>arr1</span><span class=o>=</span><span class=nx>array_concat</span><span class=p>(</span><span class=nx>arr</span><span class=p>,</span><span class=mi>1</span><span class=p>,</span><span class=mi>2</span><span class=p>,</span><span class=mi>3</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>arr1</span><span class=o>=</span><span class=nx>array_concat</span><span class=p>(</span><span class=nx>arr</span><span class=p>,[</span><span class=mi>1</span><span class=p>,</span><span class=mi>2</span><span class=p>,</span><span class=mi>3</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>arr1</span><span class=o>=</span><span class=nx>array_concat</span><span class=p>(</span><span class=nx>arr</span><span class=p>,[</span><span class=mi>1</span><span class=p>,</span><span class=mi>2</span><span class=p>,</span><span class=mi>3</span><span class=p>],[</span><span class=mi>4</span><span class=p>,</span><span class=mi>5</span><span class=p>,</span><span class=mi>6</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>arr1</span><span class=o>=</span><span class=nx>array_concat</span><span class=p>(</span><span class=nx>arr</span><span class=p>,[</span><span class=mi>1</span><span class=p>,</span><span class=mi>2</span><span class=p>,</span><span class=mi>3</span><span class=p>],</span><span class=mi>0</span><span class=p>,</span><span class=mi>2</span><span class=p>,</span><span class=mi>1</span><span class=p>,[</span><span class=mi>4</span><span class=p>,</span><span class=mi>5</span><span class=p>,</span><span class=mi>6</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>arr1</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><h5 id=join--连接字符串用符号连接数组的元素并且生成字符串><code>join</code>&ndash;连接字符串，用符号连接数组的元素并且生成字符串</h5></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>function</span> <span class=nx>array_join</span><span class=p>(</span><span class=nx>arr</span><span class=p>,</span><span class=nx>separator</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span><span class=p>(</span><span class=nx>arr</span><span class=o>==</span><span class=kc>undefined</span> <span class=o>||</span> <span class=nx>arr</span><span class=p>.</span><span class=nx>constructor</span><span class=o>!==</span><span class=nb>Array</span><span class=p>)</span> <span class=k>throw</span> <span class=k>new</span> <span class=nb>Error</span><span class=p>(</span><span class=s2>&#34;不是数组&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span><span class=p>(</span><span class=nx>separator</span><span class=o>===</span><span class=kc>undefined</span><span class=p>)</span> <span class=nx>separator</span><span class=o>=</span><span class=s2>&#34;,&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=nx>separator</span><span class=o>=</span><span class=nb>String</span><span class=p>(</span><span class=nx>separator</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>str</span><span class=o>=</span><span class=s2>&#34;&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=kd>var</span> <span class=nx>i</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span><span class=nx>i</span><span class=o>&lt;</span><span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=o>-</span><span class=mi>1</span><span class=p>;</span><span class=nx>i</span><span class=o>++</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=nx>str</span><span class=o>+=</span><span class=nx>arr</span><span class=p>[</span><span class=nx>i</span><span class=p>]</span><span class=o>+</span><span class=nx>separator</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=nx>str</span><span class=o>+=</span><span class=nx>arr</span><span class=p>[</span><span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=o>-</span><span class=mi>1</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>str</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>arr</span><span class=o>=</span><span class=p>[</span><span class=mi>1</span><span class=p>,</span><span class=mi>2</span><span class=p>,</span><span class=mi>3</span><span class=p>,</span><span class=mi>4</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>str</span><span class=o>=</span><span class=nx>array_join</span><span class=p>(</span><span class=nx>arr</span><span class=p>,</span><span class=s2>&#34;&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>str</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><p><code>fill</code></p></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>function</span> <span class=nx>array_fill</span><span class=p>(</span><span class=nx>arr</span><span class=p>,</span><span class=nx>item</span><span class=p>,</span><span class=nx>start</span><span class=p>,</span><span class=nx>end</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span><span class=p>(</span><span class=nx>arr</span><span class=o>==</span><span class=kc>undefined</span> <span class=o>||</span> <span class=nx>arr</span><span class=p>.</span><span class=nx>constructor</span><span class=o>!==</span><span class=nb>Array</span><span class=p>)</span> <span class=k>throw</span> <span class=k>new</span> <span class=nb>Error</span><span class=p>(</span><span class=s2>&#34;不是数组&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span><span class=p>(</span><span class=nx>start</span><span class=o>===</span><span class=kc>undefined</span><span class=p>)</span> <span class=nx>start</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span><span class=p>(</span><span class=nx>end</span><span class=o>===</span><span class=kc>undefined</span><span class=p>)</span> <span class=nx>end</span><span class=o>=</span><span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=kd>var</span> <span class=nx>i</span><span class=o>=</span><span class=nx>start</span><span class=p>;</span><span class=nx>i</span><span class=o>&lt;</span><span class=nx>end</span><span class=p>;</span><span class=nx>i</span><span class=o>++</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=nx>arr</span><span class=p>[</span><span class=nx>i</span><span class=p>]</span><span class=o>=</span><span class=nx>item</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>arr</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>arr</span><span class=o>=</span><span class=nb>Array</span><span class=p>(</span><span class=mi>10</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>arr</span><span class=o>=</span><span class=nx>array_fill</span><span class=p>(</span><span class=nx>arr</span><span class=p>,</span><span class=mi>1</span><span class=p>,</span><span class=mi>2</span><span class=p>,</span><span class=mi>5</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>arr</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><h5 id=arrayfrom将一个列表转换为数组><code>Array.from</code>将一个列表转换为数组</h5></li><li><h5 id=下标有012345就是有列表必须要有length>下标有0，1，2，3，4，5就是有列表，必须要有length。</h5></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>function</span> <span class=nx>fn1</span><span class=p>(){</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>str</span><span class=o>=</span><span class=nx>arguments</span><span class=p>.</span><span class=nx>join</span><span class=p>(</span><span class=s2>&#34;&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>str</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>arr</span><span class=o>=</span><span class=nb>Array</span><span class=p>.</span><span class=nx>from</span><span class=p>(</span><span class=nx>argumentss</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>str</span><span class=o>=</span><span class=nx>arr</span><span class=p>.</span><span class=nx>join</span><span class=p>(</span><span class=s2>&#34;&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>str</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=nx>fn1</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span><span class=mi>2</span><span class=p>,</span><span class=mi>3</span><span class=p>,</span><span class=mi>4</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nb>Array</span><span class=p>.</span><span class=nx>form_1</span><span class=o>=</span><span class=kd>function</span><span class=p>(</span><span class=nx>list</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>arr</span><span class=o>=</span><span class=p>[];</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span><span class=p>(</span><span class=o>!</span><span class=nx>list</span><span class=p>.</span><span class=nx>length</span><span class=p>)</span> <span class=k>return</span> <span class=p>[];</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=kd>var</span> <span class=nx>i</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span><span class=nx>i</span><span class=o>&lt;</span><span class=nx>list</span><span class=p>.</span><span class=nx>length</span><span class=p>;</span><span class=nx>i</span><span class=o>++</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=nx>arr</span><span class=p>[</span><span class=nx>i</span><span class=p>]</span><span class=o>=</span><span class=nx>list</span><span class=p>[</span><span class=nx>i</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>arr</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>//简单
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>return</span> <span class=nb>Array</span><span class=p>.</span><span class=nx>prototype</span><span class=p>.</span><span class=nx>slice</span><span class=p>.</span><span class=nx>apply</span><span class=p>(</span><span class=nx>list</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nb>Array</span><span class=p>.</span><span class=nx>prototype</span><span class=p>.</span><span class=nx>slice</span><span class=p>.</span><span class=nx>call</span><span class=p>(</span><span class=nx>list</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=p>[].</span><span class=nx>slice</span><span class=p>.</span><span class=nx>apply</span><span class=p>(</span><span class=nx>list</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=p>[].</span><span class=nx>slice</span><span class=p>.</span><span class=nx>call</span><span class=p>(</span><span class=nx>list</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=p>[].</span><span class=nx>concat</span><span class=p>.</span><span class=nx>apply</span><span class=p>([],</span><span class=nx>list</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nb>Array</span><span class=p>.</span><span class=nx>prototype</span><span class=p>.</span><span class=nx>concat</span><span class=p>.</span><span class=nx>apply</span><span class=p>([],</span><span class=nx>list</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><h5 id=arrayisarray判断元素是否为数组><code>Array.isArray</code>判断元素是否为数组</h5></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nb>Array</span><span class=p>.</span><span class=nx>isArray_1</span><span class=o>=</span><span class=kd>function</span><span class=p>(</span><span class=nx>list</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=p>(</span><span class=nx>list</span> <span class=o>&amp;&amp;</span> <span class=nx>list</span><span class=p>.</span><span class=nx>constructor</span><span class=o>===</span><span class=nb>Array</span><span class=p>)</span> <span class=o>?</span> <span class=kc>true</span> <span class=o>:</span> <span class=kc>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul></div><div class=post-copyright><p class=copyright-item><span class=item-title>Author</span>
+<span class=item-content>Ankang</span></p><p class=copyright-item><span class=item-title>LastMod</span>
+<span class=item-content>2021-03-22</span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/JavaScript/>JavaScript</a>
+<a href=/tags/%E6%B7%B1%E5%A4%8D%E5%88%B6/%E6%B5%85%E5%A4%8D%E5%88%B6/>深复制/浅复制</a></div><nav class=post-nav><a class=prev href=/post/%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E9%87%8D%E6%9E%84%E4%B8%8E%E5%BA%94%E7%94%A8/><i class="iconfont icon-left"></i>
+<span class="prev-text nav-default">数组常用方法重构与应用</span>
+<span class="prev-text nav-mobile">Prev</span></a>
+<a class=next href=/post/%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E4%B8%8E%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/><span class="next-text nav-default">回调函数与设计模式</span>
+<span class="next-text nav-mobile">Next</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:ankangz98@gmail.com class="iconfont icon-email" title=email></a>
+<a href=https://github.com/an-kang class="iconfont icon-github" title=github></a>
+<a href=http://localhost:1313/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><div class=busuanzi-footer><span id=busuanzi_container_site_pv>PV: <span id=busuanzi_value_site_pv><img src=/img/spinner.svg alt=spinner.svg></span></span>
+<span class=division>|</span>
+<span id=busuanzi_container_site_uv>UV: <span id=busuanzi_value_site_uv><img src=/img/spinner.svg alt=spinner.svg></span></span></div><span class=copyright-year>&copy;
+2017 -
+2022<span class=heart><i class="iconfont icon-heart"></i></span><span>Ankang</span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
+<script type=text/javascript src=/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js></script></body></html>

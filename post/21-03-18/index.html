@@ -1,0 +1,268 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>数据类型转换与运算符 - Ankang</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="Ankang"><meta name=description content=" 字符串、布尔值、数值之间的转换 运算符 运算有关的一些条件判断。 "><meta name=keywords content="Hugo,theme,even"><meta name=generator content="Hugo 0.100.1 with theme even"><link rel=canonical href=http://localhost:1313/post/21-03-18/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
+<link href=/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="数据类型转换与运算符"><meta property="og:description" content="
+字符串、布尔值、数值之间的转换
+运算符
+运算有关的一些条件判断。
+"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost:1313/post/21-03-18/"><meta property="article:section" content="post"><meta property="article:published_time" content="2021-03-16T08:03:46+00:00"><meta property="article:modified_time" content="2021-03-16T08:03:46+00:00"><meta itemprop=name content="数据类型转换与运算符"><meta itemprop=description content="
+字符串、布尔值、数值之间的转换
+运算符
+运算有关的一些条件判断。
+"><meta itemprop=datePublished content="2021-03-16T08:03:46+00:00"><meta itemprop=dateModified content="2021-03-16T08:03:46+00:00"><meta itemprop=wordCount content="2456"><meta itemprop=keywords content="JavaScript,Study,"><meta name=twitter:card content="summary"><meta name=twitter:title content="数据类型转换与运算符"><meta name=twitter:description content="
+字符串、布尔值、数值之间的转换
+运算符
+运算有关的一些条件判断。
+"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>Ankang</a></div><div class=mobile-navbar-icon><span></span>
+<span></span>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/about/><li class=mobile-menu-item>About</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>Ankang</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/about/>About</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>数据类型转换与运算符</h1><div class=post-meta><span class=post-time>2021-03-16</span>
+<span class=more-meta>2456 words</span>
+<span class=more-meta>5 mins</span></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>Contents</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><ul><li><ul><li><a href=#字符串转换数值>字符串转换数值：</a></li><li><a href=#布尔值转换为字符串>布尔值转换为字符串：</a></li><li><a href=#字符数值变成布尔值>字符，数值变成布尔值：</a></li><li><a href=#将undefined转换为数值-nan>将undefined转换为数值==> NaN;</a></li><li><a href=#将null转换为数值-0>将null转换为数值==> 0;</a></li><li><a href=#将对象转换为数值-nan>将对象转换为数值==> NaN;</a></li><li><a href=#将对象转换为字符串-object-object>将对象转换为字符串==> [object Object]</a></li><li><a href=#stringnumberbooleanundefinednull-都是存在内存的栈中>string，number，boolean，undefined，null 都是存在内存的栈中。</a></li><li><a href=#object是存放在内存的堆中>object是存放在内存的堆中。</a></li><li><a href=#所有的基础类型都是基于object构建而成>所有的基础类型都是基于Object构建而成。</a></li><li><a href=#运算符>运算符：</a></li><li><a href=#运算有关的条件判断>运算有关的条件判断：</a></li><li><a href=#数组>数组：</a></li><li><a href=#进制>进制：</a></li><li><a href=#图像像素点>图像：像素点</a></li></ul></li></ul></li></ul></nav></div></div><div class=post-content><ol><li>字符串、布尔值、数值之间的转换</li><li>运算符</li><li>运算有关的一些条件判断。</li></ol><h3 id=字符串转换数值>字符串转换数值：</h3><ol><li><h4 id=强制转换数值通过number构造函数>强制转换数值：通过Number();构造函数。</h4><ul><li><h5 id=如果字符串是由数字构成强制转换后将变为数值否则变成nan>如果字符串是由数字构成，强制转换后将变为数值，否则变成NaN。</h5><blockquote><h6 id=nan是非数值类型属于数值类型>NaN：是非数值，类型属于数值类型</h6></blockquote></li></ul></li><li><h4 id=parseint>parseInt();</h4><ul><li><h5 id=转换数值时如果字符串是纯数字构成或者第一个字符是数字则转换时从头开始转换到字母之前>转换数值时，如果字符串是纯数字构成，或者第一个字符是数字，则转换时从头开始转换到字母之前。</h5></li><li><h5 id=取整小数点后省略><strong>取整</strong>，<em>小数点后省略。</em></h5></li><li><h5 id=第二个参数可选进制根据字符串的进制转换成十进制数值当有进制参数时特点1遇到字母不同>第二个参数（可选）：进制，根据字符串的进制转换成十进制数值，当有进制参数时，特点1遇到字母不同。</h5></li></ul></li><li><h4 id=parsefloat>parseFloat();</h4><ul><li><h5 id=保留小数点>保留小数点</h5></li></ul><blockquote><ul><li><h6 id=number强制转换会将布尔值转换为数值true1false0>Number强制转换会将布尔值转换为数值，true==>1,false==>0</h6></li><li><h6 id=parseint-的第一个参数要求是字符串但是true和false都不是字符串所以parseint-首先会自动隐式转换为字符串>parseInt 的第一个参数要求是字符串，但是true和false都不是字符串，所以parseInt 首先会自动隐式转换为字符串。</h6></li></ul></blockquote></li></ol><h3 id=布尔值转换为字符串>布尔值转换为字符串：</h3><ol><li><h4 id=都是直接变成字符串-string>都是直接变成字符串 String();</h4></li></ol><h3 id=字符数值变成布尔值>字符，数值变成布尔值：</h3><ol><li><h4 id=强制转换布尔值>强制转换布尔值</h4><ul><li><h5 id=以下几种强转布尔值时会变为false其他的都是true>以下几种强转布尔值时会变为false,其他的都是true。</h5><blockquote><h6 id=0falsenanundefinednull>0 ；"" ；false ；NaN ；undefined ；null。</h6></blockquote></li><li><h5 id=boolean0booleanbooleannan>Boolean(0);Boolean("");Boolean(NaN);</h5></li></ul></li></ol><h3 id=将undefined转换为数值-nan>将undefined转换为数值==> NaN;</h3><ul><li><h4 id=consolelognumberundefined>console.log(Number(undefined);</h4></li></ul><h3 id=将null转换为数值-0>将null转换为数值==> 0;</h3><ul><li><h4 id=consolelognumbernull>console.log(Number(null);</h4></li></ul><h3 id=将对象转换为数值-nan>将对象转换为数值==> NaN;</h3><ul><li><h4 id=consolelognumbera1>console.log(Number({a:1}));</h4></li></ul><h3 id=将对象转换为字符串-object-object>将对象转换为字符串==> [object Object]</h3><ul><li><h4 id=consolelogstringa1>console.log(String({a:1}));</h4></li><li><blockquote><h5 id=所有的任何对象转换为字符串都这样>所有的任何对象转换为字符串都这样</h5></blockquote></li></ul><h3 id=stringnumberbooleanundefinednull-都是存在内存的栈中>string，number，boolean，undefined，null 都是存在内存的栈中。</h3><ul><li><h4 id=栈中数据读取速度快但是可以存储的数据较小>栈中数据读取速度快，但是可以存储的数据较小。</h4></li></ul><h3 id=object是存放在内存的堆中>object是存放在内存的堆中。</h3><ul><li><h4 id=堆中可以存储大量的数据但是读取速度慢>堆中可以存储大量的数据，但是读取速度慢。</h4></li></ul><h3 id=所有的基础类型都是基于object构建而成>所有的基础类型都是基于Object构建而成。</h3><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>a</span><span class=o>=</span><span class=mi>5</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>a</span><span class=p>.</span><span class=nx>toString</span><span class=p>();</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>a</span><span class=o>=</span><span class=mi>5</span><span class=p>;</span><span class=c1>//数据 number	存储在栈中	typeof==&gt;number
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>var</span> <span class=nx>b</span><span class=o>=</span><span class=k>new</span> <span class=nb>Number</span><span class=p>(</span><span class=mi>5</span><span class=p>);</span><span class=c1>//数值对象 Number	存储在堆中	typeof==&gt;object
+</span></span></span><span class=line><span class=cl><span class=c1>//number可以理解为Number类型在栈中的映射。
+</span></span></span></code></pre></td></tr></table></div></div></li></ul><h3 id=运算符>运算符：</h3><ol><li><h4 id=算数运算符>算数运算符：</h4><ol><li><h5 id=---><code>+ - * /</code>；</h5></li><li><h5 id=取模取余><code>%</code>取模==取余；</h5></li><li><h5 id=字符相加首尾相连>字符相加：首尾相连</h5><ul><li><h6 id=隐式转换-自动默认使用目标类型的构造函数强制转换-string>隐式转换 自动默认使用目标类型的构造函数强制转换 <code>String()</code></h6></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;cde&#34;</span><span class=o>+</span><span class=kc>true</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;cde&#34;</span><span class=o>+</span><span class=kc>null</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>a</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;cde&#34;</span><span class=o>+</span><span class=nx>a</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;cde&#34;</span><span class=o>+</span><span class=p>{</span><span class=nx>a</span><span class=o>:</span><span class=mi>1</span><span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>({</span><span class=nx>a</span><span class=o>:</span><span class=mi>1</span><span class=p>}</span><span class=o>+</span><span class=s2>&#34;&#34;</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul></li><li><h6 id=数值布尔值会隐式转为数值相加>数值+布尔值会隐式转为数值相加</h6></li><li><h6 id=数值undefined会隐式转为数值相加-nan>数值+undefined会隐式转为数值相加 NaN。</h6></li><li><h6 id=null隐式转换为0>null隐式转换为0。</h6><blockquote><ul><li>数值与除了字符串外的非数值相加都会隐式转换为数值类型相加</li><li>布尔值、undefined。null相加都会转换为数值</li></ul></blockquote></li><li><h5 id=除了以外--都会依照数值运算先将所有其他类型转换为数值后运算>除了+以外，-，*，/，% 都会依照数值运算先将所有其他类型转换为数值后运算。</h5></li></ol></li><li><h4 id=赋值运算符和一元运算符>赋值运算符和一元运算符：</h4><ol><li><h5 id=-><code>+=，-=，*=,/=</code></h5><blockquote><ol><li><h5 id=var-ba2><code>var b=a=2;</code></h5><ul><li><h6 id=先将a2的结果赋值给b>先将a=2的结果赋值给b</h6></li><li><h6 id=再将2赋值给a>再将2赋值给a</h6></li></ul></li><li><h5 id=var-a5aaa2-a7><code>var a=5;a=a=a+2;</code>===> a=7;</h5></li></ol><ul><li><h6 id=同时进行后面的aa2不会用前边的a7>同时进行，后面的<code>a=a+2</code>不会用前边的<code>a=7</code>。</h6></li></ul><ol start=3><li><h5 id=a2--步长累加><code>a+=2;</code> 步长，累加</h5></li><li><h5 id=var-a10a-0隐式转换为数值><code>var a="10";a-=0;</code>隐式转换为数值</h5><ul><li><h6 id=consoleloga10>console.log(a);==>10</h6></li></ul></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>var a=1,b=2,c=3;
+</span></span><span class=line><span class=cl>a+=1,b+=2,c+=3;
+</span></span></code></pre></td></tr></table></div></div><blockquote><h6 id=有赋值中间就可以逗号连接>有赋值，中间就可以逗号连接。</h6></blockquote></li></ol></blockquote></li><li><h5 id=heading><code>++</code></h5><ol><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>a</span><span class=o>=</span><span class=s2>&#34;3&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>a</span><span class=o>++</span><span class=p>;</span><span class=c1>//会隐式转换为数值在进行运算
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>a</span><span class=o>+=</span><span class=mi>1</span><span class=p>;</span><span class=c1>//参照算数运算符
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>a</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>a</span><span class=o>=</span><span class=mi>2</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=mi>1</span><span class=nx>og</span><span class=p>(</span><span class=o>++</span><span class=nx>a</span><span class=o>+</span><span class=nx>a</span><span class=o>+++</span><span class=nx>a</span><span class=o>+</span><span class=nx>a</span><span class=o>+++</span><span class=nx>a</span><span class=o>+</span><span class=nx>a</span><span class=p>,</span><span class=nx>a</span><span class=p>);</span><span class=o>==&gt;</span><span class=p>(</span><span class=mi>24</span><span class=p>,</span><span class=mi>5</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>b</span><span class=o>=</span><span class=nx>a</span><span class=o>++</span><span class=p>;</span><span class=c1>//b:1 a:2
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>var</span> <span class=nx>b</span><span class=o>=++</span><span class=nx>a</span><span class=p>;</span><span class=c1>//b:2 a:2
+</span></span></span></code></pre></td></tr></table></div></div></li></ol></li></ol></li><li><h5 id=关系运算符和逻辑运算符>关系运算符和逻辑运算符：</h5><ol><li><h6 id=----返回布尔值><code>&lt; &lt;= > >=</code> 返回布尔值</h6><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>a</span><span class=o>=</span><span class=mi>4</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>a</span><span class=o>=</span><span class=nx>a</span><span class=o>-</span><span class=nx>a</span><span class=o>&gt;</span><span class=mi>3</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>a</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul></li><li><h6 id=---返回布尔值><code>== === != !==</code>返回布尔值</h6><ul><li><p><code>== !=</code>会自动隐式转换为两端相同后比较</p></li><li><p><code>=== !==</code>不转换类型，除了比较值以外还会比较类型</p></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=mi>1</span><span class=o>==</span><span class=s2>&#34;1&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=mi>1</span><span class=o>==</span><span class=kc>true</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=mi>1</span><span class=o>===</span><span class=kc>true</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>相等类型</span><span class=err>：</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=mi>0</span><span class=o>==</span><span class=kc>false</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=kc>false</span><span class=o>==</span><span class=s2>&#34;&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=mi>0</span><span class=o>==</span><span class=s2>&#34;&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>相等</span><span class=err>：</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=mi>0</span><span class=o>==</span><span class=kc>null</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=kc>undefined</span><span class=o>==</span><span class=kc>null</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><p><code>0 false ""</code>==>相等</p></li><li><p><code>null undefined</code>==>相等 表示空或者未赋值</p></li><li><p><code>console.log(NaN==NaN);</code>==>不等</p></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>a</span><span class=o>=</span><span class=s2>&#34;4a&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=c1>// console. log(Number(a)==NaN)//不能用==NaN判断非数值
+</span></span></span><span class=line><span class=cl><span class=c1>// console. log(isNaN(Number(a)));
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>console</span><span class=p>.</span><span class=mi>1</span><span class=nx>og</span><span class=p>(</span><span class=nb>Number</span><span class=p>.</span><span class=nb>isNaN</span><span class=p>(</span><span class=nb>Number</span><span class=p>(</span><span class=nx>a</span><span class=p>)));</span>
+</span></span></code></pre></td></tr></table></div></div><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>//都是判断数值类型，非数值类型，不隐式转换返回false
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nb>Number</span><span class=p>.</span><span class=nb>isNaN</span><span class=p>(</span><span class=nx>a</span><span class=p>));</span>
+</span></span><span class=line><span class=cl><span class=c1>//会先隐式转换为数值，然后在判断是否是非数值
+</span></span></span><span class=line><span class=cl><span class=c1>// console.log(isNaN(a));
+</span></span></span></code></pre></td></tr></table></div></div></li></ul></li><li><p>取反，取布尔值的反</p><ul><li>如果是布尔值就会变成相反的结果true==>false,false==>true;</li><li>如果不是布尔值就会隐式转换为布尔值，然后再取反。</li></ul></li></ul></li><li><h6 id=--返回的值根据内容确定不一定是布尔值><code>&& ||</code> 返回的值根据内容确定，不一定是布尔值。</h6><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>a</span><span class=o>=</span><span class=mi>3</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>a</span><span class=o>&gt;</span><span class=mi>2</span> <span class=o>&amp;&amp;</span> <span class=nx>a</span><span class=o>&lt;</span><span class=mi>5</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>a</span><span class=o>&gt;</span><span class=mi>5</span> <span class=o>||</span> <span class=nx>a</span><span class=o>&lt;</span><span class=mi>4</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>a</span><span class=o>=</span><span class=nx>a</span><span class=o>-</span><span class=mi>3</span> <span class=o>||</span> <span class=mi>1</span><span class=err>；</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>a</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><h6 id=熔断>熔断</h6><ul><li><h6 id=true>true</h6><blockquote><p>true || true ==> 返回前面的值</p><p>true || false ==> 返回隐式转换布尔值为true的值</p><p>false || true ==> 返回隐式转换布尔值为true的值</p><p>false || false ==> 返回最后一个false的值</p></blockquote></li><li><p>false</p><blockquote><p>true && true ==> 返回第二个true的结果</p><p>true && false ==> 返回false的结果</p><p>false && true ==> 返回false的结果</p><p>false && false ==> 返回第一个false的结果</p></blockquote></li></ul></li><li><p>在if语句判断赋值时也会出现</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>o</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>o</span><span class=o>=</span><span class=mi>0</span> <span class=o>||</span> <span class=p>{</span><span class=nx>a</span><span class=o>:</span><span class=mi>1</span><span class=p>};</span><span class=nx>或者</span>
+</span></span><span class=line><span class=cl><span class=k>if</span><span class=p>(</span><span class=o>!</span><span class=nx>o</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//if判断变量o是否已经赋值，只有o等于 6 种值时（变量o未赋值），会进入if语句块，对o重新赋值
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>o</span><span class=o>=</span><span class=p>{</span><span class=nx>a</span><span class=o>:</span><span class=mi>1</span><span class=p>};</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul></li></ol></li><li><h5 id=位运算符>位运算符：</h5><ol><li><h5 id=位非加一取负><code>~</code>位非：加一取负；</h5><h6 id=双非还原取整任何内容转换为数值><code>~~</code>：双非，还原取整，任何内容转换为数值；</h6><ul><li><h6 id=非数值变为0>非数值变为0；</h6></li><li><h6 id=其他变为数值>其他变为数值；</h6></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>a</span><span class=o>=-</span><span class=mi>1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>位非变为0</span><span class=err>；</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>str</span><span class=o>=</span><span class=s2>&#34;abcd&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=c1>//str.indexof(&#34;f&#34;)==&gt;当找不到会返回 -1；
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=k>if</span><span class=p>(</span><span class=o>~</span><span class=nx>str</span><span class=p>.</span><span class=nx>indexof</span><span class=p>(</span><span class=s2>&#34;d&#34;</span><span class=p>)){</span>
+</span></span><span class=line><span class=cl>	<span class=c1>//表示能找到的话进入if语句
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=k>if</span><span class=p>(</span><span class=o>!~</span><span class=nx>str</span><span class=p>.</span><span class=nx>indexof</span><span class=p>(</span><span class=s2>&#34;d&#34;</span><span class=p>)){</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//表示找不到进入if语句
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul></li><li><h5 id=与运算><code>&</code>与运算</h5><ul><li><h6 id=任何数-2的结果20>任何数 <code>&2</code>的结果：2/0</h6></li><li><h6 id=任何数-3的结果3210>任何数 <code>&3</code>的结果：3/2/1/0\</h6></li></ul></li><li><h5 id=或运算><code>|</code>或运算</h5></li><li><h5 id=异或相同为0不同为1><code>^</code>异或：相同为0，不同为1；</h5><ul><li><h6 id=对称加密>对称加密；</h6></li><li><h6 id=非对称加密>非对称加密；</h6></li></ul></li><li><h5 id=左移----32个字节-4位-到头变成1>左移 <code>&lt;&lt;</code> 32个字节 4位 到头变成1</h5></li><li><h5 id=右移->右移 <code>>></code></h5></li></ol></li><li><h5 id=三目运算符条件运算符>三目运算符：/条件运算符</h5><ol><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>a</span><span class=o>=</span><span class=mi>5</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>b</span><span class=o>=</span><span class=nx>a</span><span class=o>&gt;</span><span class=mi>3</span> <span class=o>?</span> <span class=mi>1</span> <span class=o>:</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=c1>//如果a&gt;3，返回1 否则0；
+</span></span></span></code></pre></td></tr></table></div></div></li><li><h5 id=tips>Tips</h5><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>b</span><span class=o>=</span><span class=nx>a</span><span class=o>&gt;</span><span class=mi>1</span> <span class=o>?</span> <span class=mi>10</span> <span class=o>:</span> <span class=nx>a</span><span class=o>&lt;</span><span class=mi>0</span> <span class=o>?</span> <span class=mi>5</span> <span class=o>:</span> <span class=mi>0</span><span class=p>;</span><span class=c1>//b=?
+</span></span></span></code></pre></td></tr></table></div></div></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>a</span><span class=o>=</span><span class=mi>1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>a</span> <span class=o>-=</span><span class=mi>1</span> <span class=o>?</span> <span class=mi>0</span> <span class=o>:</span> <span class=mi>1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=c1>//a -=0 ? 0 : 1;
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>a</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul></li></ol></li></ol><h3 id=运算有关的条件判断>运算有关的条件判断：</h3><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=k>if</span><span class=p>(</span><span class=nx>a</span><span class=o>==</span><span class=kc>undefined</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//var a;
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=c1>//var a=undefined;
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=c1>//var a=null;当a等于这些值的时候，才被允许进入if语句；
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=k>if</span><span class=p>(</span><span class=nx>a</span><span class=o>==</span><span class=mi>0</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//var a=false;
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=c1>//var a=&#34;&#34;;
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=c1>//var a=&#34;     &#34;;
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=c1>//var a=0;
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;aaa&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>a</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=c1>// var a=undefined
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=k>if</span><span class=p>(</span><span class=nx>a</span><span class=o>===</span><span class=kc>undefined</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//只有a未定义的时候才符合条件;
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=k>if</span><span class=p>(</span><span class=nx>条件</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//if条件返回值为true/false；
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=c1>//当返回值为true时，进入条件语句块，返回的值不是布尔值时，会自动隐式转换为布尔值
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=k>if</span><span class=p>(</span><span class=nx>a</span><span class=o>==</span><span class=kc>true</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//只有当a的值为 ： 0	undefined	null	&#34;&#34;	false	NaN;
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=k>if</span><span class=p>(</span><span class=nx>a</span><span class=o>===</span><span class=kc>true</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//true;
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=k>if</span><span class=p>(</span><span class=nx>a</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//只有当a的值为 ： 0	undefined	null	&#34;&#34;	false	NaN;
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=k>if</span><span class=p>(</span><span class=nx>a</span><span class=o>===</span><span class=kc>false</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//只有当a的值为 ： false;
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=k>if</span><span class=p>(</span><span class=nx>a</span><span class=o>==</span><span class=kc>false</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//只有当a的值为 ： 0	&#34;&#34;	false;
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=k>if</span><span class=p>(</span><span class=o>!</span><span class=nx>a</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//只有当a的值为 ： 0	&#34;&#34;	false	undefined	null	NaN;
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul><h3 id=数组>数组：</h3><h4 id=consolelogfalse><code>console.log([]==[]);</code>==>false</h4><ul><li><h5 id=数组是对象类型也就是引用类型>数组是对象类型，也就是引用类型</h5></li></ul><h4 id=consolelogtrue><code>console.log([]==![]);</code>==>true</h4><ul><li><h5 id=因为-false>因为 <code>""==false</code></h5></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>//[1,2,3]==&gt;&#34;1,2,3&#34;;
+</span></span></span><span class=line><span class=cl><span class=c1>//[1]==&gt;&#34;1&#34;;
+</span></span></span><span class=line><span class=cl><span class=c1>//[]==&gt;&#34;&#34;
+</span></span></span></code></pre></td></tr></table></div></div></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>//console.log([1]==1);
+</span></span></span><span class=line><span class=cl><span class=c1>//console.log([]==0);
+</span></span></span><span class=line><span class=cl><span class=c1>//console.log([]==null);
+</span></span></span></code></pre></td></tr></table></div></div></li></ul><h3 id=进制>进制：</h3><ol><li><h4 id=进制之间的转换>进制之间的转换</h4></li><li><h4 id=ascii--gb2312-gb5>ASCII GB2312 GB5</h4></li><li><h4 id=unicode-万国码-utf-8使用八进制的万国码>Unicode 万国码 （UTF-8使用八进制的万国码）</h4></li></ol><h3 id=图像像素点>图像：像素点</h3><ul><li><h4 id=每英寸96个像素点-字>每英寸96个像素点 ==>字</h4></li><li><h4 id=每英寸72个像素点-图>每英寸72个像素点 ==>图</h4></li><li><h4 id=一个颜色占4个字节-一英寸图片724288b>一个颜色占4个字节 一英寸图片（72*4=288B）</h4></li></ul></div><div class=post-copyright><p class=copyright-item><span class=item-title>Author</span>
+<span class=item-content>Ankang</span></p><p class=copyright-item><span class=item-title>LastMod</span>
+<span class=item-content>2021-03-16</span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/JavaScript/>JavaScript</a>
+<a href=/tags/Study/>Study</a></div><nav class=post-nav><a class=prev href=/post/21-03-19/><i class="iconfont icon-left"></i>
+<span class="prev-text nav-default">JavaScript条件语句与循环语句</span>
+<span class="prev-text nav-mobile">Prev</span></a>
+<a class=next href=/post/21-03-17/><span class="next-text nav-default">原生JavaScript基础</span>
+<span class="next-text nav-mobile">Next</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:ankangz98@gmail.com class="iconfont icon-email" title=email></a>
+<a href=https://github.com/an-kang class="iconfont icon-github" title=github></a>
+<a href=http://localhost:1313/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><div class=busuanzi-footer><span id=busuanzi_container_site_pv>PV: <span id=busuanzi_value_site_pv><img src=/img/spinner.svg alt=spinner.svg></span></span>
+<span class=division>|</span>
+<span id=busuanzi_container_site_uv>UV: <span id=busuanzi_value_site_uv><img src=/img/spinner.svg alt=spinner.svg></span></span></div><span class=copyright-year>&copy;
+2017 -
+2022<span class=heart><i class="iconfont icon-heart"></i></span><span>Ankang</span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
+<script type=text/javascript src=/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js></script></body></html>

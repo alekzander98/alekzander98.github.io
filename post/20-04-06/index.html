@@ -1,0 +1,93 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>JavaScript高阶函数 - Ankang</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="Ankang"><meta name=description content="1.filter函数 2.map函数 3.reduce函数 了解JavaScript中高阶函数的使用开发可以更加简洁
+"><meta name=keywords content="Hugo,theme,even"><meta name=generator content="Hugo 0.100.1 with theme even"><link rel=canonical href=http://localhost:1313/post/20-04-06/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
+<link href=/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="JavaScript高阶函数"><meta property="og:description" content="1.filter函数
+2.map函数
+3.reduce函数
+了解JavaScript中高阶函数的使用开发可以更加简洁"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost:1313/post/20-04-06/"><meta property="article:section" content="post"><meta property="article:published_time" content="2020-04-06T13:40:48+00:00"><meta property="article:modified_time" content="2020-04-06T13:40:48+00:00"><meta itemprop=name content="JavaScript高阶函数"><meta itemprop=description content="1.filter函数
+2.map函数
+3.reduce函数
+了解JavaScript中高阶函数的使用开发可以更加简洁"><meta itemprop=datePublished content="2020-04-06T13:40:48+00:00"><meta itemprop=dateModified content="2020-04-06T13:40:48+00:00"><meta itemprop=wordCount content="503"><meta itemprop=keywords content="JavaScript,Vue,"><meta name=twitter:card content="summary"><meta name=twitter:title content="JavaScript高阶函数"><meta name=twitter:description content="1.filter函数
+2.map函数
+3.reduce函数
+了解JavaScript中高阶函数的使用开发可以更加简洁"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>Ankang</a></div><div class=mobile-navbar-icon><span></span>
+<span></span>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/about/><li class=mobile-menu-item>About</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>Ankang</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/about/>About</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>JavaScript高阶函数</h1><div class=post-meta><span class=post-time>2020-04-06</span>
+<span class=more-meta>503 words</span>
+<span class=more-meta>2 mins</span></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>Contents</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><ul><li><a href=#案例>案例</a><ul><li><a href=#filter函数>filter函数</a></li><li><a href=#map函数>map函数</a></li><li><a href=#reduce函数的使用>reduce函数的使用</a></li><li><a href=#总结>总结</a></li></ul></li></ul></li></ul></nav></div></div><div class=post-content><p>1.filter函数
+2.map函数
+3.reduce函数
+了解JavaScript中高阶函数的使用开发可以更加简洁</p><h2 id=案例>案例</h2><p>首先定义一个数组：
+const nums = [50, 20, 101, 100, 10, 200, 33, 22]
+完成三个需求：
+1.取出所有小于100的数字
+2.将取出的数进行 乘 2 转化
+3.将转化后的所有数字相加,得到最终的结果</p><h3 id=filter函数>filter函数</h3><p>解决需求1：
+向filter函数传入一个带参数的方法，函数内部会创建一个数组，根据返回的布尔类型的值，把方法中满足条件/返回值为true的加入数组</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nb>let</span> <span class=nv>newNums</span> <span class=o>=</span> nums.filter<span class=o>(</span><span class=k>function</span> <span class=o>(</span>n<span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> n &lt; <span class=m>100</span>
+</span></span><span class=line><span class=cl><span class=o>})</span>
+</span></span><span class=line><span class=cl>console.log<span class=o>(</span>newNums<span class=o>)</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div><p>执行结果：
+[ 50, 20, 10, 33, 22 ]</p><h3 id=map函数>map函数</h3><p>解决需求2：
+map函数对数组中所有内容进行转化</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nb>let</span> <span class=nv>new2Nums</span> <span class=o>=</span> newNums.map<span class=o>(</span><span class=k>function</span> <span class=o>(</span>n<span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> n * <span class=m>2</span>
+</span></span><span class=line><span class=cl><span class=o>})</span>
+</span></span><span class=line><span class=cl>console.log<span class=o>(</span>new2Nums<span class=o>)</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div><p>执行结果：
+[ 100, 40, 20, 66, 44 ]</p><h3 id=reduce函数的使用>reduce函数的使用</h3><p>解决需求3：
+reduce函数的作用对数组中所有的内容进行汇总</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nb>let</span> <span class=nv>final</span> <span class=o>=</span> new2Nums.reduce<span class=o>(</span><span class=k>function</span> <span class=o>(</span>preValue, n<span class=o>)</span> <span class=o>{</span> //preValue参数表示上一个数
+</span></span><span class=line><span class=cl>  <span class=k>return</span> preValue + n
+</span></span><span class=line><span class=cl><span class=o>}</span>, 0<span class=o>)</span> //这里的0表示reduce函数的初始值/preValue的初始值
+</span></span><span class=line><span class=cl>console.log<span class=o>(</span>final<span class=o>)</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div><p>执行结果：
+270</p><h3 id=总结>总结</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nb>let</span> <span class=nv>final</span> <span class=o>=</span> nums.filter<span class=o>(</span><span class=k>function</span> <span class=o>(</span>n<span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> n &lt; <span class=m>100</span>
+</span></span><span class=line><span class=cl><span class=o>})</span>.map<span class=o>(</span><span class=k>function</span> <span class=o>(</span>n<span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> n * <span class=m>2</span>
+</span></span><span class=line><span class=cl><span class=o>})</span>.reduce<span class=o>(</span><span class=k>function</span> <span class=o>(</span>prevValue, n<span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> prevValue + n
+</span></span><span class=line><span class=cl><span class=o>}</span>, 0<span class=o>)</span>
+</span></span><span class=line><span class=cl>console.log<span class=o>(</span>final<span class=o>)</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div><p>结果同样为：
+270</p><p>或者使用箭头函数</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nb>let</span> <span class=nv>final</span> <span class=o>=</span> nums.filter<span class=o>(</span><span class=nv>n</span> <span class=o>=</span>&gt; n &lt; 100<span class=o>)</span>.map<span class=o>(</span><span class=nv>n</span> <span class=o>=</span>&gt; n * 2<span class=o>)</span>.reduce<span class=o>((</span>pre, n<span class=o>)</span> <span class=o>=</span>&gt; pre + n<span class=o>)</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>console.log<span class=o>(</span>final<span class=o>)</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div><p>这样可以一行得到结果，结果同样正确。</p></div><div class=post-copyright><p class=copyright-item><span class=item-title>Author</span>
+<span class=item-content>Ankang</span></p><p class=copyright-item><span class=item-title>LastMod</span>
+<span class=item-content>2020-04-06</span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/JavaScript/>JavaScript</a>
+<a href=/tags/Vue/>Vue</a></div><nav class=post-nav><a class=prev href=/post/21-03-17/><i class="iconfont icon-left"></i>
+<span class="prev-text nav-default">原生JavaScript基础</span>
+<span class="prev-text nav-mobile">Prev</span></a>
+<a class=next href=/post/20-03-06/><span class="next-text nav-default">带符号数的表示</span>
+<span class="next-text nav-mobile">Next</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:ankangz98@gmail.com class="iconfont icon-email" title=email></a>
+<a href=https://github.com/an-kang class="iconfont icon-github" title=github></a>
+<a href=http://localhost:1313/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><div class=busuanzi-footer><span id=busuanzi_container_site_pv>PV: <span id=busuanzi_value_site_pv><img src=/img/spinner.svg alt=spinner.svg></span></span>
+<span class=division>|</span>
+<span id=busuanzi_container_site_uv>UV: <span id=busuanzi_value_site_uv><img src=/img/spinner.svg alt=spinner.svg></span></span></div><span class=copyright-year>&copy;
+2017 -
+2022<span class=heart><i class="iconfont icon-heart"></i></span><span>Ankang</span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
+<script type=text/javascript src=/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js></script></body></html>

@@ -1,0 +1,162 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>节流/防抖与对象 - Ankang</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="Ankang"><meta name=description content="防抖与节流 函数防抖和函数节流都是防止某一时间频繁触发，但是这两者之间的原理却不一样。
+函数防抖是某一段时间内只执行一次，而函数节流是间隔时间执行。
+防抖 在高频操作下，只识别一次触发（事件的开始时刻或者结束时刻），实现：一般设置一个阈值，在阈值内无论操作多少次，程序只执行一次。
+节流 高频操作下，按照规定好的时间为间隔触发一次，等待变化一会在执行程序，避免资源浪费。规定在一个单位时间内，只能触发一次函数。如果这个单位时间内触发多次函数，只有一次生效。
+"><meta name=keywords content="Hugo,theme,even"><meta name=generator content="Hugo 0.100.1 with theme even"><link rel=canonical href=http://localhost:1313/post/%E8%8A%82%E6%B5%81-%E9%98%B2%E6%8A%96%E4%B8%8E%E5%AF%B9%E8%B1%A1/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
+<link href=/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="节流/防抖与对象"><meta property="og:description" content="防抖与节流
+
+
+函数防抖和函数节流都是防止某一时间频繁触发，但是这两者之间的原理却不一样。
+
+
+函数防抖是某一段时间内只执行一次，而函数节流是间隔时间执行。
+
+
+防抖
+在高频操作下，只识别一次触发（事件的开始时刻或者结束时刻），实现：一般设置一个阈值，在阈值内无论操作多少次，程序只执行一次。
+节流
+高频操作下，按照规定好的时间为间隔触发一次，等待变化一会在执行程序，避免资源浪费。规定在一个单位时间内，只能触发一次函数。如果这个单位时间内触发多次函数，只有一次生效。"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost:1313/post/%E8%8A%82%E6%B5%81-%E9%98%B2%E6%8A%96%E4%B8%8E%E5%AF%B9%E8%B1%A1/"><meta property="article:section" content="post"><meta property="article:published_time" content="2021-04-22T22:29:28+00:00"><meta property="article:modified_time" content="2021-04-22T22:29:28+00:00"><meta itemprop=name content="节流/防抖与对象"><meta itemprop=description content="防抖与节流
+
+
+函数防抖和函数节流都是防止某一时间频繁触发，但是这两者之间的原理却不一样。
+
+
+函数防抖是某一段时间内只执行一次，而函数节流是间隔时间执行。
+
+
+防抖
+在高频操作下，只识别一次触发（事件的开始时刻或者结束时刻），实现：一般设置一个阈值，在阈值内无论操作多少次，程序只执行一次。
+节流
+高频操作下，按照规定好的时间为间隔触发一次，等待变化一会在执行程序，避免资源浪费。规定在一个单位时间内，只能触发一次函数。如果这个单位时间内触发多次函数，只有一次生效。"><meta itemprop=datePublished content="2021-04-22T22:29:28+00:00"><meta itemprop=dateModified content="2021-04-22T22:29:28+00:00"><meta itemprop=wordCount content="1405"><meta itemprop=keywords content="JavaScript,ES6,"><meta name=twitter:card content="summary"><meta name=twitter:title content="节流/防抖与对象"><meta name=twitter:description content="防抖与节流
+
+
+函数防抖和函数节流都是防止某一时间频繁触发，但是这两者之间的原理却不一样。
+
+
+函数防抖是某一段时间内只执行一次，而函数节流是间隔时间执行。
+
+
+防抖
+在高频操作下，只识别一次触发（事件的开始时刻或者结束时刻），实现：一般设置一个阈值，在阈值内无论操作多少次，程序只执行一次。
+节流
+高频操作下，按照规定好的时间为间隔触发一次，等待变化一会在执行程序，避免资源浪费。规定在一个单位时间内，只能触发一次函数。如果这个单位时间内触发多次函数，只有一次生效。"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>Ankang</a></div><div class=mobile-navbar-icon><span></span>
+<span></span>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/about/><li class=mobile-menu-item>About</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>Ankang</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/about/>About</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>节流/防抖与对象</h1><div class=post-meta><span class=post-time>2021-04-22</span>
+<span class=more-meta>1405 words</span>
+<span class=more-meta>3 mins</span></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>Contents</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><ul><li><a href=#防抖与节流>防抖与节流</a><ul><li></li></ul></li><li><a href=#对象>对象</a><ul><li></li></ul></li></ul></li></ul></nav></div></div><div class=post-content><h2 id=防抖与节流>防抖与节流</h2><ul><li><p>函数防抖和函数节流都是防止某一时间频繁触发，但是这两者之间的原理却不一样。</p></li><li><p>函数防抖是某一段时间内只执行一次，而函数节流是间隔时间执行。</p></li></ul><h5 id=防抖>防抖</h5><p>在高频操作下，只识别一次触发（事件的开始时刻或者结束时刻），实现：一般设置一个阈值，在阈值内无论操作多少次，程序只执行一次。</p><h5 id=节流>节流</h5><p>高频操作下，按照规定好的时间为间隔触发一次，等待变化一会在执行程序，避免资源浪费。规定在一个单位时间内，只能触发一次函数。如果这个单位时间内触发多次函数，只有一次生效。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>//模拟一段ajax请求
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>function</span> <span class=nx>ajax</span><span class=p>(</span><span class=nx>content</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s1>&#39;ajax request &#39;</span> <span class=o>+</span> <span class=nx>content</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=c1>//防抖
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>function</span> <span class=nx>debounce</span><span class=p>(</span><span class=nx>fun</span><span class=p>,</span> <span class=nx>delay</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>args</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=kd>let</span> <span class=nx>that</span> <span class=o>=</span> <span class=k>this</span>
+</span></span><span class=line><span class=cl>        <span class=kd>let</span> <span class=nx>_args</span> <span class=o>=</span> <span class=nx>args</span>
+</span></span><span class=line><span class=cl>        <span class=nx>clearTimeout</span><span class=p>(</span><span class=nx>fun</span><span class=p>.</span><span class=nx>id</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=nx>fun</span><span class=p>.</span><span class=nx>id</span> <span class=o>=</span> <span class=nx>setTimeout</span><span class=p>(</span><span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=nx>fun</span><span class=p>.</span><span class=nx>call</span><span class=p>(</span><span class=nx>that</span><span class=p>,</span> <span class=nx>_args</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=p>},</span> <span class=nx>delay</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nx>inputb</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>getElementById</span><span class=p>(</span><span class=s1>&#39;debounce&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nx>debounceAjax</span> <span class=o>=</span> <span class=nx>debounce</span><span class=p>(</span><span class=nx>ajax</span><span class=p>,</span> <span class=mi>500</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>inputb</span><span class=p>.</span><span class=nx>addEventListener</span><span class=p>(</span><span class=s1>&#39;keyup&#39;</span><span class=p>,</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>e</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>debounceAjax</span><span class=p>(</span><span class=nx>e</span><span class=p>.</span><span class=nx>target</span><span class=p>.</span><span class=nx>value</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>})</span>
+</span></span></code></pre></td></tr></table></div></div><h5 id=节流-1>节流</h5><p>高频操作下，按照规定好的时间为间隔触发一次，等待变化一会在执行程序，避免资源浪费。规定在一个单位时间内，只能触发一次函数。如果这个单位时间内触发多次函数，只有一次生效。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>function</span> <span class=nx>throttle</span><span class=p>(</span><span class=nx>fun</span><span class=p>,</span> <span class=nx>delay</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>let</span> <span class=nx>last</span><span class=p>,</span> <span class=nx>deferTimer</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>args</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=kd>let</span> <span class=nx>that</span> <span class=o>=</span> <span class=k>this</span>
+</span></span><span class=line><span class=cl>        <span class=kd>let</span> <span class=nx>_args</span> <span class=o>=</span> <span class=nx>arguments</span>
+</span></span><span class=line><span class=cl>        <span class=kd>let</span> <span class=nx>now</span> <span class=o>=</span> <span class=o>+</span><span class=k>new</span> <span class=nb>Date</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=nx>last</span> <span class=o>&amp;&amp;</span> <span class=nx>now</span> <span class=o>&lt;</span> <span class=nx>last</span> <span class=o>+</span> <span class=nx>delay</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=nx>clearTimeout</span><span class=p>(</span><span class=nx>deferTimer</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=nx>deferTimer</span> <span class=o>=</span> <span class=nx>setTimeout</span><span class=p>(</span><span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=nx>last</span> <span class=o>=</span> <span class=nx>now</span>
+</span></span><span class=line><span class=cl>                <span class=nx>fun</span><span class=p>.</span><span class=nx>apply</span><span class=p>(</span><span class=nx>that</span><span class=p>,</span> <span class=nx>_args</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=p>},</span> <span class=nx>delay</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span><span class=k>else</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=nx>last</span> <span class=o>=</span> <span class=nx>now</span>
+</span></span><span class=line><span class=cl>            <span class=nx>fun</span><span class=p>.</span><span class=nx>apply</span><span class=p>(</span><span class=nx>that</span><span class=p>,</span><span class=nx>_args</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nx>throttleAjax</span> <span class=o>=</span> <span class=nx>throttle</span><span class=p>(</span><span class=nx>ajax</span><span class=p>,</span> <span class=mi>1000</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nx>inputc</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>getElementById</span><span class=p>(</span><span class=s1>&#39;throttle&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=nx>inputc</span><span class=p>.</span><span class=nx>addEventListener</span><span class=p>(</span><span class=s1>&#39;keyup&#39;</span><span class=p>,</span> <span class=kd>function</span><span class=p>(</span><span class=nx>e</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>throttleAjax</span><span class=p>(</span><span class=nx>e</span><span class=p>.</span><span class=nx>target</span><span class=p>.</span><span class=nx>value</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>})</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=对象>对象</h2><h5 id=对象计算比较>对象计算比较：</h5><p>对象计算时首先查找有没有<code>Symbol.toPrimiative</code>属性，如果有，根据此属性方法的返回值来计算；<code>Symbol.toPrimiative</code>&ndash;<code>valueOf</code>&ndash;<code>toString</code>顺序选择；</p><p>如果是字符串连接操作，<code>toString</code>的优先级比<code>valueOf</code>高；条件比较则相反。</p><h5 id=解构赋值>解构赋值：</h5><p>原则：看右侧数据，如果是对象，需要保证赋值对象的key相同，如果是数组，名称随意，左右类型相同。如果多个引用类型的名称，采用起别名的方式。</p><h5 id=属性管理>属性管理：</h5><p>属性检查：<code>hasOwnProperty</code> 用来检查指定名称是否为当前对象的<em>私有属性</em>；<code>in</code> 关键字可以检查共有属性，<em>先私有后公有</em>,在私有属性中没有找到会通过__proto__原型链向下去查找，如果查到最后还没有返回false ，找到返回true</p><p>实现检查当前属性是否为共有：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=o>!</span><span class=nx>obj</span><span class=p>.</span><span class=nx>hasOwnProperty</span><span class=p>(</span><span class=s1>&#39;name&#39;</span><span class=p>)</span> <span class=o>&amp;&amp;</span> <span class=p>(</span><span class=s1>&#39;name&#39;</span> <span class=k>in</span> <span class=nx>obj</span><span class=p>));</span>
+</span></span></code></pre></td></tr></table></div></div><p>公有属性(原型或原型链上的)和私有属性(构造方法中)</p><h5 id=获取属性名>获取属性名</h5><p><code>Object.keys()</code>和<code>Object.getOwnPropertyNames()</code>：获取对象中所有非Symbol类型的私有属性方法，以数组返回；<code>Object.getOwnPropertySymbols()</code>：只获取Symbol的私有属性方法，以数组返回；<code>Object.definePropertie({},'aa',{enumerable:false})</code>：设置属性不可枚举，循环不可以读出，不可以直接被调用，起到一个保护作用。使用for&mldr;in&mldr;可以迭代原型链中所有可枚举的属性。</p><h5 id=禁止向对象添加属性>禁止向对象添加属性</h5><p><code>Object.preventExtensions(obj)</code>：禁止向对象添加属性，对原有属性可以修改。严格模式下，设置禁止添加属性，但程序中存在添加代码，会报错，后续代码不执行。</p><h5 id=冻结对象>冻结对象</h5><p><code>Object.freeze(obj)</code>：冻结后的对象不可修改，&mdash;将对象定义为一个常量。严格模式下，对已经冻结的对象修改和添加属性会报错，后续代码不执行；非严格模式下，没有效果不报错。可以通过<code>Object.isFrozen(obj)</code>检查当前对象是否为冻结对象。</p><h5 id=获取器与修改器>获取器与修改器</h5><h5 id=对象属性私有化>对象属性私有化</h5><h5 id=浅拷贝与深拷贝>浅拷贝与深拷贝</h5></div><div class=post-copyright><p class=copyright-item><span class=item-title>Author</span>
+<span class=item-content>Ankang</span></p><p class=copyright-item><span class=item-title>LastMod</span>
+<span class=item-content>2021-04-22</span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/JavaScript/>JavaScript</a>
+<a href=/tags/ES6/>ES6</a></div><nav class=post-nav><a class=prev href=/post/%E7%B1%BB-%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/><i class="iconfont icon-left"></i>
+<span class="prev-text nav-default">类/原型与原型链</span>
+<span class="prev-text nav-mobile">Prev</span></a>
+<a class=next href=/post/%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85/><span class="next-text nav-default">作用域与闭包</span>
+<span class="next-text nav-mobile">Next</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:ankangz98@gmail.com class="iconfont icon-email" title=email></a>
+<a href=https://github.com/an-kang class="iconfont icon-github" title=github></a>
+<a href=http://localhost:1313/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><div class=busuanzi-footer><span id=busuanzi_container_site_pv>PV: <span id=busuanzi_value_site_pv><img src=/img/spinner.svg alt=spinner.svg></span></span>
+<span class=division>|</span>
+<span id=busuanzi_container_site_uv>UV: <span id=busuanzi_value_site_uv><img src=/img/spinner.svg alt=spinner.svg></span></span></div><span class=copyright-year>&copy;
+2017 -
+2022<span class=heart><i class="iconfont icon-heart"></i></span><span>Ankang</span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
+<script type=text/javascript src=/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js></script></body></html>

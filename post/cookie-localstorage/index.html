@@ -1,0 +1,168 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>cookie/localstorage - Ankang</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="Ankang"><meta name=description content="cookie: 会话跟踪技术
+会默认在请求头里面携带
+前端cookie 一套协议域名端口对应一套cookie
+存储在当前浏览器独立创建的本地文件
+cookie里面存储的信息是纯文本形式的
+cookie里面存储信息最大4kb，最大条数为50
+时效性：默认 session
+cookie是必须同域名，同协议，同端口的页面才可以访问
+浏览器通过 协议+域名+端口作为key值，cookie作为value，实现映射结构的数据存储
+cookie是有安全限制; (很像作用域 / 以文件夹为单位的父子级包裹关系，决定了cookie的可访问性)
+cookie的所有特征都是用字符串去描述的
+"><meta name=keywords content="Hugo,theme,even"><meta name=generator content="Hugo 0.100.1 with theme even"><link rel=canonical href=http://localhost:1313/post/cookie-localstorage/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
+<link href=/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="cookie/localstorage"><meta property="og:description" content="cookie:
+会话跟踪技术
+
+
+会默认在请求头里面携带
+
+
+前端cookie
+
+
+一套协议域名端口对应一套cookie
+
+
+存储在当前浏览器独立创建的本地文件
+
+
+cookie里面存储的信息是纯文本形式的
+
+
+cookie里面存储信息最大4kb，最大条数为50
+
+
+时效性：默认 session
+
+
+cookie是必须同域名，同协议，同端口的页面才可以访问
+
+
+浏览器通过 协议+域名+端口作为key值，cookie作为value，实现映射结构的数据存储
+
+
+cookie是有安全限制; (很像作用域 / 以文件夹为单位的父子级包裹关系，决定了cookie的可访问性)
+
+
+cookie的所有特征都是用字符串去描述的
+
+"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost:1313/post/cookie-localstorage/"><meta property="article:section" content="post"><meta property="article:published_time" content="2021-04-16T10:04:23+00:00"><meta property="article:modified_time" content="2021-04-16T10:04:23+00:00"><meta itemprop=name content="cookie/localstorage"><meta itemprop=description content="cookie:
+会话跟踪技术
+
+
+会默认在请求头里面携带
+
+
+前端cookie
+
+
+一套协议域名端口对应一套cookie
+
+
+存储在当前浏览器独立创建的本地文件
+
+
+cookie里面存储的信息是纯文本形式的
+
+
+cookie里面存储信息最大4kb，最大条数为50
+
+
+时效性：默认 session
+
+
+cookie是必须同域名，同协议，同端口的页面才可以访问
+
+
+浏览器通过 协议+域名+端口作为key值，cookie作为value，实现映射结构的数据存储
+
+
+cookie是有安全限制; (很像作用域 / 以文件夹为单位的父子级包裹关系，决定了cookie的可访问性)
+
+
+cookie的所有特征都是用字符串去描述的
+
+"><meta itemprop=datePublished content="2021-04-16T10:04:23+00:00"><meta itemprop=dateModified content="2021-04-16T10:04:23+00:00"><meta itemprop=wordCount content="949"><meta itemprop=keywords content="Server,"><meta name=twitter:card content="summary"><meta name=twitter:title content="cookie/localstorage"><meta name=twitter:description content="cookie:
+会话跟踪技术
+
+
+会默认在请求头里面携带
+
+
+前端cookie
+
+
+一套协议域名端口对应一套cookie
+
+
+存储在当前浏览器独立创建的本地文件
+
+
+cookie里面存储的信息是纯文本形式的
+
+
+cookie里面存储信息最大4kb，最大条数为50
+
+
+时效性：默认 session
+
+
+cookie是必须同域名，同协议，同端口的页面才可以访问
+
+
+浏览器通过 协议+域名+端口作为key值，cookie作为value，实现映射结构的数据存储
+
+
+cookie是有安全限制; (很像作用域 / 以文件夹为单位的父子级包裹关系，决定了cookie的可访问性)
+
+
+cookie的所有特征都是用字符串去描述的
+
+"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>Ankang</a></div><div class=mobile-navbar-icon><span></span>
+<span></span>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/about/><li class=mobile-menu-item>About</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>Ankang</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/about/>About</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>cookie/localstorage</h1><div class=post-meta><span class=post-time>2021-04-16</span>
+<span class=more-meta>949 words</span>
+<span class=more-meta>2 mins</span></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>Contents</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><ul><li><a href=#cookie>cookie:</a><ul><li></li></ul></li><li><a href=#localstorage>localstorage：</a><ul><li></li></ul></li><li><a href=#jsonstringify>JSON.stringify()：</a></li><li><a href=#http协议>HTTP协议：</a></li></ul></li></ul></nav></div></div><div class=post-content><h2 id=cookie>cookie:</h2><p>会话跟踪技术</p><ul><li><p>会默认在请求头里面携带</p></li><li><h5 id=前端cookie>前端cookie</h5></li><li><p>一套协议域名端口对应一套cookie</p></li><li><p>存储在当前浏览器独立创建的本地文件</p></li><li><p>cookie里面存储的信息是纯文本形式的</p></li><li><p>cookie里面存储信息最大4kb，最大条数为50</p></li><li><p>时效性：默认 session</p></li><li><p>cookie是必须同域名，同协议，同端口的页面才可以访问</p></li><li><p>浏览器通过 协议+域名+端口作为key值，cookie作为value，实现映射结构的数据存储</p></li><li><p>cookie是有安全限制; (很像作用域 / 以文件夹为单位的父子级包裹关系，决定了cookie的可访问性)</p></li><li><p>cookie的所有特征都是用字符串去描述的</p></li></ul><ul><li><p>获取cookie：<code>document.cookie</code></p></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nb>document</span><span class=p>.</span><span class=nx>cookie</span> <span class=o>=</span> <span class=s2>&#34;username=123456&#34;</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><p>domain 一般不设置;</p><ul><li>早期用来做跨域</li></ul></li><li><p>cookie设置时一条cookie的所有信息都放在一个字符串上;</p></li><li><p>需要设置path</p><ul><li>不同path的cookie不是同一条cookie;</li></ul></li><li><p>设置expires : 过期时间;</p></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>d</span> <span class=o>=</span> <span class=k>new</span> <span class=nb>Date</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=nx>d</span><span class=p>.</span><span class=nx>setDate</span><span class=p>(</span> <span class=nx>d</span><span class=p>.</span><span class=nx>getDate</span><span class=p>()</span> <span class=o>+</span> <span class=mi>15</span> <span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=c1>// console.log(d);
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nb>document</span><span class=p>.</span><span class=nx>cookie</span> <span class=o>=</span> <span class=s2>&#34;username=456789;path=/GP23;expires=&#34;</span> <span class=o>+</span> <span class=nx>d</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><p>cookie获取：</p></li><li><p>取出的cookie都用 ;空格 去进行间隔;</p></li><li><p><code>console.log(document.cookie);</code></p></li><li><h5 id=后端cookie>后端cookie</h5></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>setCookie  设置cookie;
+</span></span><span class=line><span class=cl>$_COOKIE   获取cookie; 
+</span></span></code></pre></td></tr></table></div></div></li></ul><h2 id=localstorage>localstorage：</h2><p>在当前浏览器，持久存储数据的技术我们称之为本地存储技术</p><ul><li><h5 id=特定于页面的协议>特定于页面的协议</h5></li><li><h5 id=localstorage-中的键值对总是以字符串的形式存储><code>localStorage</code> 中的键值对总是以字符串的形式存储。</h5></li><li><p>键值对总是以字符串的形式存储意味着数值类型会自动转化为字符串类型</p></li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>localStorage</span><span class=p>.</span><span class=nx>setItem</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=nx>localStorage</span><span class=p>.</span><span class=nx>getItem</span><span class=p>();</span><span class=c1>//读取
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>localStorage</span><span class=p>.</span><span class=nx>key</span><span class=p>();</span><span class=c1>//返回数据中某个key值（下标）
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>localStorage</span><span class=p>.</span><span class=nx>removeItem</span><span class=p>();</span><span class=c1>//移除
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>localStorage</span><span class=p>.</span><span class=nx>clear</span><span class=p>();</span><span class=c1>//移除所有
+</span></span></span></code></pre></td></tr></table></div></div><h2 id=jsonstringify>JSON.stringify()：</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>JSON</span><span class=p>.</span><span class=nx>stringify</span><span class=p>(</span><span class=nx>value</span><span class=p>[,</span> <span class=nx>replacer</span> <span class=p>[,</span> <span class=nx>space</span><span class=p>]])</span>
+</span></span></code></pre></td></tr></table></div></div><p>将一个 JavaScript 对象或值转换为 JSON 字符串，如果指定了一个 replacer 函数，则可以选择性地替换值，或者指定的 replacer 是数组，则可选择性地仅包含数组指定的属性。</p><h2 id=http协议>HTTP协议：</h2><p>无论请求还是响应格式都是http规定的格式</p><p>请求报文：</p><ul><li>请求行：<ul><li>http协议版本：1.1</li><li>请求方式：GET POST PATCH PUT DELETE</li></ul></li><li>请求头：</li><li>请求空行</li><li>请求体（请求方式为POST）</li></ul><p>请求字段：</p><ul><li><p>GET：放在url之中</p></li><li><p>POST：放在请求体之中</p></li></ul><p>响应报文：</p><ul><li>响应行<ul><li>http协议版本 / 响应状态码</li><li>1* : 准备状态 用不着看不到的状态;</li><li>2 : 成功状态;</li><li>3 : 重定向状态;</li><li>4 : 请求错误 ;</li></ul></li><li>响应头</li><li>响应体</li></ul></div><div class=post-copyright><p class=copyright-item><span class=item-title>Author</span>
+<span class=item-content>Ankang</span></p><p class=copyright-item><span class=item-title>LastMod</span>
+<span class=item-content>2021-04-16</span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/Server/>Server</a></div><nav class=post-nav><a class=prev href=/post/Promise%E4%B8%AD%E7%9A%84then%E6%96%B9%E6%B3%95%E7%90%86%E8%A7%A3/><i class="iconfont icon-left"></i>
+<span class="prev-text nav-default">Promise中的then方法理解</span>
+<span class="prev-text nav-mobile">Prev</span></a>
+<a class=next href=/post/CORS%E8%B7%A8%E5%9F%9F-async-await-fetch/><span class="next-text nav-default">CORS跨域/async-await/fetch</span>
+<span class="next-text nav-mobile">Next</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:ankangz98@gmail.com class="iconfont icon-email" title=email></a>
+<a href=https://github.com/an-kang class="iconfont icon-github" title=github></a>
+<a href=http://localhost:1313/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><div class=busuanzi-footer><span id=busuanzi_container_site_pv>PV: <span id=busuanzi_value_site_pv><img src=/img/spinner.svg alt=spinner.svg></span></span>
+<span class=division>|</span>
+<span id=busuanzi_container_site_uv>UV: <span id=busuanzi_value_site_uv><img src=/img/spinner.svg alt=spinner.svg></span></span></div><span class=copyright-year>&copy;
+2017 -
+2022<span class=heart><i class="iconfont icon-heart"></i></span><span>Ankang</span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
+<script type=text/javascript src=/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js></script></body></html>

@@ -1,0 +1,188 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>Python之函数 - Ankang</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="Ankang"><meta name=description content="学习一门语言,必不可少的你要了解它对函数的使用.在编程中允许你主动为某个代码块赋予名字,使这一代码块独立,在这之后你可以在任何位置通过名字运行代码块,并可重复任何次数,这就是所谓的调用（Calling）函数（Functions）。 内容参考&amp;ndash;《A Byte of Python》
+"><meta name=keywords content="Hugo,theme,even"><meta name=generator content="Hugo 0.100.1 with theme even"><link rel=canonical href=http://localhost:1313/post/19-11-10/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
+<link href=/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="Python之函数"><meta property="og:description" content="学习一门语言,必不可少的你要了解它对函数的使用.在编程中允许你主动为某个代码块赋予名字,使这一代码块独立,在这之后你可以在任何位置通过名字运行代码块,并可重复任何次数,这就是所谓的调用（Calling）函数（Functions）。
+内容参考&ndash;《A Byte of Python》"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost:1313/post/19-11-10/"><meta property="article:section" content="post"><meta property="article:published_time" content="2019-11-10T10:29:37+00:00"><meta property="article:modified_time" content="2019-11-10T10:29:37+00:00"><meta itemprop=name content="Python之函数"><meta itemprop=description content="学习一门语言,必不可少的你要了解它对函数的使用.在编程中允许你主动为某个代码块赋予名字,使这一代码块独立,在这之后你可以在任何位置通过名字运行代码块,并可重复任何次数,这就是所谓的调用（Calling）函数（Functions）。
+内容参考&ndash;《A Byte of Python》"><meta itemprop=datePublished content="2019-11-10T10:29:37+00:00"><meta itemprop=dateModified content="2019-11-10T10:29:37+00:00"><meta itemprop=wordCount content="1629"><meta itemprop=keywords content="Python,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Python之函数"><meta name=twitter:description content="学习一门语言,必不可少的你要了解它对函数的使用.在编程中允许你主动为某个代码块赋予名字,使这一代码块独立,在这之后你可以在任何位置通过名字运行代码块,并可重复任何次数,这就是所谓的调用（Calling）函数（Functions）。
+内容参考&ndash;《A Byte of Python》"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>Ankang</a></div><div class=mobile-navbar-icon><span></span>
+<span></span>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/about/><li class=mobile-menu-item>About</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>Ankang</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/about/>About</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>Python之函数</h1><div class=post-meta><span class=post-time>2019-11-10</span>
+<span class=more-meta>1629 words</span>
+<span class=more-meta>4 mins</span></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>Contents</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><ul><li><a href=#函数定义>函数定义</a><ul><li><a href=#注意>注意</a></li></ul></li><li><a href=#函数参数>函数参数</a></li><li><a href=#局部变量>局部变量</a><ul><li><a href=#then>Then</a></li></ul></li><li><a href=#global语句>global语句</a></li><li><a href=#关键字参数>关键字参数</a></li><li><a href=#可变参数>可变参数</a></li><li><a href=#return-语句>return 语句</a></li><li><a href=#docstrings>DocStrings</a></li></ul></li></ul></nav></div></div><div class=post-content><p>学习一门语言,必不可少的你要了解它对函数的使用.在编程中允许你主动为某个代码块赋予名字,使这一代码块独立,在这之后你可以在任何位置通过名字运行代码块,并可重复任何次数,这就是所谓的调用（Calling）函数（Functions）。
+内容参考&ndash;《A Byte of Python》</p><p>你可以通过 <a href=http://python.swaroopch.com/>http://python.swaroopch.com/</a> 在线阅读本书英文原版。
+中文译版可通过 <a href=https://bop.molun.net>https://bop.molun.net</a> 在线阅读。</p><h2 id=函数定义>函数定义</h2><p>Python中函数可以通过关键字&ndash; def &ndash;来定义.在 def 后是你为函数起的名字(不可重复,必须是唯一的),再跟一对圆括号，再以冒号结尾，结束这一行。随后而来的内容是函数的一部分。
+格式:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>def 函数名<span class=o>()</span>:
+</span></span><span class=line><span class=cl>	内容
+</span></span><span class=line><span class=cl>	内容
+</span></span></code></pre></td></tr></table></div></div><p>通过&ndash;函数名()&ndash;实现对函数的调用,可进行多次调用,方法一样.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>函数名<span class=o>()</span>  <span class=c1>#第一次调用</span>
+</span></span><span class=line><span class=cl>函数名<span class=o>()</span>  <span class=c1>#再次调用</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=注意>注意</h3><p>函数定义时,函数的每行内容都要缩进,当有一行未进行缩进,代表函数定义结束.</p><h2 id=函数参数>函数参数</h2><p>在函数定义时,圆括号内可以包括一些变量的名称用来指定函数中会用到的参数,此时在进行函数调用时也需要在括号内添加对应类型的参数.
+案例:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>def print_max<span class=o>(</span>a, b<span class=o>)</span>: <span class=c1># 寻找最大值函数</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> a &gt; b: <span class=c1># if...else 语句</span>
+</span></span><span class=line><span class=cl>        print<span class=o>(</span>a, <span class=s1>&#39;is maximum&#39;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>elif</span> <span class=nv>a</span> <span class=o>==</span> b:
+</span></span><span class=line><span class=cl>        print<span class=o>(</span>a, <span class=s1>&#39;is equal to&#39;</span>, b<span class=o>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>else</span>:
+</span></span><span class=line><span class=cl>        print<span class=o>(</span>b, <span class=s1>&#39;is maximum&#39;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>#对函数内参数值的传递有两种方式:</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 1.直接传递字面值</span>
+</span></span><span class=line><span class=cl>print_max<span class=o>(</span>3, 4<span class=o>)</span> <span class=c1># 函数调用</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 2.以参数的形式传递变量</span>
+</span></span><span class=line><span class=cl><span class=nv>x</span> <span class=o>=</span> <span class=m>5</span>
+</span></span><span class=line><span class=cl><span class=nv>y</span> <span class=o>=</span> <span class=m>7</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>print_max<span class=o>(</span>x, y<span class=o>)</span> <span class=c1># 函数调用</span>
+</span></span></code></pre></td></tr></table></div></div><p>输出:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=m>4</span> is maximum
+</span></span><span class=line><span class=cl><span class=m>7</span> is maximum
+</span></span><span class=line><span class=cl>Process finished with <span class=nb>exit</span> code <span class=m>0</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=局部变量>局部变量</h2><p>在函数定义中,括号内的变量不会对函数外的函数造成影响,它只作用于当前函数内,这被称为变量的作用域（Scope).
+例如:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nv>x</span> <span class=o>=</span> <span class=m>50</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>def func<span class=o>(</span>x<span class=o>)</span>: <span class=c1>#定义一个带参数x的函数func</span>
+</span></span><span class=line><span class=cl>    print<span class=o>(</span><span class=s1>&#39;x is&#39;</span>, x<span class=o>)</span>
+</span></span><span class=line><span class=cl>    <span class=nv>x</span> <span class=o>=</span> <span class=m>2</span> <span class=c1>#对函数内的参数x进行赋值</span>
+</span></span><span class=line><span class=cl>    print<span class=o>(</span><span class=s1>&#39;Changed local x to&#39;</span>, x<span class=o>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>func<span class=o>(</span>x<span class=o>)</span>
+</span></span><span class=line><span class=cl>print<span class=o>(</span><span class=s1>&#39;x is still&#39;</span>, x<span class=o>)</span> <span class=c1>#这里输出的是函数外的x值,用来展示主代码块中的x未发生变化</span>
+</span></span></code></pre></td></tr></table></div></div><p>结果:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>x is <span class=m>50</span>
+</span></span><span class=line><span class=cl>Changed <span class=nb>local</span> x to <span class=m>2</span>
+</span></span><span class=line><span class=cl>x is still <span class=m>50</span>
+</span></span><span class=line><span class=cl>Process finished with <span class=nb>exit</span> code <span class=m>0</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=then>Then</h3><p>当你需要在函数中对主代码块中的参数进行修改,就需要用到接下来要了解的内容:&ndash;global语句.你应该告诉程序这里修改的参数是全局的,不只用在函数块中.</p><h2 id=global语句>global语句</h2><p>global 语句用以声明 x 是一个全局变量——因此，当我们在函数中为 x 进行赋值时，这一改动将影响到我们在主代码块中使用的 x 的值。
+例如:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nv>x</span> <span class=o>=</span> <span class=m>50</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>def func<span class=o>()</span>: <span class=c1>#注意! 注意! 注意!</span>
+</span></span><span class=line><span class=cl>    global x
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    print<span class=o>(</span><span class=s1>&#39;x is&#39;</span>, x<span class=o>)</span>
+</span></span><span class=line><span class=cl>    <span class=nv>x</span> <span class=o>=</span> <span class=m>2</span>
+</span></span><span class=line><span class=cl>    print<span class=o>(</span><span class=s1>&#39;Changed global x to&#39;</span>, x<span class=o>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>func<span class=o>()</span>
+</span></span><span class=line><span class=cl>print<span class=o>(</span><span class=s1>&#39;Value of x is&#39;</span>, x<span class=o>)</span>
+</span></span></code></pre></td></tr></table></div></div><p>结果为:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>x is <span class=m>50</span>
+</span></span><span class=line><span class=cl>Changed global x to <span class=m>2</span>
+</span></span><span class=line><span class=cl>Value of x is <span class=m>2</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Process finished with <span class=nb>exit</span> code <span class=m>0</span>
+</span></span></code></pre></td></tr></table></div></div><p>需要注意的是:若使用global语句,定义函数时,不允许在括号内添加相同名称的变量,使用之前定义的变量.否则,会提示以下错误:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>SyntaxError: name <span class=s1>&#39;x&#39;</span> is parameter and global
+</span></span><span class=line><span class=cl><span class=c1>#语法错误：名称&#39;x&#39;是参数和全局</span>
+</span></span></code></pre></td></tr></table></div></div><p>同时,可以在同一句 global 语句中指定不止一个的全局变量，例如 global x, y, z。</p><h2 id=关键字参数>关键字参数</h2><p>这部分内容,我认为原文说的不够明确,以下内容只代表我的理解:
+在定义新函数时,可以对括号内要添加的参数使用关键字命名,这样在下面调用函数时,可以通过关键字准确的对某个参数进行赋值和修改,这需要其他的参数也要具有默认值.如若不使用关键字,会对括号内的参数按照顺序依次赋值/修改.</p><h2 id=可变参数>可变参数</h2><p>内容包含了&ndash;元组与字典&ndash;的知识,学习后再进行补充(emmm)
+&ndash;等待补充&ndash;</p><h2 id=return-语句>return 语句</h2><p>return 语句用于从函数中返回，也就是中断函数。我们也可以选择在中断函数时从函数中返回一个值。
+例如:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>def maximum<span class=o>(</span>x, y<span class=o>)</span>:
+</span></span><span class=line><span class=cl>    <span class=k>if</span> x &gt; y:
+</span></span><span class=line><span class=cl>        <span class=k>return</span> x
+</span></span><span class=line><span class=cl>    <span class=k>elif</span> <span class=nv>x</span> <span class=o>==</span> y:
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=s1>&#39;The numbers are equal&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=k>else</span>:
+</span></span><span class=line><span class=cl>        <span class=k>return</span> y
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>print<span class=o>(</span>maximum<span class=o>(</span>2, 3<span class=o>))</span>
+</span></span></code></pre></td></tr></table></div></div><p>输出：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=m>3</span>
+</span></span><span class=line><span class=cl>Process finished with <span class=nb>exit</span> code <span class=m>0</span>
+</span></span></code></pre></td></tr></table></div></div><p>return语句,学习过C语言或其他语言的都不会陌生,在程序结束时返回0,一般会默认添加;表示中断作用时,类似的还有 break语句;continue语句;</p><h2 id=docstrings>DocStrings</h2><p>简单地说,在函数块中可以使用三对单引号书写,保存一段文档,在需要显示的地方添加以下语句调用:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1>#1.</span>
+</span></span><span class=line><span class=cl>print<span class=o>(</span>函数名.__doc__<span class=o>)</span> <span class=c1>#注意其中的双下划线</span>
+</span></span><span class=line><span class=cl><span class=c1>#2. help()函数也能显示函数内的文档信息</span>
+</span></span><span class=line><span class=cl>help<span class=o>(</span>print_max<span class=o>)</span>
+</span></span></code></pre></td></tr></table></div></div><p>这时我们已经了解到了每天日常使用都会使用到的 Python 函数.</p></div><div class=post-copyright><p class=copyright-item><span class=item-title>Author</span>
+<span class=item-content>Ankang</span></p><p class=copyright-item><span class=item-title>LastMod</span>
+<span class=item-content>2019-11-10</span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/Python/>Python</a></div><nav class=post-nav><a class=prev href=/post/20-02-14/><i class="iconfont icon-left"></i>
+<span class="prev-text nav-default">Python-经典案例练习</span>
+<span class="prev-text nav-mobile">Prev</span></a>
+<a class=next href=/post/19-10-04/><span class="next-text nav-default">Python之格式化</span>
+<span class="next-text nav-mobile">Next</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:ankangz98@gmail.com class="iconfont icon-email" title=email></a>
+<a href=https://github.com/an-kang class="iconfont icon-github" title=github></a>
+<a href=http://localhost:1313/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><div class=busuanzi-footer><span id=busuanzi_container_site_pv>PV: <span id=busuanzi_value_site_pv><img src=/img/spinner.svg alt=spinner.svg></span></span>
+<span class=division>|</span>
+<span id=busuanzi_container_site_uv>UV: <span id=busuanzi_value_site_uv><img src=/img/spinner.svg alt=spinner.svg></span></span></div><span class=copyright-year>&copy;
+2017 -
+2022<span class=heart><i class="iconfont icon-heart"></i></span><span>Ankang</span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
+<script type=text/javascript src=/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js></script></body></html>

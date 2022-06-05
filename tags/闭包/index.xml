@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>闭包 on Ankang</title><link>http://localhost:1313/tags/%E9%97%AD%E5%8C%85/</link><description>Recent content in 闭包 on Ankang</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 21 Apr 2021 19:43:44 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/%E9%97%AD%E5%8C%85/index.xml" rel="self" type="application/rss+xml"/><item><title>作用域与闭包</title><link>http://localhost:1313/post/%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85/</link><pubDate>Wed, 21 Apr 2021 19:43:44 +0000</pubDate><guid>http://localhost:1313/post/%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85/</guid><description>&lt;h2 id="作用域">作用域&lt;/h2>
+&lt;p>全局作用域、函数作用域、块级作用域&lt;/p>
+&lt;p>作用域链会向上查找，找到全局window时中止==&amp;gt;not defined；函数被执行后其环境变量将从内存中删除，函数每次调用会创建一个新作用域。&lt;/p>
+&lt;p>如果子函数将被使用时，父级环境将保留，不会被释放。===闭包&lt;/p>
+&lt;p>块级作用域-ES6中添加的，使用let/const 定义的具有块级作用域，var没有块级作用域&lt;/p></description></item></channel></rss>

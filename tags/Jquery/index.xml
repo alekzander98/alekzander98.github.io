@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Jquery on Ankang</title><link>http://localhost:1313/tags/Jquery/</link><description>Recent content in Jquery on Ankang</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 20 Apr 2021 19:40:56 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/Jquery/index.xml" rel="self" type="application/rss+xml"/><item><title>Jquery之尺寸/位置/网络请求</title><link>http://localhost:1313/post/Jquery%E4%B9%8B%E5%B0%BA%E5%AF%B8-%E4%BD%8D%E7%BD%AE-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/</link><pubDate>Tue, 20 Apr 2021 19:40:56 +0000</pubDate><guid>http://localhost:1313/post/Jquery%E4%B9%8B%E5%B0%BA%E5%AF%B8-%E4%BD%8D%E7%BD%AE-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/</guid><description>&lt;h2 id="jquery">Jquery：&lt;/h2>
+&lt;h4 id="尺寸">尺寸&lt;/h4>
+&lt;p>获取元素的宽高：width()&amp;ndash;返回数值类型&lt;/p>
+&lt;ul>
+&lt;li>当有参数时（数字）表示设置宽高&lt;/li>
+&lt;/ul>
+&lt;p>包含内边距：&amp;ndash;只能获取，返回数值类型，不能设置&lt;/p>
+&lt;ul>
+&lt;li>innerWidth()&lt;/li>
+&lt;/ul>
+&lt;p>包含边框和宽高（如果参数为true-&amp;gt;表示包括外边距）：&lt;/p>
+&lt;ul>
+&lt;li>outerWidth()&lt;/li>
+&lt;/ul>
+&lt;h4 id="位置">位置&lt;/h4>
+&lt;p>获取、设置元素相对于文档的偏移坐标和父级没有关系，返回为对象{top,left}，值为数值；设置时参数为对象类型&lt;/p>
+&lt;ul>
+&lt;li>offset()&lt;/li>
+&lt;/ul>
+&lt;p>获取、设置元素被卷去的头部和左侧距离&lt;/p>
+&lt;ul>
+&lt;li>scrollTop([数字])/scrollLeft([数字])&lt;/li>
+&lt;/ul></description></item><item><title>Jquery对象与基本设置</title><link>http://localhost:1313/post/Jquery%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE/</link><pubDate>Mon, 19 Apr 2021 08:01:55 +0000</pubDate><guid>http://localhost:1313/post/Jquery%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE/</guid><description>&lt;h2 id="jquery">Jquery：&lt;/h2>
+&lt;p>1.x 版本支持IE6、7、8低版本浏览器，官方不再更新&lt;/p>
+&lt;h3 id="入口函数">入口函数：&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">script&lt;/span> &lt;span class="na">src&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;../js/jquery.js&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&amp;lt;/&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$(document).ready(function(){})
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">//或者
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$(function(){})
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>入口函数可以在一个页面多次使用，表示页面结构加载完成。jQuery中的this指向已经处理，不建议在jQuery下使用箭头函数。&lt;/p></description></item></channel></rss>

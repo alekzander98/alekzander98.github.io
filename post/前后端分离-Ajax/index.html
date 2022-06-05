@@ -1,0 +1,138 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>前后端分离/Ajax - Ankang</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="Ankang"><meta name=description content=" 前后端分离技术 PHP与MySQL数据库 Ajax&amp;ndash;异步 http协议补充 - 请求携带数据 GET : GET 请求的数据全部放在url路径之中 ; 路径后方可以拼接php数据 url?key=value&amp;amp;key2=value 使用GET请求携带的数据, 以key为键，以value为值 以组的形式进行发送; 每条数据都以key=value形式进行分割; 我们通常把传递数据的key值称之为 字段; "><meta name=keywords content="Hugo,theme,even"><meta name=generator content="Hugo 0.100.1 with theme even"><link rel=canonical href=http://localhost:1313/post/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-Ajax/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
+<link href=/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="前后端分离/Ajax"><meta property="og:description" content="
+前后端分离技术
+PHP与MySQL数据库
+Ajax&ndash;异步
+
+http协议补充 - 请求携带数据
+
+GET : GET 请求的数据全部放在url路径之中 ;
+路径后方可以拼接php数据
+
+url?key=value&key2=value
+使用GET请求携带的数据, 以key为键，以value为值 以组的形式进行发送;
+每条数据都以key=value形式进行分割;
+
+
+我们通常把传递数据的key值称之为 字段;
+"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost:1313/post/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-Ajax/"><meta property="article:section" content="post"><meta property="article:published_time" content="2021-04-13T22:18:44+00:00"><meta property="article:modified_time" content="2021-04-13T22:18:44+00:00"><meta itemprop=name content="前后端分离/Ajax"><meta itemprop=description content="
+前后端分离技术
+PHP与MySQL数据库
+Ajax&ndash;异步
+
+http协议补充 - 请求携带数据
+
+GET : GET 请求的数据全部放在url路径之中 ;
+路径后方可以拼接php数据
+
+url?key=value&key2=value
+使用GET请求携带的数据, 以key为键，以value为值 以组的形式进行发送;
+每条数据都以key=value形式进行分割;
+
+
+我们通常把传递数据的key值称之为 字段;
+"><meta itemprop=datePublished content="2021-04-13T22:18:44+00:00"><meta itemprop=dateModified content="2021-04-13T22:18:44+00:00"><meta itemprop=wordCount content="1340"><meta itemprop=keywords content="Server,Ajax,"><meta name=twitter:card content="summary"><meta name=twitter:title content="前后端分离/Ajax"><meta name=twitter:description content="
+前后端分离技术
+PHP与MySQL数据库
+Ajax&ndash;异步
+
+http协议补充 - 请求携带数据
+
+GET : GET 请求的数据全部放在url路径之中 ;
+路径后方可以拼接php数据
+
+url?key=value&key2=value
+使用GET请求携带的数据, 以key为键，以value为值 以组的形式进行发送;
+每条数据都以key=value形式进行分割;
+
+
+我们通常把传递数据的key值称之为 字段;
+"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>Ankang</a></div><div class=mobile-navbar-icon><span></span>
+<span></span>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/about/><li class=mobile-menu-item>About</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>Ankang</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/about/>About</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>前后端分离/Ajax</h1><div class=post-meta><span class=post-time>2021-04-13</span>
+<span class=more-meta>1340 words</span>
+<span class=more-meta>3 mins</span></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>Contents</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><ul><li><a href=#http协议补充---请求携带数据>http协议补充 - 请求携带数据</a></li><li><a href=#php操作数据库>php操作数据库</a></li><li><a href=#前后端分离>前后端分离</a></li></ul></li><li><a href=#接口文档>接口文档</a><ul><li><a href=#接口路径>接口路径</a></li><li><a href=#请求方式>请求方式</a></li><li><a href=#请求字段信息>请求字段信息</a></li><li><a href=#返回数据实例>返回数据实例</a></li><li><a href=#ajax>AJAX：</a></li></ul></li></ul></nav></div></div><div class=post-content><ol><li>前后端分离技术</li><li>PHP与MySQL数据库</li><li>Ajax&ndash;异步</li></ol><h2 id=http协议补充---请求携带数据>http协议补充 - 请求携带数据</h2><ul><li>GET : GET 请求的数据全部放在url路径之中 ;</li><li>路径后方可以拼接php数据<ul><li>url?key=value&key2=value</li><li>使用GET请求携带的数据, 以key为键，以value为值 以组的形式进行发送;</li><li>每条数据都以key=value形式进行分割;</li></ul></li><li>我们通常把传递数据的key值称之为 <code>字段</code>;</li></ul><h2 id=php操作数据库>php操作数据库</h2><ul><li><p>php是一个后端语言， 其核心职责之一就是操作数据库;</p></li><li><p>php本身给我们提供了一套操作数据库的工具 : mysqli</p><ul><li><ol><li>链接数据库 connect;</li></ol></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>//mysqli_connect(&#34;服务器路径&#34; , &#34;数据库账号&#34; , &#34;数据库密码&#34; , &#34;数据库名称&#34;)
+</span></span></span></code></pre></td></tr></table></div></div></li><li><p>返回值有可能为 资源秘钥 ；也可能为空值;</p></li><li><ol start=2><li>SQL语句执行工具 query ;</li></ol></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=nv>$insert_sql</span> <span class=o>=</span> <span class=s2>&#34;INSERT INTO `usertable` VALUES (&#39;ankang&#39; , &#39;123123&#39; , null)&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nv>$res</span> <span class=o>=</span> <span class=nx>mysqli_query</span><span class=p>(</span><span class=nv>$con</span> <span class=p>,</span> <span class=nv>$insert_sql</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><p>我们操作数据库还是需要sql语句;</p></li><li><ol start=3><li>php查询数据库会返回一个资源类型，我们会对资源类型进行特殊处理 ;</li></ol><ul><li>fetch_all API ;</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=nv>$array</span> <span class=o>=</span> <span class=nx>mysqli_fetch_all</span><span class=p>(</span><span class=nv>$select_res</span><span class=p>,</span><span class=nx>MYSQLI_ASSOC</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=k>echo</span> <span class=nx>json_encode</span><span class=p>(</span><span class=nv>$array</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><ul><li>MYSQLI_ASSOC MYSQLI_NUM ;</li></ul></li><li><ol start=4><li>error : 数据库报错信息;</li></ol></li><li><p>错误处理判断 <code>$con</code></p></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>if</span><span class=p>(</span> <span class=o>!</span><span class=nv>$con</span> <span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// API : die 终止全局代码执行 
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=c1>// API : mysqli_error($con) 报出当前连接的错误信息用于排错; 
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>die</span><span class=p>(</span><span class=s2>&#34;数据库连接错误,错误信息:&#34;</span> <span class=o>.</span> <span class=nx>mysqli_error</span><span class=p>(</span><span class=nv>$con</span><span class=p>));</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=nx>mysqli_close</span><span class=p>(</span><span class=nv>$con</span><span class=p>);</span><span class=c1>//关闭数据库
+</span></span></span></code></pre></td></tr></table></div></div></li></ul></li><li><p>引入连接数据库的文件</p></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>require(&#34;./02_php链接数据库.php&#34;);
+</span></span></code></pre></td></tr></table></div></div></li><li><p>在php之中编写sql语句所有的表名称，以及字段名全都用`` 反引号引起来;</p></li><li><p>我们表之中设置好类型为varchar的字符串，一定要在数据前面加上 &rsquo;&rsquo; &mdash;把数据识别为varchar;</p></li></ul><h2 id=前后端分离>前后端分离</h2><ul><li><p>使我们现代项目开发的核心思想;</p></li><li><p>前后端的开发效率不一致 ：</p><ul><li>后端慢 : 1. 业务逻辑 2. 数据库操作 3. 安全</li><li>前端快 :</li></ul></li><li><p>前后端职责进行明确的划分 :</p><ul><li>前端工作职责大多在使用浏览器发送请求，处理服务的响应;</li><li>后端的工作职责是做一个黑盒子;</li></ul></li><li><p>如何协作 :</p><ul><li>在项目开发之前就定义好请求和响应的规则;</li><li>我们需要书面格式的规则说明 => 面向前端的 => 接口文档;</li></ul></li></ul><h1 id=接口文档>接口文档</h1><h2 id=接口路径>接口路径</h2><ul><li>url : <a href=http://www.baidu.com/xxx.php>http://www.baidu.com/xxx.php</a></li></ul><h2 id=请求方式>请求方式</h2><ul><li>GET | POST | PATCH | PUT | DELETE</li></ul><h2 id=请求字段信息>请求字段信息</h2><ul><li>username : string</li><li>password : string</li></ul><h2 id=返回数据实例>返回数据实例</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span> <span class=nt>&#34;data&#34;</span>  <span class=p>:</span> <span class=s2>&#34;hello world&#34;</span> <span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><ul><li>注意事项 :<ul><li><ol><li>定义的字段名必须是英文;</li></ol></li><li><ol start=2><li>请求方式必须明确;</li></ol></li><li><ol start=3><li>后端响应的数据必须是json格式;</li></ol></li><li>&ldquo;{&ldquo;username&rdquo; : &ldquo;wuyanzu&rdquo; , &ldquo;password&rdquo;:123456, &ldquo;id&rdquo; : 3 , &ldquo;type&rdquo; : &ldquo;success&rdquo;}&rdquo;;</li><li>有一个API 可以把json字符串转换成对象数组类型;</li></ul></li></ul><h2 id=ajax>AJAX：</h2><ul><li><p>异步的类型：</p><ul><li>事件; => 事件处理函数</li><li>定时器/延时器; => 定时器的回调函数</li><li>ajax</li><li>promise.then</li></ul></li><li><p>异步 JavaScript and xml</p></li><li><p>xhr：（小黄人）XMLHttpRequest</p><ul><li>无刷新发起浏览器请求</li><li>接收服务器的响应</li><li>发起请求&ndash;有三步</li><li>接收响应&ndash;一步</li></ul></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>//每一个请求都要创建一个新的xhr实例对象
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>var</span> <span class=nx>xhr</span><span class=o>=</span><span class=k>new</span> <span class=nx>XMLHttpRequest</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=c1>//请求是必须有目标，并且想要获取数据的
+</span></span></span><span class=line><span class=cl><span class=c1>// - 请求目标
+</span></span></span><span class=line><span class=cl><span class=c1>// - 请求方式
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>var</span> <span class=nx>url</span><span class=o>=</span><span class=s2>&#34;&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>xhr</span><span class=p>.</span><span class=nx>open</span><span class=p>(</span><span class=s2>&#34;GET&#34;</span><span class=p>,</span><span class=nx>url</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=c1>//源路径与请求目标的路径同协议、同端口、同域名
+</span></span></span><span class=line><span class=cl><span class=c1>//发送行为
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>xhr</span><span class=p>.</span><span class=nx>send</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=c1>//响应处理
+</span></span></span><span class=line><span class=cl><span class=c1>// - xhr.readyState : xhr的请求状态
+</span></span></span><span class=line><span class=cl><span class=c1>// - 0 ~ 4 五个状态 ; 
+</span></span></span><span class=line><span class=cl><span class=c1>// - 4 : 成功; 
+</span></span></span><span class=line><span class=cl><span class=c1>// - xhr.status : http状态码 ; 
+</span></span></span><span class=line><span class=cl><span class=c1>// 200 : 成功; 
+</span></span></span><span class=line><span class=cl><span class=c1>// 2开头的所有状态码都表示成功; 
+</span></span></span><span class=line><span class=cl><span class=c1>// -xhr.responseText:响应字符串数据
+</span></span></span><span class=line><span class=cl><span class=c1>// -事件：onreadystatechange:判断xhr的状态/http的状态
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>xhr</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><p>jsonp：跨域技术</p></li><li><p>fetch：高级封装</p></li></ul></div><div class=post-copyright><p class=copyright-item><span class=item-title>Author</span>
+<span class=item-content>Ankang</span></p><p class=copyright-item><span class=item-title>LastMod</span>
+<span class=item-content>2021-04-13</span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/Server/>Server</a>
+<a href=/tags/Ajax/>Ajax</a></div><nav class=post-nav><a class=prev href=/post/Promise-then-JSONP%E8%B7%A8%E5%9F%9F/><i class="iconfont icon-left"></i>
+<span class="prev-text nav-default">Promise.then/JSONP跨域</span>
+<span class="prev-text nav-mobile">Prev</span></a>
+<a class=next href=/post/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E4%B8%8EPHP/><span class="next-text nav-default">服务器端与PHP</span>
+<span class="next-text nav-mobile">Next</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:ankangz98@gmail.com class="iconfont icon-email" title=email></a>
+<a href=https://github.com/an-kang class="iconfont icon-github" title=github></a>
+<a href=http://localhost:1313/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><div class=busuanzi-footer><span id=busuanzi_container_site_pv>PV: <span id=busuanzi_value_site_pv><img src=/img/spinner.svg alt=spinner.svg></span></span>
+<span class=division>|</span>
+<span id=busuanzi_container_site_uv>UV: <span id=busuanzi_value_site_uv><img src=/img/spinner.svg alt=spinner.svg></span></span></div><span class=copyright-year>&copy;
+2017 -
+2022<span class=heart><i class="iconfont icon-heart"></i></span><span>Ankang</span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
+<script type=text/javascript src=/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js></script></body></html>

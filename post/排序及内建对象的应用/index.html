@@ -1,0 +1,351 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>排序及内建对象的应用 - Ankang</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="Ankang"><meta name=description content=" 数组排序 内建对象Math、String hash数据处理 随机取色，随机验证码 模糊查询 "><meta name=keywords content="Hugo,theme,even"><meta name=generator content="Hugo 0.100.1 with theme even"><link rel=canonical href=http://localhost:1313/post/%E6%8E%92%E5%BA%8F%E5%8F%8A%E5%86%85%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%BA%94%E7%94%A8/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
+<link href=/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="排序及内建对象的应用"><meta property="og:description" content="
+数组排序
+内建对象Math、String
+hash数据处理
+随机取色，随机验证码
+模糊查询
+"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost:1313/post/%E6%8E%92%E5%BA%8F%E5%8F%8A%E5%86%85%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%BA%94%E7%94%A8/"><meta property="article:section" content="post"><meta property="article:published_time" content="2021-03-24T16:32:34+00:00"><meta property="article:modified_time" content="2021-03-24T16:32:34+00:00"><meta itemprop=name content="排序及内建对象的应用"><meta itemprop=description content="
+数组排序
+内建对象Math、String
+hash数据处理
+随机取色，随机验证码
+模糊查询
+"><meta itemprop=datePublished content="2021-03-24T16:32:34+00:00"><meta itemprop=dateModified content="2021-03-24T16:32:34+00:00"><meta itemprop=wordCount content="1731"><meta itemprop=keywords content="JavaScript,"><meta name=twitter:card content="summary"><meta name=twitter:title content="排序及内建对象的应用"><meta name=twitter:description content="
+数组排序
+内建对象Math、String
+hash数据处理
+随机取色，随机验证码
+模糊查询
+"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>Ankang</a></div><div class=mobile-navbar-icon><span></span>
+<span></span>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/about/><li class=mobile-menu-item>About</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>Ankang</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/about/>About</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>排序及内建对象的应用</h1><div class=post-meta><span class=post-time>2021-03-24</span>
+<span class=more-meta>1731 words</span>
+<span class=more-meta>4 mins</span></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>Contents</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><ul><li><ul><li><a href=#遍历>遍历：</a></li><li><a href=#排序>排序：</a></li><li><a href=#reverse><code>reverse</code>:</a></li><li><a href=#sort><code>sort</code>:</a></li><li><a href=#二维数组>二维数组：</a></li><li><a href=#math>Math:</a></li><li><a href=#随机取色>随机取色：</a></li><li><a href=#string>String：</a></li><li><a href=#地址栏searchhash数据变成对象>地址栏search/hash数据变成对象：</a></li><li><a href=#随机验证码>随机验证码：</a></li><li><a href=#模糊查找>模糊查找</a></li></ul></li></ul></li></ul></nav></div></div><div class=post-content><ol><li>数组排序</li><li>内建对象Math、String</li><li>hash数据处理</li><li>随机取色，随机验证码</li><li>模糊查询</li></ol><h3 id=遍历>遍历：</h3><p><code>for</code>循环：遍历数组的每一个元素，<strong>包含空元素</strong>，以数字下标遍历所有元素，<strong>不包含数组的属性和方法</strong>。</p><p><code>forEach</code>遍历<strong>除空元素外的所有其他元素</strong>，<strong>不遍历数组的属性和方法</strong>。</p><p><code>for(i in arr)</code>将数组的下标转换为字符串，并且<strong>遍历所有非空元素和数组的方法和属性</strong>。</p><h3 id=排序>排序：</h3><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>arr</span><span class=o>=</span><span class=p>[</span><span class=mi>2</span><span class=p>,</span><span class=mi>3</span><span class=p>,</span><span class=mi>6</span><span class=p>,</span><span class=mi>9</span><span class=p>,</span><span class=mi>4</span><span class=p>,</span><span class=mi>1</span><span class=p>,</span><span class=mi>5</span><span class=p>,</span><span class=mi>8</span><span class=p>,</span><span class=mi>11</span><span class=p>,</span><span class=mi>7</span><span class=p>];</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><p>桶排序</p></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>obj</span><span class=o>=</span><span class=p>{};</span>
+</span></span><span class=line><span class=cl><span class=k>for</span><span class=p>(</span><span class=kd>var</span> <span class=nx>i</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span><span class=nx>i</span><span class=o>&lt;</span><span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=p>;</span><span class=nx>i</span><span class=o>++</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=nx>obj</span><span class=p>[</span><span class=nx>arr</span><span class=p>[</span><span class=nx>i</span><span class=p>]]</span><span class=o>=</span><span class=nx>arr</span><span class=p>[</span><span class=nx>i</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>obj</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=c1>//将数组内容转换为对象中，自动按照下标排序
+</span></span></span></code></pre></td></tr></table></div></div></li><li><p>冒泡排序</p></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=k>for</span><span class=p>(</span><span class=nx>i</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span><span class=nx>i</span><span class=o>&lt;</span><span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=p>;</span><span class=nx>i</span><span class=o>++</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=nx>j</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span><span class=nx>j</span><span class=o>&lt;</span><span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=o>-</span><span class=mi>1</span><span class=o>-</span><span class=nx>i</span><span class=p>;</span><span class=nx>j</span><span class=o>++</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span><span class=p>(</span><span class=nx>arr</span><span class=p>[</span><span class=nx>j</span><span class=p>]</span><span class=o>&gt;</span><span class=nx>arr</span><span class=p>[</span><span class=nx>j</span><span class=o>+</span><span class=mi>1</span><span class=p>]){</span>
+</span></span><span class=line><span class=cl>            <span class=kd>var</span> <span class=nx>temp</span><span class=o>=</span><span class=nx>arr</span><span class=p>[</span><span class=nx>j</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>            <span class=nx>arr</span><span class=p>[</span><span class=nx>j</span><span class=p>]</span><span class=o>=</span><span class=nx>arr</span><span class=p>[</span><span class=nx>j</span><span class=o>+</span><span class=mi>1</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>            <span class=nx>arr</span><span class=p>[</span><span class=nx>j</span><span class=o>+</span><span class=mi>1</span><span class=p>]</span><span class=o>=</span><span class=nx>temp</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><p>选择排序</p></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=k>for</span><span class=p>(</span><span class=kd>var</span> <span class=nx>i</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span><span class=nx>i</span><span class=o>&lt;</span><span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=p>;</span><span class=nx>i</span><span class=o>++</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>min</span><span class=o>=</span><span class=nx>i</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=nx>j</span><span class=o>=</span><span class=nx>i</span><span class=o>+</span><span class=mi>1</span><span class=p>;</span><span class=nx>j</span><span class=o>&lt;</span><span class=nx>arr</span><span class=p>.</span><span class=nx>lemgth</span><span class=p>;</span><span class=nx>j</span><span class=o>++</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span><span class=p>(</span><span class=nx>arr</span><span class=p>[</span><span class=nx>min</span><span class=p>]</span><span class=o>&gt;</span><span class=nx>arr</span><span class=p>[</span><span class=nx>j</span><span class=p>])</span> <span class=nx>min</span><span class=o>=</span><span class=nx>j</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span><span class=p>(</span><span class=nx>i</span><span class=o>!==</span><span class=nx>min</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=kd>var</span> <span class=nx>temp</span><span class=o>=</span><span class=nx>arr</span><span class=p>[</span><span class=nx>i</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>        <span class=nx>arr</span><span class=p>[</span><span class=nx>i</span><span class=p>]</span><span class=o>=</span><span class=nx>arr</span><span class=p>[</span><span class=nx>min</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>        <span class=nx>arr</span><span class=p>[</span><span class=nx>min</span><span class=p>]</span><span class=o>=</span><span class=nx>temp</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><p>快速排序 ===> 递归</p></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>function</span> <span class=nx>quickSort</span><span class=p>(</span><span class=nx>elem</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span><span class=p>(</span><span class=nx>elem</span><span class=p>.</span><span class=nx>length</span><span class=o>&lt;=</span><span class=mi>1</span><span class=p>)</span> <span class=k>return</span> <span class=nx>elem</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>pivotIndex</span><span class=o>=</span><span class=nb>Math</span><span class=p>.</span><span class=nx>floor</span><span class=p>(</span><span class=nx>elem</span><span class=p>.</span><span class=nx>length</span><span class=o>/</span><span class=mi>2</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>pivot</span><span class=o>=</span><span class=nx>elem</span><span class=p>.</span><span class=nx>splice</span><span class=p>(</span><span class=nx>pivotIndex</span><span class=p>,</span><span class=mi>1</span><span class=p>)[</span><span class=mi>0</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>left</span><span class=o>=</span><span class=p>[];</span><span class=kd>var</span> <span class=nx>right</span><span class=o>=</span><span class=p>[];</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=kd>var</span> <span class=nx>i</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span><span class=nx>i</span><span class=o>&lt;</span><span class=nx>elem</span><span class=p>.</span><span class=nx>length</span><span class=p>;</span><span class=nx>i</span><span class=o>++</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span><span class=p>(</span><span class=nx>elem</span><span class=p>[</span><span class=nx>i</span><span class=p>]</span><span class=o>&lt;</span><span class=nx>pivot</span><span class=p>)</span> <span class=nx>left</span><span class=p>.</span><span class=nx>push</span><span class=p>(</span><span class=nx>elem</span><span class=p>[</span><span class=nx>i</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl>        <span class=k>else</span> <span class=nx>right</span><span class=p>.</span><span class=nx>push</span><span class=p>(</span><span class=nx>elem</span><span class=p>[</span><span class=nx>i</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>quickSort</span><span class=p>(</span><span class=nx>left</span><span class=p>).</span><span class=nx>concat</span><span class=p>([</span><span class=nx>pivot</span><span class=p>],</span><span class=nx>quickSort</span><span class=p>(</span><span class=nx>right</span><span class=p>));</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=nx>arr</span><span class=o>=</span><span class=nx>quickSort</span><span class=p>(</span><span class=nx>arr</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>arr</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul><h3 id=reverse><code>reverse</code>:</h3><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>arr</span><span class=o>=</span><span class=p>[</span><span class=mi>1</span><span class=p>,</span><span class=mi>2</span><span class=p>,</span><span class=mi>3</span><span class=p>,</span><span class=mi>4</span><span class=p>,</span><span class=mi>5</span><span class=p>,</span><span class=mi>6</span><span class=p>,</span><span class=mi>7</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>arr1</span><span class=o>=</span><span class=nx>arr</span><span class=p>.</span><span class=nx>reverse</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>arr1</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><p>反转数组，返回原数组</p></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>function</span> <span class=nx>array_reverse</span><span class=p>(</span><span class=nx>arr</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=kd>var</span> <span class=nx>i</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span><span class=nx>i</span><span class=o>&lt;</span><span class=nb>parseInt</span><span class=p>(</span><span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=o>/</span><span class=mi>2</span><span class=p>);</span><span class=nx>i</span><span class=o>++</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=kd>var</span> <span class=nx>temp</span><span class=o>=</span><span class=nx>arr</span><span class=p>[</span><span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=o>-</span><span class=mi>1</span><span class=o>-</span><span class=nx>i</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>        <span class=nx>arr</span><span class=p>[</span><span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=o>-</span><span class=mi>1</span><span class=o>-</span><span class=nx>i</span><span class=p>]</span><span class=o>=</span><span class=nx>arr</span><span class=p>[</span><span class=nx>i</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>        <span class=nx>arr</span><span class=p>[</span><span class=nx>i</span><span class=p>]</span><span class=o>=</span><span class=nx>temp</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>arr</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=nx>array_recerse</span><span class=p>(</span><span class=nx>arr</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>arr</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul><h3 id=sort><code>sort</code>:</h3><ul><li><p>默认转换为字符串排序，数字按照第一位排序（Ascii码）</p></li><li><p>中文按照UTF-8排序</p></li><li><p>重构采用选择排序</p></li><li><p>数组实现随机排序：</p></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>arr</span><span class=o>=</span><span class=p>[</span><span class=mi>1</span><span class=p>,</span><span class=mi>2</span><span class=p>,</span><span class=mi>3</span><span class=p>,</span><span class=mi>4</span><span class=p>,</span><span class=mi>5</span><span class=p>,</span><span class=mi>6</span><span class=p>,</span><span class=mi>7</span><span class=p>,</span><span class=mi>8</span><span class=p>,</span><span class=mi>9</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=nx>arr</span><span class=p>.</span><span class=nx>sort</span><span class=p>(</span><span class=kd>function</span><span class=p>(){</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nb>Math</span><span class=p>.</span><span class=nx>random</span><span class=p>()</span><span class=o>-</span><span class=mf>0.5</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//随机数的减数大于0.5的概率增大时，数组中从大到小的概率变大
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=c1>//随机数的减数小于0.5的概率增大时，数组中从小到大的概率变大
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>})</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>arr</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><p>随机生成0-99以内的10个数：</p></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>//1、
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>var</span> <span class=nx>arr</span><span class=o>=</span><span class=p>[];</span>
+</span></span><span class=line><span class=cl><span class=k>while</span><span class=p>(</span><span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=o>&lt;</span><span class=mi>10</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>n</span><span class=o>=</span><span class=nb>parseInt</span><span class=p>(</span><span class=nb>Math</span><span class=p>.</span><span class=nx>random</span><span class=p>()</span><span class=o>*</span><span class=mi>100</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span><span class=p>(</span><span class=nx>arr</span><span class=p>.</span><span class=nx>index</span><span class=p>(</span><span class=nx>n</span><span class=p>)</span><span class=o>&lt;</span><span class=mi>0</span><span class=p>)</span> <span class=nx>arr</span><span class=p>.</span><span class=nx>push</span><span class=p>(</span><span class=nx>n</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=nx>consle</span><span class=p>.</span><span class=nx>loh</span><span class=p>(</span><span class=nx>arr</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=c1>//2、
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>var</span> <span class=nx>arr</span><span class=o>=</span><span class=nb>Array</span><span class=p>(</span><span class=mi>100</span><span class=p>).</span><span class=nx>fill</span><span class=p>(</span><span class=mi>0</span><span class=p>).</span><span class=nx>map</span><span class=p>(</span><span class=kd>function</span><span class=p>(</span><span class=nx>item</span><span class=p>,</span><span class=nx>index</span><span class=p>){</span><span class=k>return</span> <span class=nx>index</span><span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=nx>arr</span><span class=p>.</span><span class=nx>sort</span><span class=p>(</span><span class=kd>function</span><span class=p>(){</span><span class=k>return</span> <span class=nb>Math</span><span class=p>.</span><span class=nx>random</span><span class=p>()</span><span class=o>-</span><span class=mf>0.5</span><span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=o>=</span><span class=mi>10</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>arr</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul><h3 id=二维数组>二维数组：</h3><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>arr</span><span class=o>=</span><span class=p>[];</span>
+</span></span><span class=line><span class=cl><span class=k>for</span><span class=p>(</span><span class=kd>var</span> <span class=nx>i</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span><span class=nx>i</span><span class=o>&lt;</span><span class=mi>10</span><span class=p>;</span><span class=nx>i</span><span class=o>++</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=nx>arr</span><span class=p>[</span><span class=nx>i</span><span class=p>]</span><span class=o>=</span><span class=p>[];</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=kd>var</span> <span class=nx>j</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span><span class=nx>j</span><span class=o>&lt;</span><span class=mi>10</span><span class=p>;</span><span class=nx>j</span><span class=o>++</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=nx>arr</span><span class=p>[</span><span class=nx>i</span><span class=p>][</span><span class=nx>j</span><span class=p>]</span><span class=o>=</span><span class=nx>i</span><span class=o>*</span><span class=mi>10</span><span class=o>+</span><span class=nx>j</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>arr</span><span class=p>[</span><span class=mi>5</span><span class=p>][</span><span class=mi>6</span><span class=p>]);</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul><h3 id=math>Math:</h3><p><code>Math.PI</code>:角度转弧度：<code>Math.PI/180*60</code>//角度转弧度</p><p><code>Math.abs()</code>绝对值</p><p><code>Math.ceil(-3.6);</code>向上取整//-3</p><p><code>Math.floor(-3.6);</code>向下取整//-4</p><p><code>Math.round(-3.6);</code>四舍五入//-4</p><p>求数组的最大/最小值：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nb>Math</span><span class=p>.</span><span class=nx>max</span><span class=p>.</span><span class=nx>apply</span><span class=p>(</span><span class=kc>null</span><span class=p>,</span><span class=nx>arr</span><span class=p>));</span><span class=c1>//求数组的最大值
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nb>Math</span><span class=p>.</span><span class=nx>min</span><span class=p>.</span><span class=nx>apply</span><span class=p>(</span><span class=kc>null</span><span class=p>,</span><span class=nx>arr</span><span class=p>));</span><span class=c1>//求数组的最小值
+</span></span></span></code></pre></td></tr></table></div></div><p><code>Math.pow(2,2);</code>//4：求幂</p><p><code>Math.sqrt(4);</code>开根号</p><p><code>Math.random();</code>//0-1：随机数；不包含0/1</p><p>随机取一个范围的值：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>function</span> <span class=nx>random</span><span class=p>(</span><span class=nx>min</span><span class=p>,</span><span class=nx>max</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nb>Math</span><span class=p>.</span><span class=nx>floor</span><span class=p>(</span><span class=nb>Math</span><span class=p>.</span><span class=nx>random</span><span class=p>()</span><span class=o>*</span><span class=p>(</span><span class=nx>max</span><span class=o>-</span><span class=nx>min</span><span class=p>)</span><span class=o>+</span><span class=nx>min</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=随机取色>随机取色：</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>//1
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>function</span> <span class=nx>randomColor</span><span class=p>(){</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>col</span><span class=o>=</span><span class=s2>&#34;#&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=kd>var</span> <span class=nx>i</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span><span class=nx>i</span><span class=o>&lt;</span><span class=mi>6</span><span class=p>;</span><span class=nx>i</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=nx>col</span><span class=o>+=</span><span class=nb>Math</span><span class=p>.</span><span class=nx>floor</span><span class=p>(</span><span class=nb>Math</span><span class=p>.</span><span class=nx>random</span><span class=p>()</span><span class=o>*</span><span class=mi>16</span><span class=p>).</span><span class=nx>toString</span><span class=p>(</span><span class=mi>16</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>col</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=c1>//2
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>function</span> <span class=nx>randomColor</span><span class=p>(){</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>col</span><span class=o>=</span><span class=s2>&#34;rgb(&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=kd>var</span> <span class=nx>i</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span><span class=nx>i</span><span class=o>&lt;</span><span class=mi>3</span><span class=p>;</span><span class=nx>i</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=nx>col</span><span class=o>+=</span><span class=nb>Math</span><span class=p>.</span><span class=nx>floor</span><span class=p>(</span><span class=nb>Math</span><span class=p>.</span><span class=nx>random</span><span class=p>()</span><span class=o>*</span><span class=mi>256</span><span class=p>)</span><span class=o>+</span><span class=s2>&#34;,&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=nx>col</span><span class=o>=</span><span class=nx>col</span><span class=p>.</span><span class=nx>slice</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=o>-</span><span class=mi>1</span><span class=p>)</span><span class=o>+</span><span class=s2>&#34;)&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>col</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=c1>//3
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>function</span> <span class=nx>randomColor</span><span class=p>(</span><span class=nx>a</span><span class=p>,</span><span class=nx>r</span><span class=p>,</span><span class=nx>g</span><span class=p>,</span><span class=nx>b</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>col</span><span class=o>=</span><span class=s2>&#34;rgba(&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=kd>var</span> <span class=nx>i</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span><span class=nx>i</span><span class=o>&lt;</span><span class=mi>3</span><span class=p>;</span><span class=nx>i</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=nx>col</span><span class=o>+=</span><span class=p>((</span><span class=nb>isNaN</span><span class=p>(</span><span class=nx>arguments</span><span class=p>[</span><span class=nx>i</span><span class=o>+</span><span class=mi>1</span><span class=p>])</span> <span class=o>||</span> <span class=nx>arguments</span><span class=p>[</span><span class=nx>i</span><span class=o>+</span><span class=mi>1</span><span class=p>]</span><span class=o>&gt;</span><span class=mi>255</span> <span class=o>||</span> <span class=nx>arguments</span><span class=p>[</span><span class=nx>i</span><span class=o>+</span><span class=mi>1</span><span class=p>]</span><span class=o>&lt;</span><span class=mi>0</span><span class=p>)</span> <span class=o>?</span> <span class=nb>Math</span><span class=p>.</span><span class=nx>floor</span><span class=p>(</span><span class=nb>Math</span><span class=p>.</span><span class=nx>random</span><span class=p>()</span><span class=o>*</span><span class=mi>256</span><span class=p>)</span> <span class=o>:</span> <span class=nb>Math</span><span class=p>.</span><span class=nx>floor</span><span class=p>(</span><span class=nx>arguments</span><span class=p>[</span><span class=nx>i</span><span class=o>+</span><span class=mi>1</span><span class=p>]))</span><span class=o>+</span><span class=s2>&#34;,&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=nx>col</span><span class=o>+=</span><span class=p>(</span><span class=nb>isNaN</span><span class=p>(</span><span class=nx>a</span><span class=p>)</span> <span class=o>?</span> <span class=nb>Math</span><span class=p>.</span><span class=nx>random</span><span class=p>().</span><span class=nx>toFixed</span><span class=p>(</span><span class=mi>2</span><span class=p>)</span> <span class=o>:</span> <span class=nx>a</span><span class=p>)</span><span class=o>+</span><span class=s2>&#34;)&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>col</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=string>String：</h3><p><code>var str="abc";</code>字符串不能修改</p><p><code>console.log(str.length);</code>字符串长度是只读属性</p><p><code>console.log(str[0]);</code>可以使用下标获取元素，只读===<code>str.charAt(0)</code></p><p><code>str.charCodeAt(0);</code>获取第0个字符Ascii</p><p><code>indexOf</code>/<code>lastIndexOf</code> 查找字符在字符串中的下标</p><p><code>includes</code>：判断是否在字符串中存在</p><p><code>search</code>用于正则表达式查找</p><p><code>match</code>用于正则表达式</p><p><code>replace</code>替换并且返回新字符串，用于正则表达式</p><p><code>slice</code></p><p><code>substr</code>从第几个开始截取，第二个参数代表截取多少个字符，开始位置可以使用负数，倒数第几个</p><p><code>substring</code>从下标为几开始到多少结束的字符串，不能从负数开始==>默认为0；可以倒着截取</p><p><code>"abc".toUpperCase()</code>/ <code>"ABC".toLowerCase()</code> 转换大小写</p><p>首字母大写</p><p><code>split</code>与数组的join相反，以什么分割；正则表达式切割</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>str</span><span class=o>=</span><span class=s2>&#34;a#b#c#d#e#f&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>str</span><span class=p>.</span><span class=nx>split</span><span class=p>(</span><span class=s2>&#34;#&#34;</span><span class=p>));</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=地址栏searchhash数据变成对象>地址栏search/hash数据变成对象：</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>url</span><span class=o>=</span><span class=s2>&#34;http://www.163.com/new/index.html?token=ashjd2i1nsdh21df2123&amp;name=xietian&amp;age=30&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>getObject</span><span class=p>(</span><span class=nx>url</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>url</span><span class=p>.</span><span class=nx>split</span><span class=p>(</span><span class=s2>&#34;?&#34;</span><span class=p>)[</span><span class=mi>1</span><span class=p>].</span><span class=nx>split</span><span class=p>(</span><span class=s2>&#34;&amp;&#34;</span><span class=p>).</span><span class=nx>reduce</span><span class=p>(</span><span class=kd>function</span><span class=p>(</span><span class=nx>value</span><span class=p>,</span><span class=nx>item</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=kd>var</span> <span class=nx>arr</span><span class=o>=</span><span class=nx>item</span><span class=p>.</span><span class=nx>split</span><span class=p>(</span><span class=s2>&#34;=&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>value</span><span class=p>[</span><span class=nx>arr</span><span class=p>[</span><span class=mi>0</span><span class=p>]]</span><span class=o>=</span><span class=nb>isNaN</span><span class=p>(</span><span class=nx>arr</span><span class=p>[</span><span class=mi>1</span><span class=p>])</span> <span class=o>?</span> <span class=nx>arr</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>:</span> <span class=nb>Number</span><span class=p>(</span><span class=nx>arr</span><span class=p>(</span><span class=mi>1</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nx>value</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>},{});</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=mi>0</span><span class=o>=</span><span class=nx>getObject</span><span class=p>(</span><span class=nx>url</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>o</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=随机验证码>随机验证码：</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>str</span><span class=o>=</span><span class=nx>getAuth</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>str</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>getAuth</span><span class=p>(){</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>arr</span><span class=o>=</span><span class=p>[];</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=kd>var</span> <span class=nx>i</span><span class=o>=</span><span class=mi>48</span><span class=p>;</span><span class=nx>i</span><span class=o>&lt;</span><span class=mi>123</span><span class=p>;</span><span class=nx>i</span><span class=o>++</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span><span class=p>(</span><span class=nx>i</span><span class=o>&gt;</span><span class=mi>57</span> <span class=o>&amp;&amp;</span> <span class=nx>i</span><span class=o>&lt;</span><span class=mi>65</span><span class=p>)</span> <span class=k>continue</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span><span class=p>(</span><span class=nx>i</span><span class=o>&gt;</span><span class=mi>90</span> <span class=o>&amp;&amp;</span> <span class=nx>i</span><span class=o>&lt;</span><span class=mi>97</span><span class=p>)</span> <span class=k>continue</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=nx>arr</span><span class=p>.</span><span class=nx>push</span><span class=p>(</span><span class=nb>String</span><span class=p>.</span><span class=nx>fromCharCode</span><span class=p>(</span><span class=nx>i</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=nx>arr</span><span class=p>.</span><span class=nx>sort</span><span class=p>(</span><span class=kd>function</span><span class=p>(){</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nb>Math</span><span class=p>.</span><span class=nx>random</span><span class=p>()</span><span class=o>-</span><span class=mf>0.5</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>})</span>
+</span></span><span class=line><span class=cl>    <span class=nx>arr</span><span class=p>.</span><span class=nx>length</span><span class=o>=</span><span class=mi>4</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>arr</span><span class=p>.</span><span class=nx>join</span><span class=p>(</span><span class=s2>&#34;&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=模糊查找>模糊查找</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>&lt;input <span class=nv>type</span><span class=o>=</span><span class=s2>&#34;text&#34;</span> <span class=nv>id</span><span class=o>=</span><span class=s2>&#34;input&#34;</span>&gt;
+</span></span><span class=line><span class=cl>&lt;ul <span class=nv>id</span><span class=o>=</span><span class=s2>&#34;ul&#34;</span>&gt;
+</span></span><span class=line><span class=cl>&lt;/ul&gt;
+</span></span><span class=line><span class=cl>var <span class=nv>arr</span><span class=o>=[</span>
+</span></span><span class=line><span class=cl>    <span class=o>{</span>id:1001,name:<span class=s2>&#34;计算器&#34;</span>,price:26<span class=o>}</span>,
+</span></span><span class=line><span class=cl>    <span class=o>{</span>id:1002,name:<span class=s2>&#34;计算机&#34;</span>,price:26<span class=o>}</span>,
+</span></span><span class=line><span class=cl>    <span class=o>{</span>id:1003,name:<span class=s2>&#34;飞机&#34;</span>,price:26<span class=o>}</span>,
+</span></span><span class=line><span class=cl>    <span class=o>{</span>id:1004,name:<span class=s2>&#34;飞行器&#34;</span>,price:26<span class=o>}</span>,
+</span></span><span class=line><span class=cl>    <span class=o>{</span>id:1005,name:<span class=s2>&#34;算盘&#34;</span>,price:26<span class=o>}</span>,
+</span></span><span class=line><span class=cl>    <span class=o>{</span>id:1006,name:<span class=s2>&#34;电器&#34;</span>,price:26<span class=o>}</span>,
+</span></span><span class=line><span class=cl>    <span class=o>{</span>id:1007,name:<span class=s2>&#34;电视机&#34;</span>,price:26<span class=o>}</span>,
+</span></span><span class=line><span class=cl><span class=o>]</span>
+</span></span><span class=line><span class=cl>var <span class=nv>input</span><span class=o>=</span>document.getElementById<span class=o>(</span><span class=s2>&#34;input&#34;</span><span class=o>)</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>var <span class=nv>ul</span><span class=o>=</span>document.getElentById<span class=o>(</span><span class=s2>&#34;ul&#34;</span><span class=o>)</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>input.onput<span class=o>=</span><span class=k>function</span><span class=o>(){</span>
+</span></span><span class=line><span class=cl>	ul.innerHtml<span class=o>=</span>arr.reduce<span class=o>(</span><span class=k>function</span><span class=o>(</span>value,item<span class=o>){</span>
+</span></span><span class=line><span class=cl>		<span class=k>if</span><span class=o>(</span>item.name.indexOf<span class=o>(</span>input.value<span class=o>)</span>&gt;-1<span class=o>)</span> <span class=nv>value</span><span class=o>+=</span><span class=s2>&#34;&lt;li&gt;&#34;</span>+item.name+<span class=s2>&#34;&lt;/li&gt;&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>		<span class=k>return</span> value<span class=p>;</span>
+</span></span><span class=line><span class=cl>	<span class=o>}</span>,<span class=s2>&#34;&#34;</span><span class=o>)</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span></code></pre></td></tr></table></div></div></div><div class=post-copyright><p class=copyright-item><span class=item-title>Author</span>
+<span class=item-content>Ankang</span></p><p class=copyright-item><span class=item-title>LastMod</span>
+<span class=item-content>2021-03-24</span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/JavaScript/>JavaScript</a></div><nav class=post-nav><a class=prev href=/post/BOM%E4%B8%8EDOM/><i class="iconfont icon-left"></i>
+<span class="prev-text nav-default">BOM与DOM</span>
+<span class="prev-text nav-mobile">Prev</span></a>
+<a class=next href=/post/%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E9%87%8D%E6%9E%84%E4%B8%8E%E5%BA%94%E7%94%A8/><span class="next-text nav-default">数组常用方法重构与应用</span>
+<span class="next-text nav-mobile">Next</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:ankangz98@gmail.com class="iconfont icon-email" title=email></a>
+<a href=https://github.com/an-kang class="iconfont icon-github" title=github></a>
+<a href=http://localhost:1313/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><div class=busuanzi-footer><span id=busuanzi_container_site_pv>PV: <span id=busuanzi_value_site_pv><img src=/img/spinner.svg alt=spinner.svg></span></span>
+<span class=division>|</span>
+<span id=busuanzi_container_site_uv>UV: <span id=busuanzi_value_site_uv><img src=/img/spinner.svg alt=spinner.svg></span></span></div><span class=copyright-year>&copy;
+2017 -
+2022<span class=heart><i class="iconfont icon-heart"></i></span><span>Ankang</span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
+<script type=text/javascript src=/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js></script></body></html>

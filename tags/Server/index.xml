@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Server on Ankang</title><link>http://localhost:1313/tags/Server/</link><description>Recent content in Server on Ankang</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 17 May 2021 19:24:59 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/Server/index.xml" rel="self" type="application/rss+xml"/><item><title>NodeJS相关/Web服务器</title><link>http://localhost:1313/post/NodeJS%E7%9B%B8%E5%85%B3-Web%E6%9C%8D%E5%8A%A1%E5%99%A8/</link><pubDate>Mon, 17 May 2021 19:24:59 +0000</pubDate><guid>http://localhost:1313/post/NodeJS%E7%9B%B8%E5%85%B3-Web%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid><description>&lt;h2 id="nodejs">Node.js&lt;/h2>
+&lt;p>事件驱动异步I/O单进程的服务端JS环境，具有事件循环。浏览器是JS的前端运行环境；Node JS是JS的后端运行环境，在后端中运行无法调用DOM和BOM等浏览器内置API。&lt;/p>
+&lt;h3 id="模块化">模块化&lt;/h3>
+&lt;p>NodeJs基于Commonjs模块化开发的规范&lt;/p>
+&lt;p>导出：exports/module.exports&lt;/p>
+&lt;ul>
+&lt;li>共同点：导出模块&lt;/li>
+&lt;li>不同点：module.exports它可以导出对象，而exports不可以&lt;/li>
+&lt;li>exports = module.exports 引用 本质：原型指向&lt;/li>
+&lt;/ul>
+&lt;p>导入：require(路径)&lt;/p></description></item><item><title>cookie/localstorage</title><link>http://localhost:1313/post/cookie-localstorage/</link><pubDate>Fri, 16 Apr 2021 10:04:23 +0000</pubDate><guid>http://localhost:1313/post/cookie-localstorage/</guid><description>&lt;h2 id="cookie">cookie:&lt;/h2>
+&lt;p>会话跟踪技术&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>会默认在请求头里面携带&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;h5 id="前端cookie">前端cookie&lt;/h5>
+&lt;/li>
+&lt;li>
+&lt;p>一套协议域名端口对应一套cookie&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>存储在当前浏览器独立创建的本地文件&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>cookie里面存储的信息是纯文本形式的&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>cookie里面存储信息最大4kb，最大条数为50&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>时效性：默认 session&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>cookie是必须同域名，同协议，同端口的页面才可以访问&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>浏览器通过 协议+域名+端口作为key值，cookie作为value，实现映射结构的数据存储&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>cookie是有安全限制; (很像作用域 / 以文件夹为单位的父子级包裹关系，决定了cookie的可访问性)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>cookie的所有特征都是用字符串去描述的&lt;/p>
+&lt;/li>
+&lt;/ul></description></item><item><title>CORS跨域/async-await/fetch</title><link>http://localhost:1313/post/CORS%E8%B7%A8%E5%9F%9F-async-await-fetch/</link><pubDate>Thu, 15 Apr 2021 09:58:12 +0000</pubDate><guid>http://localhost:1313/post/CORS%E8%B7%A8%E5%9F%9F-async-await-fetch/</guid><description>&lt;h2 id="cors跨域">CORS跨域：&lt;/h2>
+&lt;ul>
+&lt;li>CORS跨域是后端响应头的配置&lt;/li>
+&lt;li>CORS跨域主要是服务端配置的&lt;/li>
+&lt;li>在后端语言之中配置&lt;/li>
+&lt;/ul>
+&lt;h2 id="promise">promise:&lt;/h2>
+&lt;h5 id="异步">异步：&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>主要用来解决异步回调地狱问题&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Promise:承诺&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;h5 id="状态">状态：&lt;/h5>
+&lt;ul>
+&lt;li>pendding：正在进行；&lt;/li>
+&lt;li>fulfilled：成功履行承诺&lt;/li>
+&lt;li>rejected：没有遵守承诺&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>承诺的状态一旦发生改变，那么这个状态不可逆&lt;/p>
+&lt;/li>
+&lt;/ul></description></item><item><title>Promise.then/JSONP跨域</title><link>http://localhost:1313/post/Promise-then-JSONP%E8%B7%A8%E5%9F%9F/</link><pubDate>Wed, 14 Apr 2021 09:49:27 +0000</pubDate><guid>http://localhost:1313/post/Promise-then-JSONP%E8%B7%A8%E5%9F%9F/</guid><description>&lt;h2 id="web-worker">Web Worker&lt;/h2>
+&lt;p>同步实现优先于异步实现&lt;/p>
+&lt;ul>
+&lt;li>异步队列中如果先执行完会等待同步完成&lt;/li>
+&lt;li>子元素和父元素的侦听顺序&lt;/li>
+&lt;/ul>
+&lt;p>Promise.then&lt;/p>
+&lt;p>GET和POST区别&lt;/p>
+&lt;p>JSONP跨域&lt;/p></description></item><item><title>前后端分离/Ajax</title><link>http://localhost:1313/post/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-Ajax/</link><pubDate>Tue, 13 Apr 2021 22:18:44 +0000</pubDate><guid>http://localhost:1313/post/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-Ajax/</guid><description>&lt;ol>
+&lt;li>前后端分离技术&lt;/li>
+&lt;li>PHP与MySQL数据库&lt;/li>
+&lt;li>Ajax&amp;ndash;异步&lt;/li>
+&lt;/ol>
+&lt;h2 id="http协议补充---请求携带数据">http协议补充 - 请求携带数据&lt;/h2>
+&lt;ul>
+&lt;li>GET : GET 请求的数据全部放在url路径之中 ;&lt;/li>
+&lt;li>路径后方可以拼接php数据
+&lt;ul>
+&lt;li>url?key=value&amp;amp;key2=value&lt;/li>
+&lt;li>使用GET请求携带的数据, 以key为键，以value为值 以组的形式进行发送;&lt;/li>
+&lt;li>每条数据都以key=value形式进行分割;&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>我们通常把传递数据的key值称之为 &lt;code>字段&lt;/code>;&lt;/li>
+&lt;/ul></description></item><item><title>服务器端与PHP</title><link>http://localhost:1313/post/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E4%B8%8EPHP/</link><pubDate>Mon, 12 Apr 2021 20:18:30 +0000</pubDate><guid>http://localhost:1313/post/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E4%B8%8EPHP/</guid><description>&lt;ol>
+&lt;li>服务器基础&lt;/li>
+&lt;li>HTTP协议&lt;/li>
+&lt;li>PHP&lt;/li>
+&lt;/ol></description></item></channel></rss>

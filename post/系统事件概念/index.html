@@ -1,0 +1,236 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>系统事件概念 - Ankang</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="Ankang"><meta name=description content=" 系统事件-Event对象、MouseEvent对象 图片预加载 拖拽 "><meta name=keywords content="Hugo,theme,even"><meta name=generator content="Hugo 0.100.1 with theme even"><link rel=canonical href=http://localhost:1313/post/%E7%B3%BB%E7%BB%9F%E4%BA%8B%E4%BB%B6%E6%A6%82%E5%BF%B5/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
+<link href=/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="系统事件概念"><meta property="og:description" content="
+系统事件-Event对象、MouseEvent对象
+图片预加载
+拖拽
+"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost:1313/post/%E7%B3%BB%E7%BB%9F%E4%BA%8B%E4%BB%B6%E6%A6%82%E5%BF%B5/"><meta property="article:section" content="post"><meta property="article:published_time" content="2021-03-30T22:35:55+00:00"><meta property="article:modified_time" content="2021-03-30T22:35:55+00:00"><meta itemprop=name content="系统事件概念"><meta itemprop=description content="
+系统事件-Event对象、MouseEvent对象
+图片预加载
+拖拽
+"><meta itemprop=datePublished content="2021-03-30T22:35:55+00:00"><meta itemprop=dateModified content="2021-03-30T22:35:55+00:00"><meta itemprop=wordCount content="1608"><meta itemprop=keywords content="JavaScript,事件,"><meta name=twitter:card content="summary"><meta name=twitter:title content="系统事件概念"><meta name=twitter:description content="
+系统事件-Event对象、MouseEvent对象
+图片预加载
+拖拽
+"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>Ankang</a></div><div class=mobile-navbar-icon><span></span>
+<span></span>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/about/><li class=mobile-menu-item>About</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>Ankang</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/about/>About</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>系统事件概念</h1><div class=post-meta><span class=post-time>2021-03-30</span>
+<span class=more-meta>1608 words</span>
+<span class=more-meta>4 mins</span></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>Contents</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><ul><li><ul><li><a href=#事件的区别>事件的区别：</a></li><li><a href=#event对象>Event对象：</a></li><li><a href=#mouseevent对象>MouseEvent对象：</a></li><li><a href=#拖拽>拖拽</a></li></ul></li></ul></li></ul></nav></div></div><div class=post-content><ol><li>系统事件-Event对象、MouseEvent对象</li><li>图片预加载</li><li>拖拽</li></ol><h3 id=事件的区别>事件的区别：</h3><ul><li><p>事件写法的不同：</p><ul><li><p>在标签中写只能添加一个onclick事件函数，早期的事件会自动设置一个event全局变量，用于事件的处理，同步执行时不会丢失，异步执行延迟会消除。无冒泡。</p></li><li><p>DOM对象添加方法，不再使用全局变量e，只能执行一个函数。有冒泡功能，没有捕获功能。不支持自定义事件这样写大多数都会写出匿名函数。大多数的回调地狱都是在事件函数中发生的，原因是匿名函数的使用。</p><blockquote><p>e=e || window.event;</p><p>bn.onclick=null;//清除事件</p></blockquote></li><li><p>侦听事件类型：一般这种事件不写匿名函数，写命名函数，适合于函数式编程。这种事件包括捕获。冒泡阶段和阻止，还包括自带事件event对象，设置是否执行一次，支持自定义事件，IE8及以下不支持。onclick等所有系统事件===>去掉on。可以执行多个函数</p><blockquote><p>bn.removeEventListener(“事件”,函数名)//删除事件</p></blockquote></li><li><p>IE11以下支持，IE11及以上不支持，没有捕获阶段触发</p><blockquote><p>bn.attachEvent(&ldquo;on事件&rdquo;,函数名);</p><p>bn.detachEvent(&ldquo;on事件&rdquo;,函数名);</p></blockquote></li></ul></li></ul><h3 id=event对象>Event对象：</h3><ul><li><p>表单应用事件：</p></li><li><p>submit和reset</p></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>from</span><span class=o>=</span><span class=nb>document</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s2>&#34;form&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>form</span><span class=p>.</span><span class=nx>addEventListener</span><span class=p>(</span><span class=s2>&#34;submit&#34;</span><span class=p>,</span><span class=nx>submitHanlder</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>form</span><span class=p>.</span><span class=nx>addEventListener</span><span class=p>(</span><span class=s2>&#34;reset&#34;</span><span class=p>,</span><span class=nx>submitHanlder</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>submitHanlder</span><span class=p>(</span><span class=nx>e</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//阻止表单跳转 submit
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=c1>//阻止表单重置 reset
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>e</span><span class=p>.</span><span class=nx>preventDefault</span><span class=p>()</span>  <span class=nx>阻止默认事件行为</span>
+</span></span><span class=line><span class=cl>    <span class=nx>e</span><span class=p>.</span><span class=nx>returnValue</span><span class=o>=</span><span class=kc>false</span>  <span class=nx>返回值</span><span class=o>=</span><span class=kc>false</span><span class=c1>//兼容
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><p>select：针对input或者textArea的</p></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>//input.selecttionStart//输入框中的选中开始位置下标
+</span></span></span><span class=line><span class=cl><span class=c1>//input.selecttionEnd//输入框中的选中结束位置下标
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>input</span><span class=o>=</span><span class=nb>document</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s2>&#34;input&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>input</span><span class=p>.</span><span class=nx>addEventListener</span><span class=p>(</span><span class=s2>&#34;select&#34;</span><span class=p>,</span><span class=nx>selectHandler</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>selectHandler</span><span class=p>(</span><span class=nx>e</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>e</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// console.log(input.selectionStart,input.selectionEnd)
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>input</span><span class=p>.</span><span class=nx>value</span><span class=o>=</span><span class=nx>input</span><span class=p>.</span><span class=nx>value</span><span class=p>.</span><span class=nx>slice</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=nx>input</span><span class=p>.</span><span class=nx>selectionStart</span><span class=p>)</span><span class=o>+</span>
+</span></span><span class=line><span class=cl>    <span class=nx>input</span><span class=p>.</span><span class=nx>value</span><span class=p>.</span><span class=nx>slice</span><span class=p>(</span><span class=nx>input</span><span class=p>.</span><span class=nx>selectionStart</span><span class=p>,</span><span class=nx>input</span><span class=p>.</span><span class=nx>selectionEnd</span><span class=p>).</span><span class=nx>toUpperCase</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=o>+</span><span class=nx>input</span><span class=p>.</span><span class=nx>value</span><span class=p>.</span><span class=nx>slice</span><span class=p>(</span><span class=nx>input</span><span class=p>.</span><span class=nx>selectionEnd</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//将文本输入框中的选中单词变成大写。
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><p>change：可以针对表单元素,也可以针对form表单</p></li><li><p>失去焦点时，原value的值发生改变时，触发</p></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>//针对表单时，判断整个表单的修改
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>var</span> <span class=nx>form</span><span class=o>=</span><span class=nb>document</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s2>&#34;form&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>form</span><span class=p>.</span><span class=nx>addEventListener</span><span class=p>(</span><span class=s2>&#34;change&#34;</span><span class=p>,</span><span class=nx>changeHandler</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>changeHandler</span><span class=p>(</span><span class=nx>e</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>e</span><span class=p>.</span><span class=nx>target</span><span class=p>,</span><span class=nx>e</span><span class=p>.</span><span class=nx>target</span><span class=p>.</span><span class=nx>value</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><p>resize 更改浏览器中文档大小 &ndash;只针对window侦听</p></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>//em就是父容器的字体大小
+</span></span></span><span class=line><span class=cl><span class=c1>//rem相对于根标签的字体大小（html）
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>resizeHandler</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=nb>window</span><span class=p>.</span><span class=nx>addEventListener</span><span class=p>(</span><span class=s2>&#34;resize&#34;</span><span class=p>,</span><span class=nx>resizeHandler</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>resizeHandler</span><span class=p>(</span><span class=nx>e</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// console.log(screen.width)
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nb>document</span><span class=p>.</span><span class=nx>documentElement</span><span class=p>.</span><span class=nx>style</span><span class=p>.</span><span class=nx>fontSize</span><span class=o>=</span><span class=nb>document</span><span class=p>.</span><span class=nx>body</span><span class=p>.</span><span class=nx>clientWidth</span><span class=o>/</span><span class=nx>screen</span><span class=p>.</span><span class=nx>width</span><span class=o>*</span><span class=mi>100</span><span class=o>+</span><span class=s2>&#34;px&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><p>图片的加载需要时间，无法立即获得宽度 <code>offsetWidth</code></p></li><li><p>预加载 <code>load</code>加载完成，滞后性极强</p></li><li><p>图片加载不适用load事件，所以：</p></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>img</span><span class=o>=</span><span class=k>new</span> <span class=nx>Image</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=nx>img</span><span class=p>.</span><span class=nx>addEventListener</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=nx>img</span><span class=p>.</span><span class=nx>src</span><span class=o>=</span><span class=s2>&#34;地址&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>函数</span><span class=p>(</span><span class=nx>e</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>img1</span><span class=o>=</span><span class=nx>img</span><span class=p>.</span><span class=nx>cloneNode</span><span class=p>(</span><span class=kc>false</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nb>document</span><span class=p>.</span><span class=nx>body</span><span class=p>.</span><span class=nx>appendChild</span><span class=p>(</span><span class=nx>img1</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>	<span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>img</span><span class=p>.</span><span class=nx>width</span><span class=p>);</span><span class=c1>//原图的宽高
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>img1</span><span class=p>.</span><span class=nx>style</span><span class=p>.</span><span class=nx>width</span><span class=o>=</span><span class=s2>&#34;600px&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>img</span><span class=p>.</span><span class=nx>width</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//克隆一个图片副本，修改宽高放进容器中，原始图宽高不变。
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><h5 id=图片预加载的几种方式比较及改善><em>图片预加载</em>的几种方式比较及改善</h5></li><li><p>scroll：滚动条，默认自动阻止冒泡，通过事件属性传递值。</p></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>div1</span><span class=p>.</span><span class=nx>addEventListener</span><span class=p>(</span><span class=s2>&#34;scroll&#34;</span><span class=p>,</span><span class=nx>scrollHandler</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nb>window</span><span class=p>.</span><span class=nx>addEventListener</span><span class=p>(</span><span class=s2>&#34;scroll&#34;</span><span class=p>,</span><span class=nx>scrollHandler1</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>scrollHandler</span><span class=p>(</span><span class=nx>e</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>e</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//var evt=new Event(&#34;scroll&#34;);
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=c1>//evt.scrollTop=this.scrollTop;
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=c1>//window.dispatchEvent(evt);//自建事件在触发子元素的滚动事件时抛发，来达到传递数据的效果
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>scrollHandler1</span><span class=p>(</span><span class=nx>e</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=nb>document</span><span class=p>.</span><span class=nx>documentElement</span><span class=p>.</span><span class=nx>scrollTop</span><span class=o>=</span><span class=nx>e</span><span class=p>.</span><span class=nx>scrollTop</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><p>error：加载失败时，触发错误事件。</p></li></ul><h3 id=mouseevent对象>MouseEvent对象：</h3><ul><li><p>按住键盘辅助键点击</p><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>ctrlKey</span>
+</span></span><span class=line><span class=cl><span class=nx>altKey</span>
+</span></span><span class=line><span class=cl><span class=nx>shiftKey</span>
+</span></span><span class=line><span class=cl><span class=nx>metaKey</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul></li><li><p>判断鼠标按键</p><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>button</span>	<span class=mi>0</span> <span class=mi>1</span> <span class=mi>2</span>
+</span></span><span class=line><span class=cl><span class=nx>buttons</span>	<span class=mi>1</span> <span class=mi>4</span> <span class=mi>2</span>
+</span></span><span class=line><span class=cl><span class=nx>which</span>	<span class=mi>1</span> <span class=mi>2</span> <span class=mi>3</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul></li><li><p>坐标</p><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>x</span><span class=o>:</span>
+</span></span><span class=line><span class=cl><span class=nx>y</span><span class=o>:</span>
+</span></span><span class=line><span class=cl><span class=nx>clientX</span><span class=o>:</span>
+</span></span><span class=line><span class=cl><span class=nx>clientY</span><span class=o>:</span>
+</span></span><span class=line><span class=cl><span class=c1>//鼠标相对视口距离
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>pageX</span><span class=o>:</span>
+</span></span><span class=line><span class=cl><span class=nx>pageY</span><span class=o>:</span>
+</span></span><span class=line><span class=cl><span class=c1>//相对页面顶端位置/绝对坐标位置
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>layerX</span><span class=o>:</span>
+</span></span><span class=line><span class=cl><span class=nx>layerY</span><span class=o>:</span>
+</span></span><span class=line><span class=cl><span class=c1>//相对e.target左上角的坐标，如果目标元素定位了，和offset值相同；如果没有定位，offset不变，layer相对父元素的左上角位置。
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>offsetX</span><span class=o>:</span>
+</span></span><span class=line><span class=cl><span class=nx>offsetY</span><span class=o>:</span>
+</span></span><span class=line><span class=cl><span class=c1>//相对e.target左上角的坐标
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>movementX</span><span class=o>:</span>
+</span></span><span class=line><span class=cl><span class=nx>movementY</span><span class=o>:</span>
+</span></span><span class=line><span class=cl><span class=c1>//用于Mousemove事件，相对于上次移动距离。==汽车图片
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>screenX</span><span class=o>:</span>
+</span></span><span class=line><span class=cl><span class=nx>screenY</span><span class=o>:</span>
+</span></span><span class=line><span class=cl><span class=c1>//绝对于屏幕左上角
+</span></span></span></code></pre></td></tr></table></div></div></li></ul></li><li><p>鼠标事件：</p><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>click</span>
+</span></span><span class=line><span class=cl><span class=nx>dbclick</span>
+</span></span><span class=line><span class=cl><span class=nx>mousedown</span>
+</span></span><span class=line><span class=cl><span class=nx>mouseup</span>
+</span></span><span class=line><span class=cl><span class=nx>mousemove</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>mouseover</span>
+</span></span><span class=line><span class=cl><span class=nx>mousenter</span>
+</span></span><span class=line><span class=cl><span class=nx>mouseout</span>
+</span></span><span class=line><span class=cl><span class=nx>mouseleave</span>
+</span></span><span class=line><span class=cl><span class=c1>//mousenter和mouseleave不会因为进入子元素而抛发事件
+</span></span></span><span class=line><span class=cl><span class=c1>//mouseover和mouseout会因为子元素而抛发事件
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>contextmenu</span>
+</span></span><span class=line><span class=cl><span class=c1>//如果是contextmenu，会呼出右键菜单
+</span></span></span><span class=line><span class=cl><span class=c1>//e.preventDefault()阻止呼出菜单
+</span></span></span></code></pre></td></tr></table></div></div></li></ul></li></ul><h3 id=拖拽>拖拽</h3></div><div class=post-copyright><p class=copyright-item><span class=item-title>Author</span>
+<span class=item-content>Ankang</span></p><p class=copyright-item><span class=item-title>LastMod</span>
+<span class=item-content>2021-03-30</span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/JavaScript/>JavaScript</a>
+<a href=/tags/%E4%BA%8B%E4%BB%B6/>事件</a></div><nav class=post-nav><a class=prev href=/post/%E9%94%AE%E7%9B%98-%E8%BE%93%E5%85%A5%E4%BA%8B%E4%BB%B6%E4%B8%8E%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%A6%82%E5%BF%B5/><i class="iconfont icon-left"></i>
+<span class="prev-text nav-default">键盘/输入事件与正则表达式概念</span>
+<span class="prev-text nav-mobile">Prev</span></a>
+<a class=next href=/post/DOM%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E4%B8%8E%E4%BA%8B%E4%BB%B6%E5%9F%BA%E7%A1%80/><span class="next-text nav-default">DOM对象属性与事件基础</span>
+<span class="next-text nav-mobile">Next</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:ankangz98@gmail.com class="iconfont icon-email" title=email></a>
+<a href=https://github.com/an-kang class="iconfont icon-github" title=github></a>
+<a href=http://localhost:1313/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><div class=busuanzi-footer><span id=busuanzi_container_site_pv>PV: <span id=busuanzi_value_site_pv><img src=/img/spinner.svg alt=spinner.svg></span></span>
+<span class=division>|</span>
+<span id=busuanzi_container_site_uv>UV: <span id=busuanzi_value_site_uv><img src=/img/spinner.svg alt=spinner.svg></span></span></div><span class=copyright-year>&copy;
+2017 -
+2022<span class=heart><i class="iconfont icon-heart"></i></span><span>Ankang</span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
+<script type=text/javascript src=/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js></script></body></html>

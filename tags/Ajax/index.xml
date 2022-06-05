@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ajax on Ankang</title><link>http://localhost:1313/tags/Ajax/</link><description>Recent content in Ajax on Ankang</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 15 Apr 2021 09:58:12 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/Ajax/index.xml" rel="self" type="application/rss+xml"/><item><title>CORS跨域/async-await/fetch</title><link>http://localhost:1313/post/CORS%E8%B7%A8%E5%9F%9F-async-await-fetch/</link><pubDate>Thu, 15 Apr 2021 09:58:12 +0000</pubDate><guid>http://localhost:1313/post/CORS%E8%B7%A8%E5%9F%9F-async-await-fetch/</guid><description>&lt;h2 id="cors跨域">CORS跨域：&lt;/h2>
+&lt;ul>
+&lt;li>CORS跨域是后端响应头的配置&lt;/li>
+&lt;li>CORS跨域主要是服务端配置的&lt;/li>
+&lt;li>在后端语言之中配置&lt;/li>
+&lt;/ul>
+&lt;h2 id="promise">promise:&lt;/h2>
+&lt;h5 id="异步">异步：&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>主要用来解决异步回调地狱问题&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Promise:承诺&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;h5 id="状态">状态：&lt;/h5>
+&lt;ul>
+&lt;li>pendding：正在进行；&lt;/li>
+&lt;li>fulfilled：成功履行承诺&lt;/li>
+&lt;li>rejected：没有遵守承诺&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>承诺的状态一旦发生改变，那么这个状态不可逆&lt;/p>
+&lt;/li>
+&lt;/ul></description></item><item><title>前后端分离/Ajax</title><link>http://localhost:1313/post/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-Ajax/</link><pubDate>Tue, 13 Apr 2021 22:18:44 +0000</pubDate><guid>http://localhost:1313/post/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-Ajax/</guid><description>&lt;ol>
+&lt;li>前后端分离技术&lt;/li>
+&lt;li>PHP与MySQL数据库&lt;/li>
+&lt;li>Ajax&amp;ndash;异步&lt;/li>
+&lt;/ol>
+&lt;h2 id="http协议补充---请求携带数据">http协议补充 - 请求携带数据&lt;/h2>
+&lt;ul>
+&lt;li>GET : GET 请求的数据全部放在url路径之中 ;&lt;/li>
+&lt;li>路径后方可以拼接php数据
+&lt;ul>
+&lt;li>url?key=value&amp;amp;key2=value&lt;/li>
+&lt;li>使用GET请求携带的数据, 以key为键，以value为值 以组的形式进行发送;&lt;/li>
+&lt;li>每条数据都以key=value形式进行分割;&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>我们通常把传递数据的key值称之为 &lt;code>字段&lt;/code>;&lt;/li>
+&lt;/ul></description></item></channel></rss>

@@ -1,0 +1,143 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>类/原型与原型链 - Ankang</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="Ankang"><meta name=description content="类 构造函数和普通函数 相同点：
+定义的方式，都是通过function来定义
+执行时参数传递方式一样
+都会形成私有上下文，都有私有变量
+不同点：
+构造函数执行通过new来执行，在执行时浏览器会在当前上下文中创建一个实例对象，并且会让函数中的this指向到这个实例对象中，而普通函数中的this指向为window。
+函数如过没有返回值或返回值为基本类型值，则返回undefined或你指定的返回值;如果是构造函数，它没有返回值，则返回当前的实例对象，如果有返回值，返回值是基本类型则也是返回当前对象，当返回的是引用类型，则返回你所指定的类型。
+构造函数：箭头函数没有this，不能当构造函数，箭头函数没有prototype；ES6简写没有prototype；
+"><meta name=keywords content="Hugo,theme,even"><meta name=generator content="Hugo 0.100.1 with theme even"><link rel=canonical href=http://localhost:1313/post/%E7%B1%BB-%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
+<link href=/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="类/原型与原型链"><meta property="og:description" content="类
+构造函数和普通函数
+相同点：
+定义的方式，都是通过function来定义
+执行时参数传递方式一样
+都会形成私有上下文，都有私有变量
+不同点：
+构造函数执行通过new来执行，在执行时浏览器会在当前上下文中创建一个实例对象，并且会让函数中的this指向到这个实例对象中，而普通函数中的this指向为window。
+函数如过没有返回值或返回值为基本类型值，则返回undefined或你指定的返回值;如果是构造函数，它没有返回值，则返回当前的实例对象，如果有返回值，返回值是基本类型则也是返回当前对象，当返回的是引用类型，则返回你所指定的类型。
+构造函数：箭头函数没有this，不能当构造函数，箭头函数没有prototype；ES6简写没有prototype；"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost:1313/post/%E7%B1%BB-%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/"><meta property="article:section" content="post"><meta property="article:published_time" content="2021-04-25T09:03:29+00:00"><meta property="article:modified_time" content="2021-04-25T09:03:29+00:00"><meta itemprop=name content="类/原型与原型链"><meta itemprop=description content="类
+构造函数和普通函数
+相同点：
+定义的方式，都是通过function来定义
+执行时参数传递方式一样
+都会形成私有上下文，都有私有变量
+不同点：
+构造函数执行通过new来执行，在执行时浏览器会在当前上下文中创建一个实例对象，并且会让函数中的this指向到这个实例对象中，而普通函数中的this指向为window。
+函数如过没有返回值或返回值为基本类型值，则返回undefined或你指定的返回值;如果是构造函数，它没有返回值，则返回当前的实例对象，如果有返回值，返回值是基本类型则也是返回当前对象，当返回的是引用类型，则返回你所指定的类型。
+构造函数：箭头函数没有this，不能当构造函数，箭头函数没有prototype；ES6简写没有prototype；"><meta itemprop=datePublished content="2021-04-25T09:03:29+00:00"><meta itemprop=dateModified content="2021-04-25T09:03:29+00:00"><meta itemprop=wordCount content="1714"><meta itemprop=keywords content="JavaScript,ES6,"><meta name=twitter:card content="summary"><meta name=twitter:title content="类/原型与原型链"><meta name=twitter:description content="类
+构造函数和普通函数
+相同点：
+定义的方式，都是通过function来定义
+执行时参数传递方式一样
+都会形成私有上下文，都有私有变量
+不同点：
+构造函数执行通过new来执行，在执行时浏览器会在当前上下文中创建一个实例对象，并且会让函数中的this指向到这个实例对象中，而普通函数中的this指向为window。
+函数如过没有返回值或返回值为基本类型值，则返回undefined或你指定的返回值;如果是构造函数，它没有返回值，则返回当前的实例对象，如果有返回值，返回值是基本类型则也是返回当前对象，当返回的是引用类型，则返回你所指定的类型。
+构造函数：箭头函数没有this，不能当构造函数，箭头函数没有prototype；ES6简写没有prototype；"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>Ankang</a></div><div class=mobile-navbar-icon><span></span>
+<span></span>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/about/><li class=mobile-menu-item>About</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>Ankang</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/about/>About</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>类/原型与原型链</h1><div class=post-meta><span class=post-time>2021-04-25</span>
+<span class=more-meta>1714 words</span>
+<span class=more-meta>4 mins</span></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>Contents</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><ul><li><a href=#类>类</a><ul><li></li></ul></li></ul></li></ul></nav></div></div><div class=post-content><h2 id=类>类</h2><h5 id=构造函数和普通函数>构造函数和普通函数</h5><p>相同点：</p><p>定义的方式，都是通过function来定义</p><p>执行时参数传递方式一样</p><p>都会形成私有上下文，都有私有变量</p><p>不同点：</p><p>构造函数执行通过<code>new</code>来执行，在执行时浏览器会在当前上下文中<strong>创建一个实例对象</strong>，并且会让函数中的<strong>this指向</strong>到这个实例对象中，而普通函数中的this指向为window。</p><p>函数如过没有返回值或返回值为基本类型值，则返回<code>undefined</code>或你指定的返回值;如果是构造函数，它没有返回值，则返回当前的<strong>实例对象</strong>，如果有返回值，返回值是基本类型则也是返回当前对象，当返回的是引用类型，则返回你所指定的类型。</p><p>构造函数：箭头函数没有this，不能当构造函数，箭头函数没有prototype；ES6简写没有prototype；</p><h5 id=原型与原型链>原型与原型链</h5><p>箭头函数没有prototype原型属性；ES6简写没有prototype；</p><p>每一个函数数据类型都自带一个<strong>prototype原型</strong>属性，属性值是一个对象，并且对象中自带一个属性为：<code>constructor</code>，属性值是当前构造函数本身。</p><p>每一个对象数据类型都自带一个<code>__proto__</code>原型链属性，属性值是所属类的<code>prototype</code>原型对象。</p><p>prototype也是一个对象，每一个类new出来的实例对象从prototype原型对象中继承属性；对象中包含 <code>__proto__</code>指向类的原型对象，原型中包含<code>constructor</code>属性，指向构造函数。</p><p><strong>原型链</strong>：在对象的私有属性中查找结果，如果私有中存在就是用私有的（优先级最高），如果不存在，则基于<code>__proto__</code>找所属类prototype上的属性，再找prototype的 <code>__proto__</code>上的属性，直到<code>Object.prototype</code>为止，报错。原型链查找。</p><p><img src=image-1.png alt=image-1></p><p>获取对象的原型方式：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>function</span> <span class=nx>Fn</span><span class=p>(){};</span>
+</span></span><span class=line><span class=cl><span class=nx>Fn</span><span class=p>.</span><span class=nx>prototype</span><span class=p>.</span><span class=nx>a</span> <span class=o>=</span> <span class=kd>function</span> <span class=p>(){};</span>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>o</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Fn</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>Fn</span><span class=p>.</span><span class=nx>prototype</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>o</span><span class=p>.</span><span class=nx>__proto__</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nb>Object</span><span class=p>.</span><span class=nx>getPrototypeOf</span><span class=p>(</span><span class=nx>o</span><span class=p>));</span>
+</span></span></code></pre></td></tr></table></div></div><p><code>Object.create()</code>：会创建一个空对象，基于传入的对象来创建，</p><h5 id=获取与设置原型>获取与设置原型</h5><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>// 设置一个指定的对象的原型
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nb>Object</span><span class=p>.</span><span class=nx>setPrototypeOf</span><span class=p>(</span><span class=nx>对象</span><span class=err>，</span><span class=nx>父对象</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=c1>// 指定对象的原型
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nb>Object</span><span class=p>.</span><span class=nx>getPrototypeOf</span><span class=p>(</span><span class=nx>对象</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nx>child</span> <span class=o>=</span> <span class=p>{};</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nx>parent</span> <span class=o>=</span> <span class=p>{</span> <span class=nx>id</span><span class=o>:</span> <span class=mi>100</span> <span class=p>};</span>
+</span></span><span class=line><span class=cl><span class=c1>// child.__proto__ = parent;//IE不兼容
+</span></span></span><span class=line><span class=cl><span class=c1>// 设置child.__proto__的原型指向到parent
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nb>Object</span><span class=p>.</span><span class=nx>setPrototypeOf</span><span class=p>(</span><span class=nx>child</span><span class=p>,</span> <span class=nx>parent</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><h5 id=原型重定向>原型重定向</h5><p>原型重定向会引发constructor丢失，手动添加constructor属性，是可以通过for in枚举出来的，默认这个属性是不可以的。</p><p>设置对象属性不可枚举</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>// 给对象添加一个属性，并且给属性添加一些描述, 不可枚举
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nb>Object</span><span class=p>.</span><span class=nx>defineProperty</span><span class=p>(</span><span class=nx>Fn</span><span class=p>.</span><span class=nx>prototype</span><span class=p>,</span> <span class=s1>&#39;constructor&#39;</span><span class=p>,</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// 指定值
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>value</span><span class=o>:</span> <span class=nx>Fn</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// 不可枚举
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>enumerable</span><span class=o>:</span> <span class=kc>false</span>
+</span></span><span class=line><span class=cl><span class=p>})</span>
+</span></span><span class=line><span class=cl><span class=c1>// 如果你要用prototype重定向，推荐写法
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nb>Object</span><span class=p>.</span><span class=nx>assign</span><span class=p>(</span><span class=nx>Fn</span><span class=p>.</span><span class=nx>prototype</span><span class=p>,</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>getA</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s1>&#39;getA&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=nx>getB</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s1>&#39;getB&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>})</span>
+</span></span></code></pre></td></tr></table></div></div><h5 id=原型检测>原型检测</h5><p><code>instanceof</code> 检测构造函数的 prototype 属性是否出现在某个实例对象的原型链上，只要能找到则为真，检查对象是否属于某个类；使用<code>isPrototypeOf</code>检测一个对象是否是另一个对象的原型链中；</p><p>在ES6以后，先查找当前对象是否有Symbol，通过 <code>Symbol.hasInstance</code>方法，把要比较的对象放到此方法中，返回true/false。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>let</span> <span class=nx>arr</span> <span class=o>=</span> <span class=p>[</span><span class=mi>1</span><span class=p>,</span> <span class=mi>2</span><span class=p>,</span> <span class=mi>3</span><span class=p>]</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>myInstanceof</span><span class=p>(</span><span class=nb>Array</span><span class=p>,</span> <span class=nx>arr</span><span class=p>))</span>
+</span></span><span class=line><span class=cl><span class=c1>// 封装，只适用于es6之后
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>function</span> <span class=nx>myInstanceof</span><span class=p>(</span><span class=nx>FC</span><span class=p>,</span> <span class=nx>obj</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// 在类中查找是否存在 Symbol.hasInstance方法
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=kd>let</span> <span class=nx>ins</span> <span class=o>=</span> <span class=nx>FC</span><span class=p>[</span><span class=nx>Symbol</span><span class=p>.</span><span class=nx>hasInstance</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=nx>ins</span> <span class=o>&amp;&amp;</span> <span class=k>typeof</span> <span class=nx>ins</span> <span class=o>===</span> <span class=s1>&#39;function&#39;</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=c1>// 调用
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=k>return</span> <span class=nx>ins</span><span class=p>.</span><span class=nx>call</span><span class=p>(</span><span class=nx>FC</span><span class=p>,</span> <span class=nx>obj</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h5 id=原型扩展方法>原型扩展方法</h5><p>可以实现链式写法、限定调取方法的类型，必须是指定类型的实例</p><h5 id=继承>继承</h5><p><strong>封装</strong>：类也是一个函数,把实现一个功能的代码进行封装，以此实现“低耦合高内聚”。</p><p><strong>多态</strong>：重写： 子类重写父类上的方法（伴随着继承运行的）； 重载： 相同的方法，由于参数或者返回值不同，具备了不同的功能（js中不具备严格意义上的重载）。</p><p><strong>继承</strong>： 子类继承父类中的方法和属性。</p><p><strong>方式</strong>：</p><p>原型继承 (让子类的原型 = 父类实例)、call继承（只能继承父类中私有的，不能继承父类中公共的）、寄生组合式继承（call继承 + 原型继承）、混合继承（间接实现多继承）</p><p>原型继承：把父类中的私有方法，都在子类中变成公有的，让子类的prototype = 父类。</p><p>call/apply继承：把父类当普通函数执行，所以prototype丢失，但是让this指向还要指向到当前的对象中。</p></div><div class=post-copyright><p class=copyright-item><span class=item-title>Author</span>
+<span class=item-content>Ankang</span></p><p class=copyright-item><span class=item-title>LastMod</span>
+<span class=item-content>2021-04-25</span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/JavaScript/>JavaScript</a>
+<a href=/tags/ES6/>ES6</a></div><nav class=post-nav><a class=prev href=/post/new-call-bind-instanceof%E7%9A%84%E5%AE%9E%E7%8E%B0%E4%B8%8E%E4%BB%A3%E7%90%86/><i class="iconfont icon-left"></i>
+<span class="prev-text nav-default">new/call/bind/instanceof的实现与代理</span>
+<span class="prev-text nav-mobile">Prev</span></a>
+<a class=next href=/post/%E8%8A%82%E6%B5%81-%E9%98%B2%E6%8A%96%E4%B8%8E%E5%AF%B9%E8%B1%A1/><span class="next-text nav-default">节流/防抖与对象</span>
+<span class="next-text nav-mobile">Next</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:ankangz98@gmail.com class="iconfont icon-email" title=email></a>
+<a href=https://github.com/an-kang class="iconfont icon-github" title=github></a>
+<a href=http://localhost:1313/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><div class=busuanzi-footer><span id=busuanzi_container_site_pv>PV: <span id=busuanzi_value_site_pv><img src=/img/spinner.svg alt=spinner.svg></span></span>
+<span class=division>|</span>
+<span id=busuanzi_container_site_uv>UV: <span id=busuanzi_value_site_uv><img src=/img/spinner.svg alt=spinner.svg></span></span></div><span class=copyright-year>&copy;
+2017 -
+2022<span class=heart><i class="iconfont icon-heart"></i></span><span>Ankang</span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
+<script type=text/javascript src=/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js></script></body></html>

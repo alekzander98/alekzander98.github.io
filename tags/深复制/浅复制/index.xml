@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>深复制/浅复制 on Ankang</title><link>http://localhost:1313/tags/%E6%B7%B1%E5%A4%8D%E5%88%B6/%E6%B5%85%E5%A4%8D%E5%88%B6/</link><description>Recent content in 深复制/浅复制 on Ankang</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="http://localhost:1313/tags/%E6%B7%B1%E5%A4%8D%E5%88%B6/%E6%B5%85%E5%A4%8D%E5%88%B6/index.xml" rel="self" type="application/rss+xml"/><item><title>Jquery之尺寸/位置/网络请求</title><link>http://localhost:1313/post/Jquery%E4%B9%8B%E5%B0%BA%E5%AF%B8-%E4%BD%8D%E7%BD%AE-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/</link><pubDate>Tue, 20 Apr 2021 19:40:56 +0000</pubDate><guid>http://localhost:1313/post/Jquery%E4%B9%8B%E5%B0%BA%E5%AF%B8-%E4%BD%8D%E7%BD%AE-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/</guid><description>&lt;h2 id="jquery">Jquery：&lt;/h2>
+&lt;h4 id="尺寸">尺寸&lt;/h4>
+&lt;p>获取元素的宽高：width()&amp;ndash;返回数值类型&lt;/p>
+&lt;ul>
+&lt;li>当有参数时（数字）表示设置宽高&lt;/li>
+&lt;/ul>
+&lt;p>包含内边距：&amp;ndash;只能获取，返回数值类型，不能设置&lt;/p>
+&lt;ul>
+&lt;li>innerWidth()&lt;/li>
+&lt;/ul>
+&lt;p>包含边框和宽高（如果参数为true-&amp;gt;表示包括外边距）：&lt;/p>
+&lt;ul>
+&lt;li>outerWidth()&lt;/li>
+&lt;/ul>
+&lt;h4 id="位置">位置&lt;/h4>
+&lt;p>获取、设置元素相对于文档的偏移坐标和父级没有关系，返回为对象{top,left}，值为数值；设置时参数为对象类型&lt;/p>
+&lt;ul>
+&lt;li>offset()&lt;/li>
+&lt;/ul>
+&lt;p>获取、设置元素被卷去的头部和左侧距离&lt;/p>
+&lt;ul>
+&lt;li>scrollTop([数字])/scrollLeft([数字])&lt;/li>
+&lt;/ul></description></item><item><title>JS数组及常用方法</title><link>http://localhost:1313/post/JS%E6%95%B0%E7%BB%84%E5%8F%8A%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/</link><pubDate>Mon, 22 Mar 2021 22:29:25 +0000</pubDate><guid>http://localhost:1313/post/JS%E6%95%B0%E7%BB%84%E5%8F%8A%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/</guid><description>&lt;ol>
+&lt;li>数组相关概念&lt;/li>
+&lt;li>数组常用方法及重构&lt;/li>
+&lt;/ol></description></item><item><title>JavaScript--对象和函数</title><link>http://localhost:1313/post/JavaScript-%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%87%BD%E6%95%B0/</link><pubDate>Thu, 18 Mar 2021 16:44:01 +0000</pubDate><guid>http://localhost:1313/post/JavaScript-%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%87%BD%E6%95%B0/</guid><description>&lt;ol>
+&lt;li>JavaScript对象相关&lt;/li>
+&lt;li>垃圾回收机制、内存泄漏&lt;/li>
+&lt;li>JavaScript函数相关&lt;/li>
+&lt;/ol></description></item></channel></rss>

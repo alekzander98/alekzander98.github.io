@@ -1,0 +1,157 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>原生JavaScript基础 - Ankang</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="Ankang"><meta name=description content=" JavaScript的引入方式 常用方法 基本数据类型 数据类型转换 "><meta name=keywords content="Hugo,theme,even"><meta name=generator content="Hugo 0.100.1 with theme even"><link rel=canonical href=http://localhost:1313/post/21-03-17/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
+<link href=/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="原生JavaScript基础"><meta property="og:description" content="
+
+JavaScript的引入方式
+
+
+常用方法
+
+
+基本数据类型
+
+
+数据类型转换
+
+"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost:1313/post/21-03-17/"><meta property="article:section" content="post"><meta property="article:published_time" content="2021-03-15T07:50:30+00:00"><meta property="article:modified_time" content="2021-03-15T07:50:30+00:00"><meta itemprop=name content="原生JavaScript基础"><meta itemprop=description content="
+
+JavaScript的引入方式
+
+
+常用方法
+
+
+基本数据类型
+
+
+数据类型转换
+
+"><meta itemprop=datePublished content="2021-03-15T07:50:30+00:00"><meta itemprop=dateModified content="2021-03-15T07:50:30+00:00"><meta itemprop=wordCount content="1429"><meta itemprop=keywords content="JavaScript,Study,"><meta name=twitter:card content="summary"><meta name=twitter:title content="原生JavaScript基础"><meta name=twitter:description content="
+
+JavaScript的引入方式
+
+
+常用方法
+
+
+基本数据类型
+
+
+数据类型转换
+
+"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>Ankang</a></div><div class=mobile-navbar-icon><span></span>
+<span></span>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/about/><li class=mobile-menu-item>About</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>Ankang</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/about/>About</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>原生JavaScript基础</h1><div class=post-meta><span class=post-time>2021-03-15</span>
+<span class=more-meta>1429 words</span>
+<span class=more-meta>3 mins</span></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>Contents</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><ul><li><ul><li></li><li><a href=#脚本后的标签调用不到>脚本后的标签调用不到</a></li><li><a href=#标签上的script脚本>标签上的script脚本</a></li><li><a href=#外部引入1>外部引入1</a></li><li><a href=#dom树css树渲染树>DOM树+CSS树===&#187;渲染树</a></li><li><a href=#外部导入2>外部导入2</a></li><li><a href=#注释>注释</a></li><li><a href=#控制台>控制台：</a></li><li><a href=#内存泄漏>内存泄漏</a></li><li><a href=#常用方法-1>常用方法：</a></li><li><a href=#变量>变量：</a></li></ul></li></ul></li></ul></nav></div></div><div class=post-content><ol><li><h5 id=javascript的引入方式>JavaScript的引入方式</h5></li><li><h5 id=常用方法>常用方法</h5></li><li><h5 id=基本数据类型>基本数据类型</h5></li><li><h5 id=数据类型转换>数据类型转换</h5></li></ol><h3 id=脚本后的标签调用不到>脚本后的标签调用不到</h3><h3 id=标签上的script脚本>标签上的script脚本</h3><ul><li><h4 id=html标签中只有事件可以添加js>HTML标签中只有事件可以添加JS</h4></li><li><h4 id=超链接a的href中可以添加javascriptconsolelogabc>超链接a的href中可以添加<code>javascript:console.log(‘abc’);</code></h4><ol><li><h5 id=a-hrefjavascriptconsolelogcde超链接a><code>&lt;a href="javascript:console.log('cde')">超链接&lt;/a></code></h5></li><li><h5 id=a-hrefjavascriptvoid0超链接a><code>&lt;a href="javascript:void(0)">超链接&lt;/a></code></h5></li><li><h5 id=a-href超链接a><code>&lt;a href="#">超链接&lt;/a></code></h5><blockquote><h5 id=void0不会产生浏览记录可以刷新页面>void(0)不会产生浏览记录。#可以刷新页面</h5></blockquote></li></ol></li></ul><h3 id=外部引入1>外部引入1</h3><h4 id=写下head标签内部>写下<code>head</code>标签内部</h4><p><code>&lt;script src="./a.js">&lt;/script></code></p><h5 id=拥塞--同步><strong>拥塞 <em>同步</em></strong></h5><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>script</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;./a.js&#34;</span><span class=p>&gt;&lt;/</span><span class=nt>script</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>script</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;./b.js&#34;</span><span class=p>&gt;&lt;/</span><span class=nt>script</span><span class=p>&gt;</span>
+</span></span></code></pre></td></tr></table></div></div><h6 id=当有多个引入标签时上一个标签加载解析执行完才会引入下一个标签内容>当有多个引入标签时，上一个标签加载解析执行完才会引入下一个标签内容</h6><p><strong>拥塞 <em>异步</em></strong></p><h6 id=当script标签中添加async可以同时加载>当script标签中添加<code>async</code>可以同时加载</h6><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>script</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;./a.js&#34;</span> <span class=na>async</span><span class=p>&gt;&lt;/</span><span class=nt>script</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>script</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;./b.js&#34;</span> <span class=na>async</span> <span class=na>defer</span><span class=p>&gt;&lt;/</span><span class=nt>script</span><span class=p>&gt;</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=defer-在最后执行的代码><code>defer</code> 在最后执行的代码</h4><blockquote><p><em>a.js中想要调用b.js的内容</em></p></blockquote><h3 id=dom树css树渲染树>DOM树+CSS树===&#187;渲染树</h3><h3 id=外部导入2>外部导入2</h3><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>script</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;module&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>	<span class=kr>import</span> <span class=nx>a</span> <span class=nx>from</span> <span class=s2>&#34;./b.js&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;/</span><span class=nt>script</span><span class=p>&gt;</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul><h3 id=注释>注释</h3><ul><li><h5 id=标签中script中都可行注释ctrl块注释altshifta>标签中，script中都可，行注释：<code>Ctrl+/</code>,块注释：<code>alt+shift+A</code>。</h5></li><li><h5 id=混淆代码---块注释>混淆代码： <em>块注释</em></h5></li><li><h5 id=todo高亮注释标识未来需要继续编写的代码><code>TODO</code>高亮注释标识未来需要继续编写的代码。</h5></li></ul><h3 id=控制台>控制台：</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;aaa&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>trace</span><span class=p>(</span><span class=s2>&#34;abc&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>debug</span><span class=p>(</span><span class=s2>&#34;abc&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>error</span><span class=p>(</span><span class=s2>&#34;这里有错误&#34;</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=内存泄漏>内存泄漏</h3><h3 id=常用方法-1>常用方法：</h3><ol><li><h5 id=alter弹出窗><code>alter("弹出窗");</code></h5></li><li><h5 id=corfirm提示框确定取消框><code>corfirm("提示框/确定取消框");</code></h5></li><li><h5 id=prompt今年你多大了18输入弹出框><code>prompt("今年你多大了",18);</code>输入弹出框</h5></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>var</span> <span class=nx>div1</span><span class=o>=</span><span class=nb>document</span><span class=p>.</span><span class=nx>getElementById</span><span class=p>(</span><span class=s2>&#34;div1&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>div1</span><span class=p>.</span><span class=nx>innerHTML</span><span class=o>=</span><span class=s2>&#34;abc&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>div1</span><span class=p>.</span><span class=nx>style</span><span class=p>.</span><span class=nx>color</span><span class=o>=</span><span class=s2>&#34;red&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>div</span><span class=p>.</span><span class=nx>style</span><span class=p>.</span><span class=nx>backgroundColor</span><span class=o>=</span><span class=s2>&#34;blue&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>div1</span><span class=p>.</span><span class=nx>onclick</span><span class=o>=</span><span class=kd>function</span><span class=p>(){</span>
+</span></span><span class=line><span class=cl>    <span class=nx>div1</span><span class=p>.</span><span class=nx>innerHTML</span><span class=o>=</span><span class=s2>&#34;我点击了&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p>设置行内样式</p></blockquote></li></ol><h3 id=变量>变量：</h3><ul><li><h4 id=每个变量都应该先声明>每个变量都应该先声明</h4></li><li><h4 id=变量的名称不能使用数字开头必须使用_或者大小写的英文字母>变量的名称不能使用数字开头，必须使用（$/_）或者大小写的英文字母。</h4></li><li><h4 id=关键词和保留字不能作为变量名>关键词和保留字不能作为变量名。</h4></li><li><h4 id=变量命名>变量命名：</h4><ul><li><h6 id=普通变量名使用小写字母开始驼峰式命名法变量名要有意义>普通变量名使用小写字母开始，<em>驼峰式命名法</em>，变量名要有意义。</h6><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>getLISTCount</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><h6 id=临时变量参数局部变量使用_起头驼峰式命名法>临时变量、参数、局部变量使用_起头，驼峰式命名法</h6><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>_num</span><span class=o>=</span><span class=mi>5</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><h6 id=es5中变量实际上是赋值给了window对象的一个属性不能使用window中的属性或者方法名作为变量名>ES5中变量实际上是赋值给了window对象的一个属性==>不能使用window中的属性或者方法名作为变量名。</h6><blockquote><h6 id=控制台蓝色数值-黑色字符串>控制台蓝色数值 黑色字符串</h6></blockquote></li><li><h6 id=常量es6中才有常量常量只有在第一次定义并且赋值以后不能修改其值>常量:ES6中才有常量，常量只有在第一次定义并且赋值，以后不能修改其值。</h6><h6 id=常量全部大写并且使用_分割单词>常量全部大写，并且使用_分割单词。</h6><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kr>const</span> <span class=nx>EVENT_ID</span><span class=o>=</span><span class=s2>&#34;string&#34;</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul></li><li><h4 id=数据类型>数据类型：</h4><h6 id=弱类型定义的变量类型可变>弱类型：定义的变量类型可变</h6><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>a</span><span class=o>=</span><span class=mi>4</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>a</span><span class=o>=</span><span class=mi>5</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>a</span><span class=o>=</span><span class=s2>&#34;abc&#34;</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div><h6 id=弱类型不需要定义变量的类型可以随意更改这个变量值得数据类型>弱类型不需要定义变量的类型，可以随意更改这个变量值得数据类型。</h6><ol><li><h5 id=字符型>字符型：</h5><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>a</span><span class=o>=</span><span class=s1>&#39;abc&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>a1</span><span class=o>=</span><span class=s2>&#34;abc&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>a2</span><span class=o>=</span><span class=sb>`abc`</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul></li><li><h5 id=数值型>数值型：</h5><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>b</span><span class=o>=</span><span class=mi>1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>b1</span><span class=o>=</span><span class=mf>1.2</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>b2</span><span class=o>=-</span><span class=mi>2</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>b3</span><span class=o>=</span><span class=mh>0x01</span><span class=p>;</span><span class=c1>//16进制数值型
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>var</span> <span class=nx>b4</span><span class=o>=</span><span class=mi>0047</span><span class=p>;</span><span class=c1>//8进制数值型
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>var</span> <span class=nx>b5</span><span class=o>=</span><span class=mf>1.23</span><span class=nx>e</span><span class=o>+</span><span class=mi>5</span><span class=p>;</span><span class=c1>//科学计数法
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>var</span> <span class=nx>b6</span><span class=o>=</span><span class=mf>2.3</span><span class=nx>e</span><span class=o>-</span><span class=mi>6</span><span class=p>;</span><span class=c1>//科学计数法
+</span></span></span></code></pre></td></tr></table></div></div></li></ul></li><li><h5 id=布尔值truefalse>布尔值（true/false）</h5></li><li><h5 id=未定义>未定义</h5><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>d</span><span class=o>=</span><span class=kc>undefined</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>d1</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul></li></ol><blockquote><h6 id=一个定义为undefined一个未定义默认为undefined>一个定义为undefined，一个未定义默认为undefined。</h6></blockquote><ol start=5><li><h5 id=空null>空（null）：</h5><h6 id=针对对象设置为null用于清除对象的引用关系>针对对象设置为null，用于清除对象的引用关系</h6></li><li><h5 id=对象>对象：</h5><ul><li><h6 id=var-oa1b2><code>var o={a:1,b:2};</code></h6></li></ul></li></ol></li><li><h4 id=数据类型转换-1>数据类型转换：</h4><ol><li><h5 id=数值型转换为字符型>数值型转换为字符型</h5><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>a</span><span class=o>=</span><span class=mi>5</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div><ol><li><h5 id=强制转换通过string构造函数方法转换>强制转换，通过String构造函数方法转换</h5><ul><li><code>String(a);</code></li></ul></li><li><h5 id=字符转换>字符转换</h5><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>a</span><span class=o>=</span><span class=nx>a</span><span class=p>.</span><span class=nx>toString</span><span class=p>();</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul><blockquote><h6 id=进制转换参数中是数字表示将变量转换为该数值的进制字符串>进制转换：参数中是数字，表示将变量转换为该数值的进制字符串</h6><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>a</span><span class=o>=</span><span class=nx>a</span><span class=p>.</span><span class=nx>toString</span><span class=p>(</span><span class=mi>2</span><span class=p>);</span><span class=c1>//2进制
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>a</span><span class=o>=</span><span class=nx>a</span><span class=p>.</span><span class=nx>toString</span><span class=p>(</span><span class=mi>16</span><span class=p>);</span><span class=c1>//16进制
+</span></span></span></code></pre></td></tr></table></div></div></blockquote></li></ol></li></ol></li></ul><ol start=2><li><h5 id=保留小数点后几位>保留小数点后几位：</h5><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>a</span><span class=o>=</span><span class=nx>a</span><span class=p>.</span><span class=nx>toFixed</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=c1>//带参数表示保留小数点后几位
+</span></span></span><span class=line><span class=cl><span class=c1></span> <span class=c1>//四舍五入效果
+</span></span></span></code></pre></td></tr></table></div></div></li></ul></li><li><ul><li><h5 id=大于0时保留几位数值并且按照科学计数法来写>大于0时，保留几位数值并且按照科学计数法来写</h5></li><li><h5 id=小于1时保留几位有效数字>小于1时，保留几位有效数字</h5><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>a</span><span class=o>=</span><span class=nx>a</span><span class=p>.</span><span class=nx>toPrecision</span><span class=p>(</span><span class=mi>2</span><span class=p>);</span>
+</span></span><span class=line><span class=cl> <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>a</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul></li></ul></li><li><h5 id=保留小数点后几位的科学计数法>保留小数点后几位的科学计数法</h5><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>a</span><span class=o>=</span><span class=nx>a</span><span class=p>.</span><span class=nx>toExponential</span><span class=p>(</span><span class=mi>3</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>a</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul></li></ol></div><div class=post-copyright><p class=copyright-item><span class=item-title>Author</span>
+<span class=item-content>Ankang</span></p><p class=copyright-item><span class=item-title>LastMod</span>
+<span class=item-content>2021-03-15</span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/JavaScript/>JavaScript</a>
+<a href=/tags/Study/>Study</a></div><nav class=post-nav><a class=prev href=/post/21-03-18/><i class="iconfont icon-left"></i>
+<span class="prev-text nav-default">数据类型转换与运算符</span>
+<span class="prev-text nav-mobile">Prev</span></a>
+<a class=next href=/post/20-04-06/><span class="next-text nav-default">JavaScript高阶函数</span>
+<span class="next-text nav-mobile">Next</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:ankangz98@gmail.com class="iconfont icon-email" title=email></a>
+<a href=https://github.com/an-kang class="iconfont icon-github" title=github></a>
+<a href=http://localhost:1313/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><div class=busuanzi-footer><span id=busuanzi_container_site_pv>PV: <span id=busuanzi_value_site_pv><img src=/img/spinner.svg alt=spinner.svg></span></span>
+<span class=division>|</span>
+<span id=busuanzi_container_site_uv>UV: <span id=busuanzi_value_site_uv><img src=/img/spinner.svg alt=spinner.svg></span></span></div><span class=copyright-year>&copy;
+2017 -
+2022<span class=heart><i class="iconfont icon-heart"></i></span><span>Ankang</span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
+<script type=text/javascript src=/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js></script></body></html>

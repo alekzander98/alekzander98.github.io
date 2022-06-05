@@ -1,0 +1,383 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>NodeJS相关/Web服务器 - Ankang</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="Ankang"><meta name=description content="Node.js 事件驱动异步I/O单进程的服务端JS环境，具有事件循环。浏览器是JS的前端运行环境；Node JS是JS的后端运行环境，在后端中运行无法调用DOM和BOM等浏览器内置API。
+模块化 NodeJs基于Commonjs模块化开发的规范
+导出：exports/module.exports
+共同点：导出模块 不同点：module.exports它可以导出对象，而exports不可以 exports = module.exports 引用 本质：原型指向 导入：require(路径)
+"><meta name=keywords content="Hugo,theme,even"><meta name=generator content="Hugo 0.100.1 with theme even"><link rel=canonical href=http://localhost:1313/post/NodeJS%E7%9B%B8%E5%85%B3-Web%E6%9C%8D%E5%8A%A1%E5%99%A8/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
+<link href=/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="NodeJS相关/Web服务器"><meta property="og:description" content="Node.js
+事件驱动异步I/O单进程的服务端JS环境，具有事件循环。浏览器是JS的前端运行环境；Node JS是JS的后端运行环境，在后端中运行无法调用DOM和BOM等浏览器内置API。
+模块化
+NodeJs基于Commonjs模块化开发的规范
+导出：exports/module.exports
+
+共同点：导出模块
+不同点：module.exports它可以导出对象，而exports不可以
+exports = module.exports 引用 本质：原型指向
+
+导入：require(路径)"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost:1313/post/NodeJS%E7%9B%B8%E5%85%B3-Web%E6%9C%8D%E5%8A%A1%E5%99%A8/"><meta property="article:section" content="post"><meta property="article:published_time" content="2021-05-17T19:24:59+00:00"><meta property="article:modified_time" content="2021-05-17T19:24:59+00:00"><meta itemprop=name content="NodeJS相关/Web服务器"><meta itemprop=description content="Node.js
+事件驱动异步I/O单进程的服务端JS环境，具有事件循环。浏览器是JS的前端运行环境；Node JS是JS的后端运行环境，在后端中运行无法调用DOM和BOM等浏览器内置API。
+模块化
+NodeJs基于Commonjs模块化开发的规范
+导出：exports/module.exports
+
+共同点：导出模块
+不同点：module.exports它可以导出对象，而exports不可以
+exports = module.exports 引用 本质：原型指向
+
+导入：require(路径)"><meta itemprop=datePublished content="2021-05-17T19:24:59+00:00"><meta itemprop=dateModified content="2021-05-17T19:24:59+00:00"><meta itemprop=wordCount content="2245"><meta itemprop=keywords content="Server,NodeJS,"><meta name=twitter:card content="summary"><meta name=twitter:title content="NodeJS相关/Web服务器"><meta name=twitter:description content="Node.js
+事件驱动异步I/O单进程的服务端JS环境，具有事件循环。浏览器是JS的前端运行环境；Node JS是JS的后端运行环境，在后端中运行无法调用DOM和BOM等浏览器内置API。
+模块化
+NodeJs基于Commonjs模块化开发的规范
+导出：exports/module.exports
+
+共同点：导出模块
+不同点：module.exports它可以导出对象，而exports不可以
+exports = module.exports 引用 本质：原型指向
+
+导入：require(路径)"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>Ankang</a></div><div class=mobile-navbar-icon><span></span>
+<span></span>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/about/><li class=mobile-menu-item>About</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>Ankang</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/about/>About</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>NodeJS相关/Web服务器</h1><div class=post-meta><span class=post-time>2021-05-17</span>
+<span class=more-meta>2245 words</span>
+<span class=more-meta>5 mins</span></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>Contents</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><ul><li><a href=#nodejs>Node.js</a><ul><li><a href=#模块化>模块化</a></li><li><a href=#web服务器>web服务器</a></li></ul></li></ul></li></ul></nav></div></div><div class=post-content><h2 id=nodejs>Node.js</h2><p>事件驱动异步I/O单进程的服务端JS环境，具有事件循环。浏览器是JS的前端运行环境；Node JS是JS的后端运行环境，在后端中运行无法调用DOM和BOM等浏览器内置API。</p><h3 id=模块化>模块化</h3><p>NodeJs基于Commonjs模块化开发的规范</p><p>导出：exports/module.exports</p><ul><li>共同点：导出模块</li><li>不同点：module.exports它可以导出对象，而exports不可以</li><li>exports = module.exports 引用 本质：原型指向</li></ul><p>导入：require(路径)</p><h5 id=内置模块>内置模块</h5><h6 id=os模块>os模块</h6><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=c1>//导入一个内置的模块
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>os</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s2>&#34;os&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>os</span><span class=p>.</span><span class=nx>hostname</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=c1>//操作系统平台
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>clg</span><span class=p>(</span><span class=nx>os</span><span class=p>.</span><span class=nx>platform</span><span class=p>());</span>
+</span></span><span class=line><span class=cl><span class=c1>//换行符 windoe \r\n linux/mac \n
+</span></span></span><span class=line><span class=cl><span class=c1>// os.EOL 一般用于记录日志
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>let</span> <span class=nx>str</span> <span class=o>=</span> <span class=s2>&#34;我是一个&#34;</span> <span class=o>+</span> <span class=nx>os</span><span class=p>.</span><span class=nx>EOL</span> <span class=o>+</span> <span class=s2>&#34;标签&#34;</span>
+</span></span><span class=line><span class=cl><span class=nx>clg</span><span class=p>(</span><span class=nx>str</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=c1>//CPU核数
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>clg</span><span class=p>(</span><span class=nx>os</span><span class=p>.</span><span class=nx>cpus</span><span class=p>().</span><span class=nx>length</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=c1>//总内存大小 字节 =&gt; 字节/1024(kb)=&gt;kb/1024(mb)=&gt;mb/1024(G)
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>clg</span><span class=p>(</span><span class=nx>os</span><span class=p>.</span><span class=nx>totalmem</span><span class=p>()</span><span class=o>/</span><span class=mi>1024</span><span class=o>/</span><span class=mi>1024</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><h6 id=path模块>path模块</h6><p>路径模块</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>path</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;path&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nx>url</span> <span class=o>=</span> <span class=s1>&#39;&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=c1>//得到url和路径中的文件名称--获取最后一个分隔符后的字符串
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>clg</span><span class=p>(</span><span class=nx>path</span><span class=p>.</span><span class=nx>basename</span><span class=p>(</span><span class=nx>url</span><span class=p>));</span>
+</span></span><span class=line><span class=cl><span class=c1>//得到文件所在目录--获取最后一个分隔符之前的字符串
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>clg</span><span class=p>(</span><span class=nx>path</span><span class=p>.</span><span class=nx>dirname</span><span class=p>(</span><span class=nx>url</span><span class=p>));</span>
+</span></span><span class=line><span class=cl><span class=c1>//得到扩展名 带.的扩展名
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>clg</span><span class=p>(</span><span class=nx>path</span><span class=p>.</span><span class=nx>extname</span><span class=p>(</span><span class=nx>url</span><span class=p>));</span>
+</span></span><span class=line><span class=cl><span class=c1>//拼接路径
+</span></span></span><span class=line><span class=cl><span class=c1>//全局变量 __dirname 当前执行脚本所在的路径
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>logpath</span> <span class=o>=</span> <span class=nx>path</span><span class=p>.</span><span class=nx>join</span><span class=p>(</span><span class=nx>__dirname</span><span class=p>,</span><span class=s1>&#39;data/log.txt&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=c1>//const logpath = path.join(__dirname,&#39;data&#39;,&#39;log.txt&#39;)
+</span></span></span><span class=line><span class=cl><span class=c1>//const logpath = path.join(__dirname,&#39;../data&#39;,&#39;log.txt&#39;)
+</span></span></span><span class=line><span class=cl><span class=c1>//相对地址转换为绝对地址
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>clg</span><span class=p>(</span><span class=nx>path</span><span class=p>.</span><span class=nx>resolve</span><span class=p>(</span><span class=s1>&#39;./data&#39;</span><span class=p>,</span><span class=s1>&#39;log.txt&#39;</span><span class=p>));</span>
+</span></span><span class=line><span class=cl><span class=c1>//clg(path.resolve(&#39;../data&#39;,&#39;log.txt&#39;));
+</span></span></span></code></pre></td></tr></table></div></div><h6 id=url模块>url模块</h6><p>分析url地址</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>let</span> <span class=nx>href</span> <span class=o>=</span> <span class=s1>&#39;&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=c1>//参数1：分析url地址
+</span></span></span><span class=line><span class=cl><span class=c1>//参数2：boolean true/false query属性是否自动转换为对象
+</span></span></span><span class=line><span class=cl><span class=c1>//参数3：boolean 一般不用，没有协议时，自动识别域名。
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>clg</span><span class=p>(</span><span class=nx>url</span><span class=p>.</span><span class=nx>parse</span><span class=p>(</span><span class=nx>href</span><span class=p>,</span><span class=kc>true</span><span class=p>));</span>
+</span></span></code></pre></td></tr></table></div></div><h6 id=js中内置类url>JS中内置类URL</h6><p>get/post方法得到的数据是字符串形式</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=cm>/*let href = &#39;&#39;
+</span></span></span><span class=line><span class=cl><span class=cm>const url = new URL(href);
+</span></span></span><span class=line><span class=cl><span class=cm>clg(url.searchParams);
+</span></span></span><span class=line><span class=cl><span class=cm>//获取query中相同名称的数据，以数组形式返回
+</span></span></span><span class=line><span class=cl><span class=cm>clg(url.searchParams.getAll(&#39;id&#39;));
+</span></span></span><span class=line><span class=cl><span class=cm>//获取全部的get数据
+</span></span></span><span class=line><span class=cl><span class=cm>clg(url.searchParans.entries());
+</span></span></span><span class=line><span class=cl><span class=cm>for(let [key,value] of url.searchParans.entries()){
+</span></span></span><span class=line><span class=cl><span class=cm>	clg(key,value);
+</span></span></span><span class=line><span class=cl><span class=cm>}
+</span></span></span><span class=line><span class=cl><span class=cm>*/</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nx>href</span> <span class=o>=</span> <span class=s1>&#39;?...&#39;</span>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>query</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>URLSearchParams</span><span class=p>(</span><span class=nx>href</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=c1>//search对象
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>clg</span><span class=p>(</span><span class=nx>query</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><h6 id=querystring模块>querystring模块</h6><p>用于解析和格式化URL查询字符串的实用工具。</p><h6 id=fs模块>fs模块</h6><p>文件交互相关，buffer：容器（缓冲器）一般用来存储数据流。字符串=>二进制=>字符串（文件操作时转码）。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>fs</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;fs&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>path</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;path&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>str</span> <span class=o>=</span> <span class=s2>&#34;你好&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=c1>//字符串转为buffer流 == 一个中文转为3个字节
+</span></span></span><span class=line><span class=cl><span class=c1>//clg(Buffer.from(str));
+</span></span></span><span class=line><span class=cl><span class=c1>//创建一个文件
+</span></span></span><span class=line><span class=cl><span class=c1>//异步 -- 回调
+</span></span></span><span class=line><span class=cl><span class=c1>//回调函数err中的参数，如果返回为null则表示成功，为对象表示写入异常
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>fs</span><span class=p>.</span><span class=nx>writeFile</span><span class=p>(</span><span class=nx>path</span><span class=p>.</span><span class=nx>resolve</span><span class=p>(</span><span class=s1>&#39;/data/list.txt&#39;</span><span class=p>),</span><span class=nx>Buffer</span><span class=p>.</span><span class=nx>from</span><span class=p>(</span><span class=nx>str</span><span class=p>),</span><span class=nx>err</span><span class=p>=&gt;</span><span class=nx>clg</span><span class=p>(</span><span class=nx>err</span><span class=p>))</span>
+</span></span><span class=line><span class=cl><span class=c1>//同步
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>fs</span><span class=p>.</span><span class=nx>writeFileSync</span><span class=p>(</span><span class=nx>path</span><span class=p>.</span><span class=nx>resolve</span><span class=p>(</span><span class=s1>&#39;/data/list.txt&#39;</span><span class=p>),</span><span class=nx>str</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=c1>//文件异步追加
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>fs</span><span class=p>.</span><span class=nx>appendFile</span><span class=p>(</span><span class=nx>path</span><span class=p>.</span><span class=nx>resolve</span><span class=p>(</span><span class=s1>&#39;/data/list.txt&#39;</span><span class=p>),</span><span class=nx>Buffer</span><span class=p>.</span><span class=nx>from</span><span class=p>(</span><span class=nx>str</span><span class=p>),</span><span class=nx>err</span><span class=p>=&gt;</span><span class=nx>clg</span><span class=p>(</span><span class=nx>err</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>//读取文件
+</span></span></span><span class=line><span class=cl><span class=c1>//nodejs中回调函数，第一个参数都是错误
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=cm>/*fs.readFile(filepath,&#39;utf-8&#39;,(err,buffer)=&gt;{
+</span></span></span><span class=line><span class=cl><span class=cm>    clg(buffer);
+</span></span></span><span class=line><span class=cl><span class=cm>})*/</span>
+</span></span><span class=line><span class=cl><span class=nx>fs</span><span class=p>.</span><span class=nx>readFile</span><span class=p>(</span><span class=nx>filepath</span><span class=p>,(</span><span class=nx>err</span><span class=p>,</span><span class=nx>buffer</span><span class=p>)=&gt;{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>clg</span><span class=p>(</span><span class=nx>buffer</span><span class=p>.</span><span class=nx>toString</span><span class=p>());</span>
+</span></span><span class=line><span class=cl><span class=p>})</span>
+</span></span><span class=line><span class=cl><span class=c1>//删除文件
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>fs</span><span class=p>.</span><span class=nx>unlink</span><span class=p>(</span><span class=nx>newfilepath</span><span class=p>,</span><span class=nx>err</span> <span class=p>=&gt;</span> <span class=nx>clg</span><span class=p>(</span><span class=nx>err</span><span class=p>));</span>
+</span></span><span class=line><span class=cl><span class=c1>//查看文件信息
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>fs</span><span class=p>.</span><span class=nx>stat</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=c1>//判断当前文件或目录是否存在
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>clg</span><span class=p>(</span><span class=nx>fs</span><span class=p>.</span><span class=nx>existsSync</span><span class=p>(</span><span class=nx>filepath</span><span class=p>));</span>
+</span></span><span class=line><span class=cl><span class=c1>//创建目录
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>dirpath</span> <span class=o>=</span> <span class=nx>path</span><span class=p>.</span><span class=nx>join</span><span class=p>(</span><span class=nx>__dirname</span><span class=p>,</span><span class=s1>&#39;data&#39;</span><span class=p>,</span><span class=s1>&#39;aa&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=nx>fs</span><span class=p>.</span><span class=nx>mkdir</span><span class=p>(</span><span class=nx>dirpath</span><span class=p>,</span><span class=nx>err</span> <span class=p>=&gt;</span> <span class=nx>clg</span><span class=p>(</span><span class=nx>err</span><span class=p>))</span>
+</span></span><span class=line><span class=cl><span class=c1>//迭代创建
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>fs</span><span class=p>.</span><span class=nx>mkdir</span><span class=p>(</span><span class=nx>dirpath</span><span class=p>,{</span><span class=nx>recursive</span><span class=o>:</span><span class=kc>true</span><span class=p>},</span><span class=nx>err</span> <span class=p>=&gt;</span> <span class=nx>clg</span><span class=p>(</span><span class=nx>err</span><span class=p>));</span>
+</span></span><span class=line><span class=cl><span class=c1>//读取目录 返回数组类型
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>fs</span><span class=p>.</span><span class=nx>readdir</span><span class=p>(</span><span class=nx>dirpath</span><span class=p>,</span><span class=s1>&#39;utf-8&#39;</span><span class=p>,(</span><span class=nx>err</span><span class=p>,</span><span class=nx>data</span><span class=p>)=&gt;</span><span class=nx>clg</span><span class=p>(</span><span class=nx>data</span><span class=p>));</span>
+</span></span><span class=line><span class=cl><span class=c1>//删除 默认只删除空目录
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>fs</span><span class=p>.</span><span class=nx>rmdir</span><span class=p>(</span><span class=nx>dirpath</span><span class=p>,</span><span class=nx>err</span> <span class=p>=&gt;</span> <span class=nx>clg</span><span class=p>(</span><span class=nx>err</span><span class=p>))</span>
+</span></span><span class=line><span class=cl><span class=c1>//递归删除
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>fs</span><span class=p>.</span><span class=nx>rmdir</span><span class=p>(</span><span class=nx>dirpath</span><span class=p>,{</span><span class=nx>recursive</span><span class=o>:</span><span class=kc>true</span><span class=p>},</span><span class=nx>err</span> <span class=p>=&gt;</span> <span class=nx>clg</span><span class=p>(</span><span class=nx>err</span><span class=p>))</span>
+</span></span><span class=line><span class=cl><span class=c1>//重命名
+</span></span></span></code></pre></td></tr></table></div></div><p><img src=1.png alt=1></p><p>数据流：读流（fs.createReadStream）、写流（fs.createWriteStream）</p><blockquote><p>fs.createReadStream(filepath).pipe(fs.createWriteStream(newfilepath))</p></blockquote><h6 id=事件触发器events>事件触发器（events）</h6><p>对"发布/订阅"模式的实现，加载events模块后，通过EventEmitter属性建立一个实例化对象。通过<code>on</code>方法为事件指定回调函数，最后通过emit方法触发事件。先订阅-后发布</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>Event</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;event&#39;</span><span class=p>).</span><span class=nx>EventEmitter</span>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>ev</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Event</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=c1>//订阅
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>ev</span><span class=p>.</span><span class=nx>on</span><span class=p>(</span><span class=s1>&#39;&#39;</span><span class=p>,(...</span><span class=nx>args</span><span class=p>)=&gt;</span><span class=nx>clg</span><span class=p>(</span><span class=nx>args</span><span class=p>))</span>
+</span></span><span class=line><span class=cl><span class=c1>//发布
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>ev</span><span class=p>.</span><span class=nx>emit</span><span class=p>(</span><span class=s1>&#39;&#39;</span><span class=p>,</span><span class=mi>1</span><span class=p>,</span><span class=mi>2</span><span class=p>,</span><span class=mi>3</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>ev</span><span class=p>.</span><span class=nx>emit</span><span class=p>(</span><span class=s1>&#39;&#39;</span><span class=p>,{</span><span class=nx>key</span><span class=o>:</span><span class=nx>value</span><span class=p>});</span>
+</span></span></code></pre></td></tr></table></div></div><h5 id=第三方模块>第三方模块</h5><p>首先查看当前项目中有没有package.json文件，&ndash;<code>npm init -y</code></p><p>npm -S/npm -D:</p><h5 id=自定义模块>自定义模块?</h5><p>自定义模块命名为index.js，如果重命名文档，可以采用修改package.json文档内容，将指向改变。导出变量，函数，类，实例化对象。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;main&#34;</span><span class=o>:</span> <span class=s2>&#34;index.js&#34;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h5 id=npm-参数>npm 参数</h5><p>process.argv:获取的是当前输入的所有命令语句块&ndash;数组，通过slice截取数组中有效的元素，<code>process.argv.slice(2)</code>。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=c1>//node(命令) 执行的文件(.js) [自定义参数]
+</span></span></span><span class=line><span class=cl><span class=c1>//获取执行命令中的参数
+</span></span></span><span class=line><span class=cl><span class=c1>//1、
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>let</span> <span class=nx>args</span> <span class=o>=</span> <span class=p>{}</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nx>arr</span> <span class=o>=</span> <span class=nx>process</span><span class=p>.</span><span class=nx>argv</span><span class=p>.</span><span class=nx>slice</span><span class=p>(</span><span class=mi>2</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>arr</span><span class=p>.</span><span class=nx>forEach</span><span class=p>((</span><span class=nx>item</span><span class=p>,</span><span class=nx>index</span><span class=p>)=&gt;{</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span><span class=p>(</span><span class=nx>item</span><span class=p>.</span><span class=nx>startsWith</span><span class=p>(</span><span class=s1>&#39;--&#39;</span><span class=p>)){</span>
+</span></span><span class=line><span class=cl>        <span class=nx>args</span><span class=p>[</span><span class=nx>item</span><span class=p>.</span><span class=nx>slice</span><span class=p>(</span><span class=mi>2</span><span class=p>)]</span> <span class=o>=</span> <span class=nx>arr</span><span class=p>[</span><span class=nx>index</span> <span class=o>+</span> <span class=mi>1</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>})</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>//2、
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>let</span> <span class=nx>args</span> <span class=o>=</span> <span class=nx>process</span><span class=p>.</span><span class=nx>argv</span><span class=p>.</span><span class=nx>slice</span><span class=p>(</span><span class=mi>2</span><span class=p>).</span><span class=nx>reduce</span><span class=p>((</span><span class=nx>p</span><span class=p>,</span><span class=nx>c</span><span class=p>,</span><span class=nx>index</span><span class=p>,</span><span class=nx>arr</span><span class=p>)=&gt;{</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span><span class=p>(</span><span class=nx>c</span><span class=p>.</span><span class=nx>startsWith</span><span class=p>(</span><span class=s1>&#39;--&#39;</span><span class=p>)){</span>
+</span></span><span class=line><span class=cl>        <span class=nx>p</span><span class=p>[</span><span class=nx>c</span><span class=p>.</span><span class=nx>slice</span><span class=p>(</span><span class=mi>2</span><span class=p>)]</span> <span class=o>=</span> <span class=nx>arr</span><span class=p>[</span><span class=nx>index</span> <span class=o>+</span> <span class=mi>1</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>p</span>
+</span></span><span class=line><span class=cl><span class=p>},{});</span>
+</span></span><span class=line><span class=cl><span class=c1>//打印结果
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>args</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><h5 id=环境变量>环境变量</h5><p><code>node xx | grep xx</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=c1>//手动设置环境变量
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>process</span><span class=p>.</span><span class=nx>env</span><span class=p>.</span><span class=nx>NODE_ENV</span> <span class=o>=</span> <span class=s2>&#34;dev&#34;</span>
+</span></span><span class=line><span class=cl><span class=c1>//获取指定的环境变量
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=k>if</span><span class=p>(</span><span class=nx>process</span><span class=p>.</span><span class=nx>env</span><span class=p>.</span><span class=nx>NODE_ENV</span> <span class=o>===</span> <span class=s2>&#34;dev&#34;</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>	<span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s1>&#39;开发中&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span><span class=k>else</span> <span class=k>if</span><span class=p>(</span><span class=nx>process</span><span class=p>.</span><span class=nx>env</span><span class=p>.</span><span class=nx>NODE_ENV</span> <span class=o>=</span> <span class=s2>&#34;test&#34;</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=nx>clg</span><span class=p>(</span><span class=s2>&#34;测试中&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span><span class=k>else</span> <span class=k>if</span><span class=p>(</span><span class=nx>process</span><span class=p>.</span><span class=nx>env</span><span class=p>.</span><span class=nx>NODE_ENV</span> <span class=o>=</span> <span class=s2>&#34;production&#34;</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=nx>clg</span><span class=p>(</span><span class=s2>&#34;上线&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>}</span><span class=k>else</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>clg</span><span class=p>(</span><span class=s1>&#39;其他&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h6 id=cross-env插件>cross-env插件：</h6><p>运行跨平台设置和使用环境变量的脚本</p><p>安装cross-env插件：<code>npm i cross-env -D</code>，在生成的package.json文件中配置。</p><p><img src=2.png alt=image-20210517112543161></p><p><img src=3.png alt=image-20210517112657192></p><h3 id=web服务器>web服务器</h3><p>端口数量：0-65535</p><p>成为一个http服务器</p><ul><li>主机+协议+端口号</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=c1>//http事件处理
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>http</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;http&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=c1>//创建一个web服务器
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>server</span> <span class=o>=</span> <span class=nx>http</span><span class=p>.</span><span class=nx>createServer</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>//侦听事件 浏览器请求 request
+</span></span></span><span class=line><span class=cl><span class=c1>//request 请求对象，用于获取浏览器请求 头和体
+</span></span></span><span class=line><span class=cl><span class=c1>//response 服务器对浏览器的响应 行 头 体
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>server</span><span class=p>.</span><span class=nx>on</span><span class=p>(</span><span class=s1>&#39;request&#39;</span><span class=p>,(</span><span class=nx>request</span><span class=p>,</span><span class=nx>response</span><span class=p>)=&gt;{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//clg(&#34;请求了！&#34;);
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=c1>//当前的请求
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>clg</span><span class=p>(</span><span class=nx>request</span><span class=p>.</span><span class=nx>uri</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//获取请求的方法
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>clg</span><span class=p>(</span><span class=nx>request</span><span class=p>.</span><span class=nx>method</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//获取请求头--日志
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=nx>request</span><span class=p>.</span><span class=nx>url</span> <span class=o>!==</span> <span class=s1>&#39;/favicon.ico&#39;</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=nx>clg</span><span class=p>(</span><span class=k>new</span> <span class=nb>Date</span><span class=p>().</span><span class=nx>toUTCString</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>        <span class=nx>clg</span><span class=p>(</span><span class=nx>request</span><span class=p>.</span><span class=nx>headers</span><span class=p>[</span><span class=s1>&#39;user-agent&#39;</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=c1>//响应头
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>response</span><span class=p>.</span><span class=nx>setHeader</span><span class=p>(</span><span class=s1>&#39;Content-Type&#39;</span><span class=p>,</span><span class=s1>&#39;text/html;charset=utf-8&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//服务器给浏览器响应
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>response</span><span class=p>.</span><span class=nx>end</span><span class=p>(</span><span class=s2>&#34;&lt;h3&gt;你好世界&lt;/h3&gt;&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=nx>response</span><span class=p>.</span><span class=nx>end</span><span class=p>(</span><span class=nx>JSON</span><span class=p>.</span><span class=nx>stringify</span><span class=p>({</span><span class=nx>id</span><span class=o>:</span><span class=mi>1</span><span class=p>,</span><span class=nx>name</span><span class=o>:</span><span class=s1>&#39;张三&#39;</span><span class=p>}))</span>
+</span></span><span class=line><span class=cl><span class=p>})</span>
+</span></span><span class=line><span class=cl><span class=c1>//监听 端口
+</span></span></span><span class=line><span class=cl><span class=c1>//0.0.0.0 =&gt; 监听服务器中所有的网址请求
+</span></span></span><span class=line><span class=cl><span class=c1>//具体的IP 对应此网卡的IP才可以访问 10 200
+</span></span></span><span class=line><span class=cl><span class=c1>//ifconfig =&gt; linux
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>server</span><span class=p>.</span><span class=nx>listen</span><span class=p>(</span><span class=mi>3000</span><span class=p>,</span><span class=s1>&#39;0.0.0.0&#39;</span><span class=p>,()=&gt;{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>clg</span><span class=p>(</span><span class=s1>&#39;服务已启动 http://127.0.0.1:3000&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>})</span>
+</span></span></code></pre></td></tr></table></div></div></div><div class=post-copyright><p class=copyright-item><span class=item-title>Author</span>
+<span class=item-content>Ankang</span></p><p class=copyright-item><span class=item-title>LastMod</span>
+<span class=item-content>2021-05-17</span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/Server/>Server</a>
+<a href=/tags/NodeJS/>NodeJS</a></div><nav class=post-nav><a class=next href=/post/flex%E5%B8%83%E5%B1%80/><span class="next-text nav-default">flex布局</span>
+<span class="next-text nav-mobile">Next</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:ankangz98@gmail.com class="iconfont icon-email" title=email></a>
+<a href=https://github.com/an-kang class="iconfont icon-github" title=github></a>
+<a href=http://localhost:1313/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><div class=busuanzi-footer><span id=busuanzi_container_site_pv>PV: <span id=busuanzi_value_site_pv><img src=/img/spinner.svg alt=spinner.svg></span></span>
+<span class=division>|</span>
+<span id=busuanzi_container_site_uv>UV: <span id=busuanzi_value_site_uv><img src=/img/spinner.svg alt=spinner.svg></span></span></div><span class=copyright-year>&copy;
+2017 -
+2022<span class=heart><i class="iconfont icon-heart"></i></span><span>Ankang</span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
+<script type=text/javascript src=/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js></script></body></html>

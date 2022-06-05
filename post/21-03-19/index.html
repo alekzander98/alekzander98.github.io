@@ -1,0 +1,348 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>JavaScript条件语句与循环语句 - Ankang</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="Ankang"><meta name=description content=" 条件语句 循环语句 解决基本问题 "><meta name=keywords content="Hugo,theme,even"><meta name=generator content="Hugo 0.100.1 with theme even"><link rel=canonical href=http://localhost:1313/post/21-03-19/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
+<link href=/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="JavaScript条件语句与循环语句"><meta property="og:description" content="
+
+条件语句
+
+
+循环语句
+
+
+解决基本问题
+
+"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost:1313/post/21-03-19/"><meta property="article:section" content="post"><meta property="article:published_time" content="2021-03-17T07:51:19+00:00"><meta property="article:modified_time" content="2021-03-17T07:51:19+00:00"><meta itemprop=name content="JavaScript条件语句与循环语句"><meta itemprop=description content="
+
+条件语句
+
+
+循环语句
+
+
+解决基本问题
+
+"><meta itemprop=datePublished content="2021-03-17T07:51:19+00:00"><meta itemprop=dateModified content="2021-03-17T07:51:19+00:00"><meta itemprop=wordCount content="2099"><meta itemprop=keywords content="JavaScript,Study,"><meta name=twitter:card content="summary"><meta name=twitter:title content="JavaScript条件语句与循环语句"><meta name=twitter:description content="
+
+条件语句
+
+
+循环语句
+
+
+解决基本问题
+
+"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>Ankang</a></div><div class=mobile-navbar-icon><span></span>
+<span></span>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/about/><li class=mobile-menu-item>About</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>Ankang</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/about/>About</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>JavaScript条件语句与循环语句</h1><div class=post-meta><span class=post-time>2021-03-17</span>
+<span class=more-meta>2099 words</span>
+<span class=more-meta>5 mins</span></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>Contents</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><ul><li><ul><li></li></ul></li></ul></li></ul></nav></div></div><div class=post-content><ol><li><h5 id=条件语句>条件语句</h5></li><li><h5 id=循环语句>循环语句</h5></li><li><h5 id=解决基本问题>解决基本问题</h5></li></ol><h5 id=位非运算以二进制运算非数值会变成0>位非运算：以二进制运算，非数值会变成0</h5><h5 id=isnan-具有隐式转换功能><code>isNaN();</code> 具有隐式转换功能</h5><h5 id=numberisnan不会隐式转换-如果传入的不是nan或者其他不是数值的字符返回值都是false><code>Number.isNaN();</code>不会隐式转换 ，如果传入的不是NaN，或者其他不是数值的字符，返回值都是false。</h5><h4 id=条件语句-1>条件语句：</h4><ol><li><h5 id=使用>使用：</h5><ul><li><h4 id=if条件语句>if条件语句</h4><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>//条件是一个表达式，表达式返回的结果会被隐式转换为布尔值
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=k>if</span><span class=p>(</span><span class=nx>条件</span><span class=p>){</span><span class=nx>语句块</span><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>a</span><span class=o>=</span><span class=mi>3</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>if</span><span class=p>(</span><span class=nx>a</span><span class=o>=</span><span class=mi>3</span><span class=p>){}</span><span class=c1>//不管a原先是多少，都会进入语句块
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=k>if</span><span class=p>(</span><span class=nx>a</span><span class=o>==</span><span class=mi>3</span><span class=p>){}</span>
+</span></span><span class=line><span class=cl><span class=k>if</span><span class=p>(</span><span class=nx>a</span><span class=o>===</span><span class=mi>3</span><span class=p>){}</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>//前面参与运算，后面判断条件
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>var</span> <span class=nx>a</span><span class=o>=</span><span class=mi>2</span>
+</span></span><span class=line><span class=cl><span class=k>if</span><span class=p>(</span><span class=nx>a</span><span class=o>++</span><span class=p>,</span><span class=nx>a</span><span class=o>==</span><span class=mi>2</span><span class=p>){</span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;aaa&#34;</span><span class=p>);}</span>
+</span></span><span class=line><span class=cl><span class=c1>//语句块只有一句话时，花括号可以省略。
+</span></span></span><span class=line><span class=cl><span class=c1>//如果没有花括号默认只第一句为条件语句块。
+</span></span></span></code></pre></td></tr></table></div></div></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=k>if</span><span class=p>(){</span>
+</span></span><span class=line><span class=cl>	<span class=c1>//满足条件时，执行语句块   
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span><span class=k>else</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//不满足时，执行语句块
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>//代码出错时，才会使用try-catch
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=k>try</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>}</span><span class=k>catch</span><span class=p>(</span><span class=nx>e</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//只有try语句块的内容报错了，才会执行
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span><span class=k>finally</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//执行try/catch都会执行
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span><span class=k>throw</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//异常情况下抛出
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><h5 id=if-else-与-try-catch区别>if else 与 try catch区别：</h5><ul><li><h5 id=if-else>if else:</h5><ul><li>条件语句需要预先考虑到可能出现的错误并且提前做条件判断执行。</li><li>需要明确的条件</li><li>性能消耗小</li></ul></li><li><h5 id=try-catch>try catch：</h5><ul><li>不需要预先判断出现错误，由try自身判断。</li><li>出错切换</li><li>性能消耗大</li></ul></li></ul></li><li><h5 id=if--else-if和多if判断语句>if else if和多if判断语句：</h5><ol><li>多if语句，会进入多次，每个if都进行判断</li><li>多if语句不会对上次的判断进行屏蔽，需要自己将上面判断过的添加进行删减。</li></ol></li><li><h5 id=多分支条件语句-判断相等-绝对>多分支条件语句 判断相等 （===）绝对</h5><ul><li><p>判断表达式和case中哪一个值相等</p><ol><li>break 跳出语句块</li><li>default 如果不等同任何一个case的值，则执行default中的语句块</li></ol></li><li><p>**穿越：**一旦一个条件语句块中没有<code>break</code>,会自动执行下一个条件的语句块。</p></li><li><p><strong>状态机</strong>：故意制作穿越，达成游戏技能关联目的。</p></li></ul></li></ul></li></ul></li></ol><h4 id=循环语句-1>循环语句：</h4><ol><li><h5 id=while循环>while循环</h5><ul><li><p>条件中有多个表达式时，逗号前的表达式在循环前执行，再进行判断==>需要将循环条件放在while()中的最后</p><ul><li><p>深度遍历</p><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>a</span><span class=o>=</span><span class=p>{</span><span class=nx>value</span><span class=o>:</span><span class=mi>1</span><span class=p>,</span><span class=nx>next</span><span class=o>:</span><span class=p>{</span><span class=nx>value</span><span class=o>:</span><span class=mi>2</span><span class=p>,</span><span class=nx>next</span><span class=o>:</span><span class=p>{</span><span class=nx>value</span><span class=o>:</span><span class=mi>3</span><span class=p>,</span><span class=nx>next</span><span class=p>(</span><span class=nx>value</span><span class=o>:</span><span class=mi>4</span><span class=p>,</span><span class=nx>next</span><span class=o>:</span><span class=p>{</span><span class=nx>value</span><span class=o>:</span><span class=mi>5</span><span class=p>,</span><span class=nx>next</span><span class=o>:</span><span class=kc>null</span><span class=p>})}}};</span>
+</span></span><span class=line><span class=cl><span class=mf>1.</span>
+</span></span><span class=line><span class=cl><span class=k>while</span><span class=p>(</span><span class=nx>a</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>a</span><span class=p>.</span><span class=nx>value</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>a</span><span class=o>=</span><span class=nx>a</span><span class=p>.</span><span class=nx>next</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=mf>2.</span><span class=nx>break语句</span>
+</span></span><span class=line><span class=cl><span class=k>while</span><span class=p>(</span><span class=mi>1</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span><span class=p>(</span><span class=o>!</span><span class=nx>a</span><span class=p>)</span> <span class=k>break</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>a</span><span class=p>.</span><span class=nx>value</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>a</span><span class=o>=</span><span class=nx>a</span><span class=p>.</span><span class=nx>next</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul></li></ul></li></ul></li><li><h5 id=do-while循环>do while循环</h5><ul><li><p>必执行一次，然后根据条件判断是否继续循环</p></li><li><p>可以规划出起始条件和结束条件，某个变量并不是循环的起始部分。</p><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>var <span class=nv>i</span><span class=o>=</span>0<span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>do</span><span class=o>{</span>
+</span></span><span class=line><span class=cl>	i--<span class=p>;</span>
+</span></span><span class=line><span class=cl>	console.log<span class=o>(</span>i<span class=o>)</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>	<span class=k>if</span><span class=o>(</span>i&lt;-10<span class=o>)</span> break<span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=o>}</span><span class=k>while</span><span class=o>(</span>i&lt;0<span class=o>)</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul></li></ul></li><li><h5 id=for循环>for循环</h5><ul><li><blockquote><p>for(初始值；条件；向条件外变化的表达式){}</p><ul><li>初始值：开始执行 执行一次</li><li>条件：循环开始判断（进入循环语句块之前）循环几次执行几次（比循环语句块多执行一次）</li><li>向条件外变化的表达式：每次循环语句块结束后执行 循环几次执行几次（和循环语句块执行次数一样）。</li></ul><p>for(;;){}==>死循环</p></blockquote></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=k>for</span><span class=p>(</span><span class=kd>var</span> <span class=nx>i</span><span class=o>=</span><span class=mi>0</span><span class=p>,</span><span class=nx>s</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span><span class=nx>i</span><span class=o>&lt;=</span><span class=mi>100</span><span class=p>;</span><span class=nx>s</span><span class=o>+=</span><span class=nx>i</span><span class=p>,</span><span class=nx>i</span><span class=o>++</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=k>for</span><span class=p>(</span><span class=kd>var</span> <span class=nx>i</span><span class=o>=</span><span class=mi>0</span><span class=p>,</span><span class=nx>s</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span><span class=nx>s</span><span class=o>+=</span><span class=nx>i</span><span class=p>,</span><span class=nx>i</span><span class=o>++&lt;</span><span class=mi>100</span><span class=p>;);</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><p>广度优先遍历：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>arr</span><span class=o>=</span><span class=p>[</span><span class=mi>1</span><span class=p>,</span><span class=mi>2</span><span class=p>,</span><span class=mi>3</span><span class=p>,</span><span class=mi>4</span><span class=p>,</span><span class=mi>5</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=k>for</span><span class=p>(</span><span class=kd>var</span> <span class=nx>i</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span><span class=nx>i</span><span class=o>&lt;</span><span class=nx>arr</span><span class=p>.</span><span class=nx>lenght</span><span class=p>;</span><span class=nx>i</span><span class=o>++</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>arr</span><span class=p>[</span><span class=nx>i</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><p>深度优先遍历：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>a</span><span class=o>=</span><span class=p>{</span><span class=nx>value</span><span class=o>:</span><span class=mi>1</span><span class=p>,</span><span class=nx>next</span><span class=o>:</span><span class=p>{</span><span class=nx>value</span><span class=o>:</span><span class=mi>2</span><span class=p>,</span><span class=nx>next</span><span class=o>:</span><span class=p>{</span><span class=nx>value</span><span class=o>:</span><span class=mi>3</span><span class=p>,</span><span class=nx>next</span><span class=p>(</span><span class=nx>value</span><span class=o>:</span><span class=mi>4</span><span class=p>,</span><span class=nx>next</span><span class=o>:</span><span class=p>{</span><span class=nx>value</span><span class=o>:</span><span class=mi>5</span><span class=p>,</span><span class=nx>next</span><span class=o>:</span><span class=kc>null</span><span class=p>})}}};</span>
+</span></span><span class=line><span class=cl><span class=k>for</span><span class=p>(;</span><span class=nx>a</span><span class=p>;</span><span class=nx>a</span><span class=o>=</span><span class=nx>a</span><span class=p>.</span><span class=nx>next</span><span class=p>)</span> <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>a</span><span class=p>.</span><span class=nx>value</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul></li></ol><h4 id=documentbodyinnerhtml-和-documentwrite都会造成回流><code>document.body.innerHTML</code> 和 <code>document.write()</code>都会造成<em><strong>回流</strong></em></h4><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>&lt;div <span class=nv>id</span><span class=o>=</span><span class=s2>&#34;div1&#34;</span>&gt;div1的内容&lt;/div&gt;
+</span></span><span class=line><span class=cl>&lt;script&gt;
+</span></span><span class=line><span class=cl>	var <span class=nv>div1</span> <span class=o>=</span> document.getElementById<span class=o>(</span><span class=s2>&#34;div1&#34;</span><span class=o>)</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>	document.onclick<span class=o>=</span><span class=k>function</span><span class=o>(){</span>
+</span></span><span class=line><span class=cl>		document.body.innerHTML+<span class=o>=</span><span class=s2>&#34;*&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>		div1.style.color<span class=o>=</span><span class=s2>&#34;red&#34;</span><span class=p>;</span>//测试发现点击事件后，div1的内容样式并没有发生变化。
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>		var <span class=nv>div2</span><span class=o>=</span>document.getElementById<span class=o>(</span><span class=s2>&#34;div1&#34;</span><span class=o>)</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>		console.log<span class=o>(</span><span class=nv>div1</span><span class=o>===</span>div2<span class=o>)</span><span class=p>;</span>//控制台输出false<span class=o>==</span>&gt; div1和div2不一样了
+</span></span><span class=line><span class=cl>	<span class=o>}</span>
+</span></span><span class=line><span class=cl>&lt;/script&gt;
+</span></span></code></pre></td></tr></table></div></div></li><li><p>因为第一次页面重构时会自动第一次回流，所以再构造页面时执行</p></li><li><p><code>document.body.innerHTML</code>设置值会将所有的内容清空设值</p></li><li><p><code>document.body.innerHTML+=</code>会将所有的内容累加其中重新设值</p></li><li><p><code>document.write()</code>会直接添加再页面的原有内容的后面</p></li></ul><h5 id=当第一次页面渲染完成后再执行documentbodyinnerhtml或者documentwrite都会再次触发回流并且表现不同>当第一次页面渲染完成后，再执行<code>document.body.innerHTML</code>或者<code>document.write()</code>，都会再次触发回流，并且表现不同：</h5><ul><li><h6 id=documentbodyinnerhtml设置值会将所有的内容清空设值><code>document.body.innerHTML</code>设置值会将所有的内容清空设值</h6></li><li><h6 id=documentbodyinnerhtml会将原有的内容累加其中重新设值><code>document.body.innerHTML+=</code>会将原有的内容累加其中重新设值</h6></li><li><h6 id=documentwrite会清空原body中的所有内容设置为新内容><code>document.write()</code>会清空原body中的所有内容，设置为新内容</h6></li><li><h6 id=当也买你渲染完成后再次回流以后造成页面渲染完成前获取的元素将在回流后无法使用需要重新获取因为元素发生了变化>当也买你渲染完成后再次回流以后，造成页面渲染完成前获取的元素将在回流后无法使用，需要重新获取==>因为元素发生了变化。</h6></li></ul><h4 id=移动的盒子>移动的盒子：</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>style</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=p>#</span><span class=nn>moveBox</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>height</span><span class=p>:</span> <span class=mi>50</span><span class=kt>px</span><span class=p>;</span><span class=k>width</span><span class=p>:</span> <span class=mi>50</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>            <span class=k>background-color</span><span class=p>:</span> <span class=mh>#000</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>            <span class=k>position</span><span class=p>:</span> <span class=kc>relative</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>            <span class=c>/* 想要盒子动起来需要添加绝对/相对定位 */</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;/</span><span class=nt>style</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>div</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;moveBox&#34;</span><span class=p>&gt;&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>script</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=kd>var</span> <span class=nx>divBox</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>getElementById</span><span class=p>(</span><span class=s2>&#34;moveBox&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=kd>var</span> <span class=nx>x</span><span class=o>=</span><span class=mi>0</span><span class=p>,</span><span class=nx>y</span><span class=o>=</span><span class=mi>0</span><span class=p>,</span><span class=nx>status</span><span class=o>=</span><span class=s2>&#34;right&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=nx>setInterval</span><span class=p>(()</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>switch</span><span class=p>(</span><span class=nx>status</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>                <span class=k>case</span> <span class=s2>&#34;right&#34;</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>                    <span class=nx>x</span><span class=o>++</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                    <span class=k>if</span><span class=p>(</span><span class=nx>x</span><span class=o>===</span><span class=mi>200</span><span class=p>)</span> <span class=nx>status</span><span class=o>=</span><span class=s2>&#34;down&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                    <span class=k>break</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                <span class=k>case</span> <span class=s2>&#34;down&#34;</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>                    <span class=nx>y</span><span class=o>++</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                    <span class=k>if</span><span class=p>(</span><span class=nx>y</span><span class=o>===</span><span class=mi>200</span><span class=p>)</span> <span class=nx>status</span><span class=o>=</span><span class=s2>&#34;left&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                    <span class=k>break</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                <span class=k>case</span> <span class=s2>&#34;left&#34;</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>                    <span class=nx>x</span><span class=o>--</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                    <span class=k>if</span><span class=p>(</span><span class=nx>x</span><span class=o>===</span><span class=mi>0</span><span class=p>)</span> <span class=nx>status</span><span class=o>=</span><span class=s2>&#34;up&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                    <span class=k>break</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                <span class=k>case</span> <span class=s2>&#34;up&#34;</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>                    <span class=nx>y</span><span class=o>--</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                    <span class=k>if</span><span class=p>(</span><span class=nx>y</span><span class=o>===</span><span class=mi>0</span><span class=p>)</span> <span class=nx>status</span><span class=o>=</span><span class=s2>&#34;right&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                    <span class=k>break</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>            <span class=nx>divBox</span><span class=p>.</span><span class=nx>style</span><span class=p>.</span><span class=nx>left</span><span class=o>=</span><span class=nx>x</span><span class=o>+</span><span class=s2>&#34;px&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>            <span class=nx>divBox</span><span class=p>.</span><span class=nx>style</span><span class=p>.</span><span class=nx>top</span><span class=o>=</span><span class=nx>y</span><span class=o>+</span><span class=s2>&#34;px&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=p>},</span> <span class=mi>16</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;/</span><span class=nt>script</span><span class=p>&gt;</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=乘法口诀表>乘法口诀表：</h4><h4 id=三角形菱形>三角形、菱形</h4><h4 id=breakcontinue><code>break/continue</code></h4><ul><li><p><code>break</code>跳出 循环并且不再循环</p></li><li><p><code>continue</code>继续 跳出本次循环，继续下次循环，当前本次不执行continue后面的语句。</p><ul><li>使用while和do while语句，i++不能写在continue后面。</li></ul></li><li><p><code>break</code> 用于死循环跳出</p><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>var <span class=nv>i</span><span class=o>=</span>0<span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>while</span><span class=o>(</span><span class=nb>true</span><span class=o>){</span>
+</span></span><span class=line><span class=cl>	<span class=k>if</span><span class=o>(</span><span class=nv>i</span><span class=o>===</span>5<span class=o>)</span> break<span class=p>;</span>
+</span></span><span class=line><span class=cl>	console.log<span class=o>(</span><span class=s2>&#34;aaa&#34;</span><span class=o>)</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>	i++<span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul></li><li><p><code>break</code> 跳出标记，标记后面跟冒号</p><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl>				<span class=kd>var</span> <span class=nx>i</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>ankang</span><span class=o>:</span>	<span class=k>while</span><span class=p>(</span><span class=nx>i</span><span class=o>&lt;</span><span class=mi>10</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>			<span class=kd>var</span> <span class=nx>j</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>			<span class=k>while</span><span class=p>(</span><span class=nx>j</span><span class=o>&lt;</span><span class=mi>10</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>				<span class=k>if</span><span class=p>(</span><span class=nx>i</span><span class=o>+</span><span class=nx>j</span><span class=o>===</span><span class=mi>10</span><span class=p>)</span> <span class=k>break</span> <span class=nx>ankang</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>				<span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>i</span><span class=p>,</span><span class=nx>j</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>				<span class=nx>j</span><span class=o>++</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>			<span class=p>}</span>
+</span></span><span class=line><span class=cl>			<span class=nx>i</span><span class=o>++</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>		<span class=p>}</span>
+</span></span><span class=line><span class=cl>		<span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;aaa&#34;</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul></li><li><p><code>continue</code> 也可以跳出标记</p></li></ul><h4 id=判断2-100以内的素数>判断2-100以内的素数：‘</h4><ol><li><h5 id=for循环-1>for循环：</h5><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>ak</span><span class=o>:</span>	<span class=k>for</span><span class=p>(</span><span class=kd>var</span> <span class=nx>i</span><span class=o>=</span><span class=mi>2</span><span class=p>,</span><span class=nx>j</span><span class=p>;</span><span class=nx>i</span><span class=o>&lt;</span><span class=mi>100</span><span class=p>;</span><span class=nx>i</span><span class=o>++</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span><span class=p>(</span><span class=nx>j</span><span class=o>=</span><span class=mi>2</span><span class=p>;</span><span class=nx>j</span><span class=o>&lt;</span><span class=nx>i</span><span class=p>;</span><span class=nx>j</span><span class=o>++</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span><span class=p>(</span><span class=nx>i</span><span class=o>%</span><span class=nx>j</span><span class=o>===</span><span class=mi>0</span><span class=p>)</span> <span class=k>continue</span> <span class=nx>ak</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>i</span><span class=o>+</span><span class=s2>&#34;这是素数&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul></li><li><h5 id=while循环-1>while循环：</h5><ul><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>bool</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>i</span><span class=o>=</span><span class=mi>2</span><span class=p>,</span><span class=nx>j</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>while</span><span class=p>(</span><span class=nx>i</span><span class=o>&lt;</span><span class=mi>100</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=nx>j</span><span class=o>=</span><span class=mi>2</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=nx>bool</span><span class=o>=</span><span class=kc>true</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>while</span><span class=p>(</span><span class=nx>j</span><span class=o>&lt;</span><span class=nx>i</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span><span class=p>(</span><span class=nx>i</span><span class=o>%</span><span class=nx>j</span><span class=o>===</span><span class=mi>0</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>            <span class=nx>bool</span><span class=o>=</span><span class=kc>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>            <span class=k>break</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=nx>j</span><span class=o>++</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span><span class=p>(</span><span class=nx>bool</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>i</span><span class=o>+</span><span class=s2>&#34;是素数&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=nx>i</span><span class=o>++</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>j</span><span class=o>=</span><span class=mi>1</span><span class=p>,</span><span class=nx>i</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>ak</span><span class=o>:</span>	<span class=k>while</span><span class=p>(</span><span class=nx>j</span><span class=o>++&lt;</span><span class=mi>100</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=nx>i</span><span class=o>=</span><span class=mi>2</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>while</span><span class=p>(</span><span class=nx>i</span><span class=o>&lt;</span><span class=nx>j</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span><span class=p>(</span><span class=nx>j</span><span class=o>%</span><span class=nx>i</span><span class=o>===</span><span class=mi>0</span><span class=p>)</span> <span class=k>continue</span> <span class=nx>ak</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=nx>i</span><span class=o>++</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>j</span><span class=o>+</span><span class=s2>&#34;是素数&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></li></ul></li></ol></div><div class=post-copyright><p class=copyright-item><span class=item-title>Author</span>
+<span class=item-content>Ankang</span></p><p class=copyright-item><span class=item-title>LastMod</span>
+<span class=item-content>2021-03-17</span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/JavaScript/>JavaScript</a>
+<a href=/tags/Study/>Study</a></div><nav class=post-nav><a class=prev href=/post/JavaScript-%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%87%BD%E6%95%B0/><i class="iconfont icon-left"></i>
+<span class="prev-text nav-default">JavaScript--对象和函数</span>
+<span class="prev-text nav-mobile">Prev</span></a>
+<a class=next href=/post/21-03-18/><span class="next-text nav-default">数据类型转换与运算符</span>
+<span class="next-text nav-mobile">Next</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:ankangz98@gmail.com class="iconfont icon-email" title=email></a>
+<a href=https://github.com/an-kang class="iconfont icon-github" title=github></a>
+<a href=http://localhost:1313/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><div class=busuanzi-footer><span id=busuanzi_container_site_pv>PV: <span id=busuanzi_value_site_pv><img src=/img/spinner.svg alt=spinner.svg></span></span>
+<span class=division>|</span>
+<span id=busuanzi_container_site_uv>UV: <span id=busuanzi_value_site_uv><img src=/img/spinner.svg alt=spinner.svg></span></span></div><span class=copyright-year>&copy;
+2017 -
+2022<span class=heart><i class="iconfont icon-heart"></i></span><span>Ankang</span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
+<script type=text/javascript src=/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js></script></body></html>

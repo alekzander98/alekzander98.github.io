@@ -1,0 +1,271 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>模块化与TypeScript的基本数据类型 - Ankang</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="Ankang"><meta name=description content="模块化 方案：AMD[requirejs]、CMD[seajs]、CommonJS[nodejs]和ES6
+AMD和CMD，两者的区别是前者是对于依赖的模块提前执行，而后者是延迟执行。 前者推崇依赖前置，而后者推崇依赖就近，即只在需要用到某个模块的时候再require。
+CMD 有async方法实现异步
+"><meta name=keywords content="Hugo,theme,even"><meta name=generator content="Hugo 0.100.1 with theme even"><link rel=canonical href=http://localhost:1313/post/%E6%A8%A1%E5%9D%97%E5%8C%96%E4%B8%8ETypeScript%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
+<link href=/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="模块化与TypeScript的基本数据类型"><meta property="og:description" content="模块化
+方案：AMD[requirejs]、CMD[seajs]、CommonJS[nodejs]和ES6
+AMD和CMD，两者的区别是前者是对于依赖的模块提前执行，而后者是延迟执行。 前者推崇依赖前置，而后者推崇依赖就近，即只在需要用到某个模块的时候再require。
+CMD 有async方法实现异步"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost:1313/post/%E6%A8%A1%E5%9D%97%E5%8C%96%E4%B8%8ETypeScript%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"><meta property="article:section" content="post"><meta property="article:published_time" content="2021-04-27T22:57:43+00:00"><meta property="article:modified_time" content="2021-04-27T22:57:43+00:00"><meta itemprop=name content="模块化与TypeScript的基本数据类型"><meta itemprop=description content="模块化
+方案：AMD[requirejs]、CMD[seajs]、CommonJS[nodejs]和ES6
+AMD和CMD，两者的区别是前者是对于依赖的模块提前执行，而后者是延迟执行。 前者推崇依赖前置，而后者推崇依赖就近，即只在需要用到某个模块的时候再require。
+CMD 有async方法实现异步"><meta itemprop=datePublished content="2021-04-27T22:57:43+00:00"><meta itemprop=dateModified content="2021-04-27T22:57:43+00:00"><meta itemprop=wordCount content="1717"><meta itemprop=keywords content="TypeScript,"><meta name=twitter:card content="summary"><meta name=twitter:title content="模块化与TypeScript的基本数据类型"><meta name=twitter:description content="模块化
+方案：AMD[requirejs]、CMD[seajs]、CommonJS[nodejs]和ES6
+AMD和CMD，两者的区别是前者是对于依赖的模块提前执行，而后者是延迟执行。 前者推崇依赖前置，而后者推崇依赖就近，即只在需要用到某个模块的时候再require。
+CMD 有async方法实现异步"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>Ankang</a></div><div class=mobile-navbar-icon><span></span>
+<span></span>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/about/><li class=mobile-menu-item>About</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>Ankang</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/about/>About</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>模块化与TypeScript的基本数据类型</h1><div class=post-meta><span class=post-time>2021-04-27</span>
+<span class=more-meta>1717 words</span>
+<span class=more-meta>4 mins</span></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>Contents</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><ul><li><a href=#模块化>模块化</a><ul><li></li></ul></li><li><a href=#typescript>TypeScript</a><ul><li><a href=#基本数据类型>基本数据类型</a></li></ul></li></ul></li></ul></nav></div></div><div class=post-content><h2 id=模块化>模块化</h2><p><strong>方案</strong>：AMD[requirejs]、CMD[seajs]、CommonJS[nodejs]和ES6</p><p><em>AMD和CMD</em>，两者的<strong>区别</strong>是前者是对于依赖的模块提前执行，而后者是延迟执行。 前者推崇依赖前置，而后者推崇依赖就近，即只在需要用到某个模块的时候再require。</p><p>CMD 有async方法实现异步</p><h5 id=amd>AMD</h5><p>非同步加载模块，允许指定回调函数</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>// 定义模块，没有依赖项
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>define</span><span class=p>(</span><span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>function</span> <span class=nx>fn1</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=s1>&#39;你好fn1&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// 导出模块
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>return</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>fn1</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>})</span>
+</span></span><span class=line><span class=cl><span class=c1>// 定义模块有这依赖项
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>define</span><span class=p>([</span><span class=s1>&#39;m1&#39;</span><span class=p>],</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>m1</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>function</span> <span class=nx>fn2</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s1>&#39;m2模块&#39;</span><span class=p>,</span> <span class=nx>m1</span><span class=p>.</span><span class=nx>fn1</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>    <span class=p>};</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// 暴露模块
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>return</span> <span class=p>{</span> <span class=nx>fn2</span> <span class=p>};</span>
+</span></span><span class=line><span class=cl><span class=p>})</span>
+</span></span><span class=line><span class=cl><span class=c1>// 入口文件
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>(</span><span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>requirejs</span><span class=p>.</span><span class=nx>config</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>        <span class=c1>// 配置js路径
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=nx>paths</span><span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=nx>m1</span><span class=o>:</span> <span class=s1>&#39;./module/m1&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=nx>m2</span><span class=o>:</span> <span class=s1>&#39;./module/m2&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=nx>jquery</span><span class=o>:</span> <span class=s1>&#39;./module/jquery&#39;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>});</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nx>requirejs</span><span class=p>([</span><span class=s1>&#39;m2&#39;</span><span class=p>,</span> <span class=s1>&#39; jquery&#39;</span><span class=p>],</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>m2</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>m2</span><span class=p>.</span><span class=nx>fn2</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>        <span class=nx>$</span><span class=p>(</span><span class=s1>&#39;#box&#39;</span><span class=p>).</span><span class=nx>click</span><span class=p>(</span><span class=kd>function</span><span class=p>(){</span>
+</span></span><span class=line><span class=cl>            <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=mi>1111</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=p>})</span>
+</span></span><span class=line><span class=cl>    <span class=p>})</span>
+</span></span><span class=line><span class=cl><span class=p>})()</span>
+</span></span><span class=line><span class=cl><span class=c1>// 页面文件
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=o>&lt;</span><span class=nx>div</span> <span class=nx>id</span><span class=o>=</span><span class=s2>&#34;box&#34;</span><span class=o>&gt;</span><span class=nx>点击试一下</span><span class=o>&lt;</span><span class=err>/div&gt;</span>
+</span></span><span class=line><span class=cl><span class=o>&lt;</span><span class=nx>script</span> <span class=nx>data</span><span class=o>-</span><span class=nx>main</span><span class=o>=</span><span class=s2>&#34;./main.js&#34;</span> <span class=nx>src</span><span class=o>=</span><span class=s2>&#34;./lib/require.js&#34;</span><span class=o>&gt;&lt;</span><span class=err>/script&gt;</span>
+</span></span></code></pre></td></tr></table></div></div><h5 id=cmd>CMD</h5><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>// 没有依赖的模块
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>define</span><span class=p>(</span><span class=kd>function</span> <span class=p>(</span><span class=nx>require</span><span class=p>,</span> <span class=nx>exports</span><span class=p>,</span> <span class=nx>module</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>function</span> <span class=nx>fn1</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;m1模块下面的fn1方法&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>};</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// 导出模块
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>module</span><span class=p>.</span><span class=nx>exports</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>fn1</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>})</span>
+</span></span><span class=line><span class=cl><span class=c1>// 有依赖的模块
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>define</span><span class=p>(</span><span class=kd>function</span> <span class=p>(</span><span class=nx>require</span><span class=p>,</span> <span class=nx>exports</span><span class=p>,</span> <span class=nx>module</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// 导入依赖模块
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=kd>let</span> <span class=nx>m1</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;./m1&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=nx>m1</span><span class=p>.</span><span class=nx>fn1</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=kd>function</span> <span class=nx>fn2</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s1>&#39;我是m2模块下面的fn2方法&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=nx>exports</span><span class=p>.</span><span class=nx>fn2</span> <span class=o>=</span> <span class=nx>fn2</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=c1>// 主入口文件
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>define</span><span class=p>(</span><span class=kd>function</span> <span class=p>(</span><span class=nx>require</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>let</span> <span class=nx>m2</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;./m2&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=nx>m2</span><span class=p>.</span><span class=nx>fn2</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=kd>let</span> <span class=nx>jquery</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;./jquery&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>jquery</span><span class=p>(</span><span class=s1>&#39;body&#39;</span><span class=p>));</span>
+</span></span><span class=line><span class=cl><span class=p>})</span>
+</span></span><span class=line><span class=cl><span class=c1>// 页面
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=o>&lt;</span><span class=nx>script</span> <span class=nx>src</span><span class=o>=</span><span class=s2>&#34;./lib/sea.js&#34;</span><span class=o>&gt;&lt;</span><span class=err>/script&gt;</span>
+</span></span><span class=line><span class=cl><span class=o>&lt;</span><span class=nx>script</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nx>seajs</span><span class=p>.</span><span class=nx>use</span><span class=p>(</span><span class=s1>&#39;./module/main.js&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=o>&lt;</span><span class=err>/script&gt;</span>
+</span></span></code></pre></td></tr></table></div></div><h5 id=commonjs>CommonJS</h5><p>前端浏览器不支持，Nodejs中使用的是这个规范，核心思想就是通过 require 方法来同步加载所要依赖的其他模块，然后通过 exports 或者 module.exports 来导出需要暴露的接口。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>// 导出
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>module</span><span class=p>.</span><span class=nx>exports</span> <span class=o>=</span> <span class=nx>对象</span>
+</span></span><span class=line><span class=cl><span class=c1>// 导入
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>变量</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=nx>路径</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><h5 id=es6>ES6</h5><p>在ES6中，我们可以使用 import 关键字引入模块，通过 exprot 关键字导出模块，功能较之于前几个方案更为强大，也是我们所推崇的，但是由于ES6模块化目前还无法在所有的浏览器中支持，所以在浏览器中使用需要进行编译处理。目前chrome是支持的。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kr>export</span> <span class=p>[</span><span class=k>default</span><span class=p>]</span> <span class=nx>对象</span>
+</span></span><span class=line><span class=cl><span class=kr>import</span> <span class=o>*</span> <span class=nx>as</span> <span class=nx>obj</span> <span class=nx>form</span> <span class=s1>&#39;路径&#39;</span>
+</span></span><span class=line><span class=cl><span class=kr>import</span> <span class=nx>xxx</span> <span class=nx>form</span> <span class=s1>&#39;路径&#39;</span>
+</span></span><span class=line><span class=cl><span class=kr>import</span> <span class=p>{</span><span class=nx>xx</span> <span class=nx>as</span> <span class=nx>别名</span><span class=p>}</span> <span class=nx>from</span> <span class=s1>&#39;路径&#39;</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=typescript>TypeScript</h2><p>TypeScript 是 JavaScript 的超集，扩展了 JavaScript 的语法，因此现有的 JavaScript 代码可与 TypeScript 一起工作无需任何修改，TypeScript 通过类型注解提供编译时的静态类型检查。</p><p><img src=img1.png alt=image-20210427192231042>下载完nodejs后可以切换npm镜像</p><blockquote><p>npm install -g cnpm &ndash;registry=https://registry.npm.taobao.org</p></blockquote><p>也可以安装nrm&ndash;镜像源管理，高版本会报错，安装目录下找到 <code>cli.js</code>文件在17行，修改如下：</p><blockquote><p>const NRMRC = path.join(process.env[(process.platform == &lsquo;win32&rsquo;) ? &lsquo;USERPROFILE&rsquo; : &lsquo;HOME&rsquo;], &lsquo;.nrmrc&rsquo;);</p></blockquote><p>使用npm全局安装TypeScript</p><blockquote><p>npm i -g typescript</p><p>//安装完成查看</p><p>tsc -v</p></blockquote><p>通过tsc命令对ts文件进行编译 <code>tsc app ts</code></p><p><img src=img2.png alt=image-20210427193235016></p><h3 id=基本数据类型>基本数据类型</h3><p>类型声明：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-typescript data-lang=typescript><span class=line><span class=cl><span class=kr>const</span> <span class=nx>app</span>:<span class=kt>类型</span>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>fn</span><span class=p>(</span><span class=nx>p1</span>:<span class=kt>类型</span><span class=p>,</span><span class=nx>p2</span>:<span class=kt>类型</span><span class=p>)</span><span class=o>:</span><span class=err>类型</span><span class=p>{}</span>
+</span></span></code></pre></td></tr></table></div></div><p>自动类型：</p><p>当对变量的声明和赋值是同时进行的，TS编译器会自动判断变量的类型，工作中建议还是手动指明变量类型，尽量少的去让TS自动判断类型。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-typescript data-lang=typescript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>app</span> <span class=o>=</span> <span class=s2>&#34;Hello&#34;</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>app</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><h5 id=布尔值>布尔值</h5><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-typescript data-lang=typescript><span class=line><span class=cl><span class=kd>let</span> <span class=nx>isDone</span>: <span class=kt>boolean</span> <span class=o>=</span> <span class=kc>false</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div><h5 id=数值>数值</h5><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-typescript data-lang=typescript><span class=line><span class=cl><span class=kd>let</span> <span class=nx>decLiteral</span>: <span class=kt>number</span> <span class=o>=</span> <span class=mi>6</span><span class=p>;</span>           <span class=c1>// 十进制
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>let</span> <span class=nx>hexLiteral</span>: <span class=kt>number</span> <span class=o>=</span> <span class=mh>0xf00d</span><span class=p>;</span>     <span class=c1>// 十六进制
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>let</span> <span class=nx>binaryLiteral</span>: <span class=kt>number</span> <span class=o>=</span> <span class=mi>0</span><span class=nx>b1010</span><span class=p>;</span>  <span class=c1>// 二进制
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>let</span> <span class=nx>octalLiteral</span>: <span class=kt>number</span> <span class=o>=</span> <span class=mi>0</span><span class=nx>o744</span><span class=p>;</span>    <span class=c1>// 八进制
+</span></span></span></code></pre></td></tr></table></div></div><h5 id=字符串>字符串</h5><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-typescript data-lang=typescript><span class=line><span class=cl><span class=kd>let</span> <span class=nx>name</span>: <span class=kt>string</span> <span class=o>=</span> <span class=s2>&#34;bob&#34;</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nx>username</span>:<span class=kt>string</span> <span class=o>=</span> <span class=sb>`aaabbbccc`</span>
+</span></span></code></pre></td></tr></table></div></div><h5 id=anyunknown>any/unknown</h5><p>any任意类型, 类型安全的any类型；当前定义的变量，不知道是什么类型。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-typescript data-lang=typescript><span class=line><span class=cl><span class=kd>let</span> <span class=nx>app</span>:<span class=kt>any</span> <span class=o>=</span> <span class=mi>66</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nx>app</span>:<span class=kt>unknown</span> <span class=o>=</span> <span class=mi>66</span>
+</span></span></code></pre></td></tr></table></div></div><h5 id=void>void</h5><p>表示没有任何类型，只能赋值为undefined和null，一般常用于返回返回值的声明，如果一个函数没有返回值，就可以用它。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-typescript data-lang=typescript><span class=line><span class=cl><span class=kd>let</span> <span class=nx>unusable</span>: <span class=kt>void</span> <span class=o>=</span> <span class=kc>undefined</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>warnUser</span><span class=p>()</span><span class=o>:</span> <span class=k>void</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;This is my warning message&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h5 id=null和undefined>null和undefined</h5><h5 id=never>never</h5><p>表示那些永不存在的值的类型，也在函数执行判断时，永不可能执行到的代码块。</p><p><img src=img3.png alt=image-20210427194331157></p><h5 id=字面量>字面量</h5><p>可以使用字面量去指定变量的类型，通过字面量可以确定变量的取值范围</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-typescript data-lang=typescript><span class=line><span class=cl><span class=kd>let</span> <span class=nx>color</span><span class=o>:</span> <span class=s1>&#39;red&#39;</span> <span class=o>|</span> <span class=s1>&#39;blue&#39;</span> <span class=o>|</span> <span class=s1>&#39;green&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nx>num</span>: <span class=kt>1</span> <span class=o>|</span> <span class=mi>2</span> <span class=o>|</span> <span class=mi>3</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=枚举>枚举</h4><p>使用枚举类型可以为一组数值赋予特定的值。</p><p>使用时，如果定义的枚举内部没有指定值，则默认从0开始；如果设置枚举的值为数值，则后面未设置的值向下累加；如果设置的值为字符串，需要全部设置；常量定义的枚举，不可直接打印类型，但是可以通过 <code>.</code>读取到里面的值；</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-typescript data-lang=typescript><span class=line><span class=cl><span class=kr>enum</span> <span class=nx>Color</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>Red</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>Green</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>Blue</span><span class=p>,</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=err>或</span>
+</span></span><span class=line><span class=cl><span class=kr>enum</span> <span class=nx>Color</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>Red</span> <span class=o>=</span> <span class=mi>1</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>Green</span> <span class=o>=</span> <span class=mi>2</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>Blue</span> <span class=o>=</span> <span class=mi>3</span><span class=p>,</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nx>c</span>: <span class=kt>Color</span> <span class=o>=</span> <span class=nx>Color</span><span class=p>.</span><span class=nx>Green</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div><h5 id=object>Object</h5><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-typescript data-lang=typescript><span class=line><span class=cl><span class=kd>let</span> <span class=nx>obj</span>: <span class=kt>object</span> <span class=o>=</span> <span class=p>{}</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nx>obj</span><span class=o>:</span><span class=p>{</span><span class=nx>id</span>:<span class=kt>number</span><span class=p>,</span><span class=nx>name?</span>:<span class=kt>string</span><span class=p>}</span>  <span class=c1>// ?可选
+</span></span></span><span class=line><span class=cl><span class=c1>// id是必须要有的，后面可以任意key，key为字符串，值为任意类型
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>let</span> <span class=nx>obj</span><span class=o>:</span><span class=p>{</span><span class=nx>id</span>:<span class=kt>number</span><span class=p>,[</span><span class=nx>props</span>:<span class=kt>string</span><span class=p>]</span><span class=o>:</span><span class=kt>any</span><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=c1>// 给函数参数定义类型和返回值定义类型
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>type</span> <span class=nx>fnType</span> <span class=o>=</span> <span class=p>(</span><span class=nx>a</span>:<span class=kt>number</span><span class=p>,</span><span class=nx>b</span>:<span class=kt>number</span><span class=p>)</span><span class=o>=&gt;</span><span class=kt>number</span>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>fn</span>:<span class=kt>fnType</span> <span class=o>=</span> <span class=p>(</span><span class=nx>a</span>:<span class=kt>number</span><span class=p>,</span><span class=nx>b</span>:<span class=kt>number</span><span class=p>)</span><span class=o>:</span><span class=kt>number</span><span class=o>=&gt;</span><span class=nx>a</span><span class=o>+</span><span class=nx>b</span>
+</span></span></code></pre></td></tr></table></div></div><p><img src=img4.png alt=image-20210427195919260></p></div><div class=post-copyright><p class=copyright-item><span class=item-title>Author</span>
+<span class=item-content>Ankang</span></p><p class=copyright-item><span class=item-title>LastMod</span>
+<span class=item-content>2021-04-27</span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/TypeScript/>TypeScript</a></div><nav class=post-nav><a class=prev href=/post/TypeScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E7%B1%BB-%E6%B3%9B%E5%9E%8B/><i class="iconfont icon-left"></i>
+<span class="prev-text nav-default">TypeScript数据类型/类/泛型</span>
+<span class="prev-text nav-mobile">Prev</span></a>
+<a class=next href=/post/new-call-bind-instanceof%E7%9A%84%E5%AE%9E%E7%8E%B0%E4%B8%8E%E4%BB%A3%E7%90%86/><span class="next-text nav-default">new/call/bind/instanceof的实现与代理</span>
+<span class="next-text nav-mobile">Next</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:ankangz98@gmail.com class="iconfont icon-email" title=email></a>
+<a href=https://github.com/an-kang class="iconfont icon-github" title=github></a>
+<a href=http://localhost:1313/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><div class=busuanzi-footer><span id=busuanzi_container_site_pv>PV: <span id=busuanzi_value_site_pv><img src=/img/spinner.svg alt=spinner.svg></span></span>
+<span class=division>|</span>
+<span id=busuanzi_container_site_uv>UV: <span id=busuanzi_value_site_uv><img src=/img/spinner.svg alt=spinner.svg></span></span></div><span class=copyright-year>&copy;
+2017 -
+2022<span class=heart><i class="iconfont icon-heart"></i></span><span>Ankang</span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
+<script type=text/javascript src=/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js></script></body></html>

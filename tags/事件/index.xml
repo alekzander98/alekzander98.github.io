@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>事件 on Ankang</title><link>http://localhost:1313/tags/%E4%BA%8B%E4%BB%B6/</link><description>Recent content in 事件 on Ankang</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 31 Mar 2021 23:03:36 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/%E4%BA%8B%E4%BB%B6/index.xml" rel="self" type="application/rss+xml"/><item><title>键盘/输入事件与正则表达式概念</title><link>http://localhost:1313/post/%E9%94%AE%E7%9B%98-%E8%BE%93%E5%85%A5%E4%BA%8B%E4%BB%B6%E4%B8%8E%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%A6%82%E5%BF%B5/</link><pubDate>Wed, 31 Mar 2021 23:03:36 +0000</pubDate><guid>http://localhost:1313/post/%E9%94%AE%E7%9B%98-%E8%BE%93%E5%85%A5%E4%BA%8B%E4%BB%B6%E4%B8%8E%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%A6%82%E5%BF%B5/</guid><description>&lt;ol>
+&lt;li>KeyboardEvent事件&lt;/li>
+&lt;li>InputEvent事件&lt;/li>
+&lt;li>滚轮事件&lt;/li>
+&lt;li>正则表达式&amp;ndash;重复匹配和非贪婪匹配&lt;/li>
+&lt;/ol></description></item><item><title>系统事件概念</title><link>http://localhost:1313/post/%E7%B3%BB%E7%BB%9F%E4%BA%8B%E4%BB%B6%E6%A6%82%E5%BF%B5/</link><pubDate>Tue, 30 Mar 2021 22:35:55 +0000</pubDate><guid>http://localhost:1313/post/%E7%B3%BB%E7%BB%9F%E4%BA%8B%E4%BB%B6%E6%A6%82%E5%BF%B5/</guid><description>&lt;ol>
+&lt;li>系统事件-Event对象、MouseEvent对象&lt;/li>
+&lt;li>图片预加载&lt;/li>
+&lt;li>拖拽&lt;/li>
+&lt;/ol></description></item><item><title>DOM对象属性与事件基础</title><link>http://localhost:1313/post/DOM%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E4%B8%8E%E4%BA%8B%E4%BB%B6%E5%9F%BA%E7%A1%80/</link><pubDate>Mon, 29 Mar 2021 22:44:39 +0000</pubDate><guid>http://localhost:1313/post/DOM%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E4%B8%8E%E4%BA%8B%E4%BB%B6%E5%9F%BA%E7%A1%80/</guid><description>&lt;ol>
+&lt;li>DOM对象常用属性&lt;/li>
+&lt;li>观察者模式、中介者模式&lt;/li>
+&lt;li>事件委托&lt;/li>
+&lt;/ol></description></item></channel></rss>
