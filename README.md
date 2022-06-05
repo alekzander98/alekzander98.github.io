@@ -1,0 +1,2 @@
+blog - Hugo
+theme - Even
