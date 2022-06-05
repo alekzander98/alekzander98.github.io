@@ -1,0 +1,43 @@
+name: github pages
+
+# on 是 Actions 的触发条件，这里的配置说明当 master 分支有提交的时候，根据这个配置文件执行
+on:
+  push:
+    branches:
+      - master # Set a branch to deploy
+
+# jobs 是要执行的任务，我们看到他要执行 deploy
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04 # 运行环境
+    steps: # 执行步骤
+
+      # checkout 分支
+      - uses: actions/checkout@v2
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      # 安装 hugo
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+          # extended: true
+
+      # 编译站点
+      - name: Build
+        run: hugo --minify
+
+      # 创建 CNAME，这个是原始配置中没有的
+      - uses: "finnp/create-file-action@master"
+        env:
+          FILE_NAME: "./public/CNAME"
+          FILE_DATA: "h1z3y3.me"
+
+      # 将站点发布到对应分支
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
