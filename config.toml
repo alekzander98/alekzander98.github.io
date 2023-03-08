@@ -1,4 +1,4 @@
-baseURL = "https://ankang.icu/"
+baseURL = "https://ankang.one/"
 languageCode = "en"
 defaultContentLanguage = "en"                             # en / zh-cn / ... (This field determines which i18n file to use)
 title = "Ankang"
