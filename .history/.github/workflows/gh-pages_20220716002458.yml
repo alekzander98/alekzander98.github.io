@@ -33,7 +33,7 @@ jobs:
       - uses: "finnp/create-file-action@master"
         env:
           FILE_NAME: "./public/CNAME"
-          FILE_DATA: "ankang.one"
+          FILE_DATA: "ankang.icu"
 
       # 将站点发布到对应分支
       - name: Deploy
