@@ -1,7 +1,7 @@
 ---
 title: "Poster"
-date: 2023-07-11T16:55:53+08:00
-draft: true
+date: 2023-07-11 16:55:53
+tags: [Anything]
 ---
 
 ### 海报作品
