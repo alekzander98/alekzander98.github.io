@@ -184,7 +184,7 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
 
   [params.social]                                         # 社交链接
     a-email = "mailto:ankangz98@gmail.com"
-    b-github = "https://github.com/an-kang"
+    b-github = "https://github.com/alekzander98"
     #b-stack-overflow = "http://localhost:1313"
     #c-twitter = "http://localhost:1313"
     #d-facebook = "http://localhost:1313"
