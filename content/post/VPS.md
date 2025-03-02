@@ -1,9 +1,10 @@
 ---
 title: VPS
 date: 2025-03-02T16:38:06+08:00
-draft: true
+draft: false
 tags: [Server]
 ---
+
 前不久收到CloudCone的情人节促销邮件，看了下虽然阿里云/[云小站](https://www.aliyun.com/minisite/goods)上也有一些优惠，不过想获得完整体验的话可能需要各种备案什么的吧，感觉[CloudCone](https://cloudcone.com/)价格还挺合适的，就买了台机器，3 Core & 2G RAM & 240G DISK，$24.99/y，续费同价？然后折腾了一番，这里做一些相关配置步骤的记录。
 
 <!--more-->
