@@ -1,0 +1,30 @@
+#!/bin/bash
+# 从最大序号开始向前重命名
+mv /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/43-Awesome-Prompt.md /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/44-Awesome-Prompt.md
+mv /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/42-VPS.md /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/43-VPS.md
+mv /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/41-NodeJS相关-Web服务器.md /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/42-NodeJS相关-Web服务器.md
+mv /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/40-flex布局.md /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/41-flex布局.md
+mv /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/39-TypeScript数据类型-类-泛型.md /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/40-TypeScript数据类型-类-泛型.md
+mv /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/38-模块化与TypeScript的基本数据类型.md /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/39-模块化与TypeScript的基本数据类型.md
+mv /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/37-new-call-bind-instanceof的实现与代理.md /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/38-new-call-bind-instanceof的实现与代理.md
+mv /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/36-类-原型与原型链.md /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/37-类-原型与原型链.md
+mv /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/35-节流-防抖与对象.md /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/36-节流-防抖与对象.md
+mv /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/34-作用域与闭包.md /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/35-作用域与闭包.md
+mv /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/33-Jquery之尺寸-位置-网络请求.md /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/34-Jquery之尺寸-位置-网络请求.md
+mv /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/32-Jquery对象与基本设置.md /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/33-Jquery对象与基本设置.md
+mv /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/31-Promise中的then方法理解.md /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/32-Promise中的then方法理解.md
+mv /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/30-cookie-localstorage.md /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/31-cookie-localstorage.md
+mv /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/29-CORS跨域-async-await-fetch.md /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/30-CORS跨域-async-await-fetch.md
+mv /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/28-Promise-then-JSONP跨域.md /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/29-Promise-then-JSONP跨域.md
+mv /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/27-前后端分离-Ajax.md /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/28-前后端分离-Ajax.md
+mv /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/26-服务器端与PHP.md /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/27-服务器端与PHP.md
+mv /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/25-Symbol-Set-Map与模块化开发.md /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/26-Symbol-Set-Map与模块化开发.md
+mv /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/24-正则表达式与ES6.md /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/25-正则表达式与ES6.md
+mv /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/23-键盘-输入事件与正则表达式概念.md /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/24-键盘-输入事件与正则表达式概念.md
+mv /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/22-系统事件概念.md /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/23-系统事件概念.md
+mv /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/21-DOM对象属性与事件基础.md /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/22-DOM对象属性与事件基础.md
+mv /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/20-DOM属性相关.md /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/21-DOM属性相关.md
+mv /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/19-数据驱动显示-表格的增删.md /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/20-数据驱动显示-表格的增删.md
+mv /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/18-DOM对象相关.md /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/19-DOM对象相关.md
+# 最后重命名17-history与hash实现历史记录.md
+mv /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/17-history与hash实现历史记录.md /Users/ankang/Desktop/Code/github.com/alekzander98/alekzander98.github.io/content/post/18-history与hash实现历史记录.md
