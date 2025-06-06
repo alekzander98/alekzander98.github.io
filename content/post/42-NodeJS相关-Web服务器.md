@@ -8,6 +8,7 @@ tags: [Server,NodeJS]
 ## Node.js
 
 事件驱动异步I/O单进程的服务端JS环境，具有事件循环。浏览器是JS的前端运行环境；Node JS是JS的后端运行环境，在后端中运行无法调用DOM和BOM等浏览器内置API。
+<!--more-->
 
 ### 模块化
 
@@ -20,8 +21,6 @@ NodeJs基于Commonjs模块化开发的规范
 - exports = module.exports 引用 本质：原型指向
 
 导入：require(路径)
-
-<!--more-->
 
 ##### 内置模块
 
