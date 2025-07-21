@@ -115,6 +115,16 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   # Show language selector for multilingual site.
   showLanguageSelector = false
 
+  [params.giscus]                                         # 文章评论
+    enable     = true
+    url        = "https://giscus.app/client.js"
+    repo       = "alekzander98/alekzander98.github.io"       
+    repoId     = "R_kgDOHc6uHg"  
+    category   = "Announcements"
+    categoryId = "DIC_kwDOHc6uHs4CtOSr"   
+    mapping    = "pathname"  
+    theme      = "preferred_color_scheme"
+
   [params.publicCDN]        # load these files from public cdn                          # 启用公共CDN，需自行定义
     enable = true
     jquery = '<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>'

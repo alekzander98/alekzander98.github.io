@@ -135,21 +135,23 @@
     <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
   {{- end }}
 
-{{- end }}
+  {{- if .Site.Params.giscus.enable}}
+    <script
+      src="{{ .Site.Params.giscus.url }}"
+      data-repo="{{ .Site.Params.giscus.repo }}"
+      data-repo-id="{{ .Site.Params.giscus.repoId }}"
+      data-category="{{ .Site.Params.giscus.category }}"
+      data-category-id="{{ .Site.Params.giscus.categoryId }}"
+      data-mapping="{{ .Site.Params.giscus.mapping }}"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="{{ .Site.Params.giscus.theme }}"
+      data-lang="zh-CN"
+      crossorigin="anonymous"
+      async>
+    </script>
+  {{- end}}
 
-<!-- <script
-  src="https://giscus.app/client.js"
-  data-repo="alekzander98/alekzander98.github.io"
-  data-repo-id="R_kgDOHc6uHg"
-  data-category="Announcements"
-  data-category-id="DIC_kwDOHc6uHs4CtOSr"
-  data-mapping="pathname"
-  data-strict="0"
-  data-reactions-enabled="1"
-  data-emit-metadata="0"
-  data-input-position="top"
-  data-theme="preferred_color_scheme"
-  data-lang="zh-CN"
-  crossorigin="anonymous"
-  async>
-</script> -->
+{{- end }}
