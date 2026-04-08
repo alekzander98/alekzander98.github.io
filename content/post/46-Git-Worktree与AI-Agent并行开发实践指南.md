@@ -4,6 +4,9 @@ date: 2026-04-08
 draft: false
 tags: ["Git", "AI", "Agent", "工作流", "效率"]
 categories: ["技术分享", "工程化"]
+sequenceDiagrams: 
+  enable: true
+  options: "{theme: 'simple'}"
 ---
 
 ## 一、 引言
@@ -72,26 +75,25 @@ my-project-root/
 
 当我们引入 AI Agent（如 Claude Code）时，工作流将发生质的飞跃。以下是人类与 AI Agent 并行协作的流程图：
 
-```mermaid
-sequenceDiagram
-    participant Dev as 开发者 (人类)
-    participant Repo as 主仓库 (main-repo)
-    participant WT1 as Worktree 1 (重构任务)
-    participant WT2 as Worktree 2 (紧急Bug)
-    participant AI as AI Agent (Claude Code)
+```sequence
+participant 开发者
+participant 主仓库
+participant Worktree_1
+participant Worktree_2
+participant AI_Agent
 
-    Dev->>Repo: git worktree add ../wt-refactor refactor-branch
-    Dev->>WT1: 在 WT1 中启动 AI Agent
-    AI->>WT1: 开始长耗时的代码分析与重构 (执行中...)
-    
-    Note over Dev: 此时主线接到紧急 Bug 修复任务
-    
-    Dev->>Repo: git worktree add ../wt-hotfix hotfix-branch
-    Dev->>WT2: IDE 打开 WT2，开始手动修复 Bug
-    Dev->>WT2: 修复完成，提交代码并推送到远端
-    
-    AI-->>WT1: 重构完成，等待 Review
-    Dev->>WT1: 切换回 WT1，Review AI 的代码并提交
+开发者->>主仓库: git worktree add ../wt-refactor refactor-branch
+开发者->>Worktree_1: 在 WT1 中启动 AI Agent
+AI_Agent->>Worktree_1: 开始长耗时的代码分析与重构(执行中...)
+
+Note over 开发者: 此时主线接到紧急 Bug 修复任务
+
+开发者->>主仓库: git worktree add ../wt-hotfix hotfix-branch
+开发者->>Worktree_2: IDE 打开 WT2，开始手动修复 Bug
+开发者->>Worktree_2: 修复完成，提交代码并推送到远端
+
+AI_Agent-->>Worktree_1: 重构完成，等待 Review
+开发者->>Worktree_1: 切换回 WT1，Review AI 代码并提交
 ```
 
 **无冲突处理机制**：
