@@ -1,6 +1,6 @@
 ---
 title: "AI 时代的 Skill 和 Agent 到底是什么"
-date: 2026-05-12
+date: 2026-05-12 12:00:00
 draft: false
 tags: ["AI", "Skill", "Agent"]
 ---
