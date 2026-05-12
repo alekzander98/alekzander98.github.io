@@ -1,5 +1,5 @@
 ---
-title: "翻译-《Web development for beginners: Asynchronous JavaScript – Promises and async functions》"
+title: "译-《Web development for beginners: Asynchronous JavaScript – Promises and async functions》"
 date: 2025-09-30T17:15:28+08:00
 draft: false
 tags: [异步,Translate]
